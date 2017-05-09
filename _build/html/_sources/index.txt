@@ -6,9 +6,10 @@
 :Date: |today|
 :author: Daisuke Nagao
 
-.. contents:: Topic
-  :local:
-  :depth: 1
+..
+    .. contents:: Topic
+      :local:
+      :depth: 1
 
 -------------
 

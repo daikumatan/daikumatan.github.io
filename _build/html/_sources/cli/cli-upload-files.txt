@@ -18,11 +18,12 @@
 
 以下より `rescalecli-upload` をダウンロードしてください。
 
-    :download:`src/rescalecli-upload`
+- :download:`src/rescalecli-upload`
 
 ダウンロードしたスクリプトに実行権限を付与します。
 
 .. code-block:: bash
+    :caption: 実行権限付与
 
     chmod +x rescalecli-download
 
@@ -31,6 +32,7 @@
 
 対象とするジョブIDとダウロンドーロするファイル名を指定します。
 複数ファイルも指定することができます。
+
 
 .. code-block:: bash
     :caption: アップロードファイルの決定
@@ -56,10 +58,12 @@
 jqが必要です。
 
 .. code-block:: bash
+    :caption: ファイルアップロードとそのFileIdの取得
 
     JSON=$(./rescalecli-upload hoge1.txt hoge2.txt) && echo ${JSON} | jq -r .files[].id
 
 .. code-block:: bash
+    :caption: 結果(返り値)
 
     WAvaac
     xOBoPb
@@ -76,4 +80,4 @@ jqが必要です。
 詳細情報
 =====================================================
 
-:doc:`org-manu`
+詳細情報は ":doc:`org-manu` " を参照してください

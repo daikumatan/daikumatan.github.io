@@ -17,11 +17,12 @@
 
 以下より `rescalecli-download` をダウンロードしてください。
 
-    :download:`src/rescalecli-download`
+- :download:`src/rescalecli-download`
 
 ダウンロードしたスクリプトに実行権限を付与します。
 
 .. code-block:: bash
+    :caption: 実行権限の付与
 
     chmod +x rescalecli-download
 
@@ -52,8 +53,8 @@
 
 .. literalinclude:: src/rescalecli-download
     :language: bash
-    :linenos:
     :caption: ソースコード
+    :linenos:
 
 
 詳細情報

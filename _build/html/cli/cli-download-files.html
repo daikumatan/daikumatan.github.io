@@ -74,9 +74,9 @@
 <li><a class="reference internal" href="#">3. 結果のダウンロード (ファイル名を指定)</a><ul>
 <li><a class="reference internal" href="#id2">3.1. 前提</a></li>
 <li><a class="reference internal" href="#id3">3.2. スクリプトのダウンロード</a></li>
-<li><a class="reference internal" href="#id4">3.3. スクリプトの実行方法</a></li>
-<li><a class="reference internal" href="#id7">3.4. ソースコード例</a></li>
-<li><a class="reference internal" href="#id9">3.5. 詳細情報</a></li>
+<li><a class="reference internal" href="#id5">3.3. スクリプトの実行方法</a></li>
+<li><a class="reference internal" href="#id8">3.4. ソースコード例</a></li>
+<li><a class="reference internal" href="#id10">3.5. 詳細情報</a></li>
 </ul>
 </li>
 </ul>
@@ -126,9 +126,9 @@
 <li><a class="reference internal" href="#">3. 結果のダウンロード (ファイル名を指定)</a><ul>
 <li><a class="reference internal" href="#id2">3.1. 前提</a></li>
 <li><a class="reference internal" href="#id3">3.2. スクリプトのダウンロード</a></li>
-<li><a class="reference internal" href="#id4">3.3. スクリプトの実行方法</a></li>
-<li><a class="reference internal" href="#id7">3.4. ソースコード例</a></li>
-<li><a class="reference internal" href="#id9">3.5. 詳細情報</a></li>
+<li><a class="reference internal" href="#id5">3.3. スクリプトの実行方法</a></li>
+<li><a class="reference internal" href="#id8">3.4. ソースコード例</a></li>
+<li><a class="reference internal" href="#id10">3.5. 詳細情報</a></li>
 </ul>
 </li>
 </ul>
@@ -188,15 +188,19 @@
 <div class="section" id="id3">
 <h2>3.2. スクリプトのダウンロード<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>以下より <cite>rescalecli-download</cite> をダウンロードしてください。</p>
-<blockquote>
-<div><a class="reference download internal" href="../_downloads/rescalecli-download" download=""><code class="xref download docutils literal"><span class="pre">src/rescalecli-download</span></code></a></div></blockquote>
+<ul class="simple">
+<li><a class="reference download internal" href="../_downloads/rescalecli-download" download=""><code class="xref download docutils literal"><span class="pre">src/rescalecli-download</span></code></a></li>
+</ul>
 <p>ダウンロードしたスクリプトに実行権限を付与します。</p>
+<div class="literal-block-wrapper container" id="id4">
+<div class="code-block-caption"><span class="caption-text">実行権限の付与</span><a class="headerlink" href="#id4" title="このコードへのパーマリンク">¶</a></div>
 <div class="highlight-bash"><div class="highlight"><pre>chmod +x rescalecli-download
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>3.3. スクリプトの実行方法<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
+<div class="section" id="id5">
+<h2>3.3. スクリプトの実行方法<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>対象とするジョブIDとダウロンドーロするファイル名を指定します。複数ファイルも指定することができます。ジョブIDが分からない方は &#8220;<a class="reference internal" href="jobId.html"><em>Rescale の ジョブID とは</em></a>&#8221; をご参照ください</p>
 <div class="literal-block-wrapper container" id="job-id">
 <div class="code-block-caption"><span class="caption-text">JOB_IDの指定</span><a class="headerlink" href="#job-id" title="このコードへのパーマリンク">¶</a></div>
@@ -204,23 +208,23 @@
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper container" id="id5">
-<div class="code-block-caption"><span class="caption-text">ダウンロードしたいファイルネームの指定</span><a class="headerlink" href="#id5" title="このコードへのパーマリンク">¶</a></div>
+<div class="literal-block-wrapper container" id="id6">
+<div class="code-block-caption"><span class="caption-text">ダウンロードしたいファイルネームの指定</span><a class="headerlink" href="#id6" title="このコードへのパーマリンク">¶</a></div>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">FILE_NAME</span><span class="o">=</span><span class="s1">&#39;myFile1 myFile2 *.log&#39;</span>
 </pre></div>
 </div>
 </div>
-<div class="literal-block-wrapper container" id="id6">
-<div class="code-block-caption"><span class="caption-text">スクリプトの実行</span><a class="headerlink" href="#id6" title="このコードへのパーマリンク">¶</a></div>
+<div class="literal-block-wrapper container" id="id7">
+<div class="code-block-caption"><span class="caption-text">スクリプトの実行</span><a class="headerlink" href="#id7" title="このコードへのパーマリンク">¶</a></div>
 <div class="highlight-bash"><div class="highlight"><pre>./rescalecli-download <span class="si">${</span><span class="nv">JOB_ID</span><span class="si">}</span> <span class="si">${</span><span class="nv">FILE_NAME</span><span class="si">}</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="id7">
-<h2>3.4. ソースコード例<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="literal-block-wrapper container" id="id8">
-<div class="code-block-caption"><span class="caption-text">ソースコード</span><a class="headerlink" href="#id8" title="このコードへのパーマリンク">¶</a></div>
+<div class="section" id="id8">
+<h2>3.4. ソースコード例<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="literal-block-wrapper container" id="id9">
+<div class="code-block-caption"><span class="caption-text">ソースコード</span><a class="headerlink" href="#id9" title="このコードへのパーマリンク">¶</a></div>
 <div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -244,8 +248,8 @@ java -jar /usr/local/bin/rescale.jar <span class="se">\</span>
 </td></tr></table></div>
 </div>
 </div>
-<div class="section" id="id9">
-<h2>3.5. 詳細情報<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id10">
+<h2>3.5. 詳細情報<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p><a class="reference internal" href="org-manu.html"><em>File Transfer Manual</em></a></p>
 </div>
 </div>
