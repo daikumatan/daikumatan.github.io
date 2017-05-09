@@ -1,0 +1,49 @@
+{
+  "success": true,
+  "startTime": 1491031738727,
+  "endTime": 1491031744164,
+  "files": [
+    {
+      "name": "hoge1",
+      "storage": {
+        "storageType": "S3Storage",
+        "id": "pCTMk",
+        "encryptionType": "default",
+        "connectionSettings": {
+          "region": "ap-northeast-1"
+        }
+      },
+      "pathParts": {
+        "path": "user/user_QbQWc/hoge1-839764b4-4f42-476b-9df3-2f35c7108670",
+        "container": "jpprod-rescale-platform"
+      },
+      "isUploaded": true,
+      "decryptedSize": 29,
+      "encodedEncryptionKey": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "typeId": 1,
+      "md5": "5827c7cb24d6d6f277b77e476a050cce",
+      "id": "WAvaac"
+    },
+    {
+      "name": "hoge2",
+      "storage": {
+        "storageType": "S3Storage",
+        "id": "pCTMk",
+        "encryptionType": "default",
+        "connectionSettings": {
+          "region": "ap-northeast-1"
+        }
+      },
+      "pathParts": {
+        "path": "user/user_QbQWc/hoge2-839764b4-4f42-476b-9df3-2f35c7108670",
+        "container": "jpprod-rescale-platform"
+      },
+      "isUploaded": true,
+      "decryptedSize": 29,
+      "encodedEncryptionKey": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "typeId": 1,
+      "md5": "3e1616467480589a8d461a375833cfde",
+      "id": "xOBoPb"
+    }
+  ]
+}

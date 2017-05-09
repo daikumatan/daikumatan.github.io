@@ -1,0 +1,69 @@
+#!/bin/sh
+
+RUNSCRIPT="submit.sh"
+DOWNLOAD_FILES="*.log"
+
+###################################################
+# Create runscript including option analysis
+###################################################
+_create_run_script()
+{
+NUM_PROCS=""
+INPUT_FILE=""
+
+# Rescale用デフォルトスクラッチ領域の定義
+RSCALE_SCRATCH_PATH="\${PWD}/tmp"
+MY_OPTION="scratch=${RSCALE_SCRATCH_PATH} $@"
+
+for OPT in "$@"
+do
+    key=${OPT%=*}
+    val=${OPT#*=}
+    case $key in
+        'cpus' )
+            NUM_PROCS=$val
+            #echo "NUM_PROCS: $val"
+            ;;
+        'job' )
+            INPUT_FILE=$val
+            #echo "INPUT_FILE: $val"
+            ;;
+        'scratch' )
+            # scratchが指定されていればもとに戻す
+            # スクラッチファイルも手元に置きたい人向け
+            MY_OPTION=$@
+            ;;
+    esac
+done
+
+cat << EOF
+#!/bin/sh -f
+#RESCALE_NAME=Abaqus_from_isight_${INPUT_FILE}
+#RESCALE_CORES=${NUM_PROCS}
+#RESCALE_CORE_TYPE=hpc-3
+#RESCALE_LOW_PRIORITY=on
+#RESCALE_ANALYSIS=abaqus
+#RESCALE_ANALYSIS_VERSION=2016.extended-pcmpi
+#USE_RESCALE_LICENSE
+
+abaqus $MY_OPTION
+EOF
+#RESCALE_EXISTING_FILES=TtXiQc
+#abaqus job=s4b cpus=\${RESCALE_CORES_PER_SLOT} scratch=\${PWD}/tmp interactive
+}
+
+###################################################
+# submit your job with Rescale CLI
+###################################################
+_submit_jobs_to_rescale()
+{
+java -jar /usr/local/bin/rescale.jar \
+-X https://platform.rescale.jp/ submit \
+-p ${RESCALE_API_TOKEN} -E -i ${RUNSCRIPT} -f ${DOWNLOAD_FILES}
+}
+
+###################################################
+# main
+###################################################
+_create_run_script $@ > ${RUNSCRIPT}
+_submit_jobs_to_rescale

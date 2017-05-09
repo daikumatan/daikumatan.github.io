@@ -1,0 +1,27 @@
+[2017-05-05T12:31:20Z]: Launching ./run.sh, Working dir: /enc/ujpprod_YqPVk/work.  Process output follows:
+[2017-05-05T12:31:45Z]: Cannot locate environment file:  custom_v6.env
+[2017-05-05T12:31:51Z]: Cannot locate environment file:  custom_v6.env
+[2017-05-05T12:31:51Z]: Analysis initiated from SIMULIA established products
+[2017-05-05T12:31:51Z]: Abaqus JOB s4b
+[2017-05-05T12:31:51Z]: Abaqus 3DEXPERIENCE R2016x HotFix 5
+[2017-05-05T12:31:56Z]: Abaqus License Manager checked out the following licenses:
+[2017-05-05T12:31:56Z]: Abaqus/Standard checked out 12 tokens from Flexnet server jpprod-license.internal.rescale.com.
+[2017-05-05T12:31:56Z]: <112 out of 124 licenses remain available>.
+[2017-05-05T12:31:56Z]: Begin Analysis Input File Processor
+[2017-05-05T12:31:56Z]: Fri 05 May 2017 12:31:56 PM UTC
+[2017-05-05T12:31:56Z]: Run pre
+[2017-05-05T12:33:13Z]: Fri 05 May 2017 12:33:13 PM UTC
+[2017-05-05T12:33:13Z]: End Analysis Input File Processor
+[2017-05-05T12:33:13Z]: Begin Abaqus/Standard Analysis
+[2017-05-05T12:33:13Z]: Fri 05 May 2017 12:33:13 PM UTC
+[2017-05-05T12:33:13Z]: Run standard
+[2017-05-05T12:43:38Z]: Fri 05 May 2017 12:43:38 PM UTC
+[2017-05-05T12:43:38Z]: End Abaqus/Standard Analysis
+[2017-05-05T12:43:39Z]: Begin MFS->SFS and SIM cleanup
+[2017-05-05T12:43:39Z]: Fri 05 May 2017 12:43:39 PM UTC
+[2017-05-05T12:43:39Z]: Run SMASimUtility
+[2017-05-05T12:43:39Z]: Fri 05 May 2017 12:43:39 PM UTC
+[2017-05-05T12:43:39Z]: End MFS->SFS and SIM cleanup
+[2017-05-05T12:43:39Z]: Abaqus JOB s4b COMPLETED
+[2017-05-05T12:43:39Z]: Exited with code 0
+[2017-05-05T12:43:39Z]: 

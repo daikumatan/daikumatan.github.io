@@ -1,0 +1,24 @@
+{
+  "name": "heeds_to_rescale",
+  "jobanalyses": [
+    {
+      "envVars": {
+        "LM_PROJECT": "0Y2oNSj051S/0J9SpJCFqg",
+        "CDLMD_LICENSE_FILE": "1999@flex.cd-adapco.com"
+      },
+      "useMpi": "true",
+      "command": "sleep 180 && ./monitorLoadAverage.sh",
+      "analysis": {
+        "code": "cd_adapco_star_ccm",
+        "name": "STAR-CCM+",
+        "version": "11.6.10"
+      },
+      "hardware": {
+        "coresPerSlot": 1,
+        "slots": 1,
+        "coreType": "hpc-plus"
+      }
+    }
+  ],
+  "isLowPriority": "true"
+}
