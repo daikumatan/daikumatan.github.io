@@ -3,6 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+:Date: |today|
+:author: Daisuke Nagao
+
 .. contents:: Topic
   :local:
   :depth: 1
@@ -10,7 +13,7 @@
 -------------
 
 
-Hands-on で学ぶ Rescale CLI
+Rescale CLI
 =============================
 
 .. toctree::
@@ -19,7 +22,6 @@ Hands-on で学ぶ Rescale CLI
     :name: clitoc
     :maxdepth: 2
     :numbered:
-    :includehidden:
 
     cli/setupcli-main.rst
     cli/cli-upload-files
@@ -31,6 +33,18 @@ Hands-on で学ぶ Rescale CLI
     cli/reference
     cli/apps-json
     cli/hw-json
+
+Q & A
+=============================
+
+.. toctree::
+    :caption: ちょっとした操作、あれはどうすればできる・・
+    :titlesonly:
+    :name: qa
+    :maxdepth: 2
+    :numbered:
+
+    qa/jobid.rst
 
 
 Indices and tables
