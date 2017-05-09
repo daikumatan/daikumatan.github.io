@@ -383,7 +383,7 @@ html_theme_options = {
 }
 
 def setup(app):
-    app.add_stylesheet('standstone.min')
+    app.add_stylesheet('bootstrap.min.css')
 
 [extensions]
 todo_include_todos=True
