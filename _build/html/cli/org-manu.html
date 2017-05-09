@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>File Transfer Manual &mdash; Rescale CLI 虎の巻 0.1.0 ドキュメント</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-simplex.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-simplex.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/standstone.min" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '0.1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="top" title="Rescale CLI 虎の巻 0.1.0 ドキュメント" href="../index.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Rescale CLI 虎の巻 0.1.0 ドキュメント</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">File Transfer Manual</a><ul>
+<li><a class="reference internal" href="#upload-files">Upload Files</a></li>
+<li><a class="reference internal" href="#download-files">Download Files</a><ul>
+<li><a class="reference internal" href="#syncing-downloading">Syncing (Downloading)</a></li>
+<li><a class="reference internal" href="#output-file-filtering">Output File Filtering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#job">JOBの投入</a><ul>
+<li><a class="reference internal" href="#job-configuration-using-the-input-script">Job Configuration Using the Input Script</a><ul>
+<li><a class="reference internal" href="#the-input-parser">The Input Parser</a></li>
+<li><a class="reference internal" href="#rescale-specific-flags-for-the-input-script">Rescale Specific Flags for the Input Script</a></li>
+<li><a class="reference internal" href="#advanced-settings">Advanced Settings</a></li>
+<li><a class="reference internal" href="#example-scripts">Example Scripts</a></li>
+<li><a class="reference internal" href="#metadata">Metadata</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
+            
+            <li class="visible-xs"><a href="../_sources/cli/org-manu.txt" rel="nofollow">ソースコードを表示</a></li>
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="検索" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+      <!-- row -->
+      <div class="row">
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">File Transfer Manual</a><ul>
+<li><a class="reference internal" href="#upload-files">Upload Files</a></li>
+<li><a class="reference internal" href="#download-files">Download Files</a><ul>
+<li><a class="reference internal" href="#syncing-downloading">Syncing (Downloading)</a></li>
+<li><a class="reference internal" href="#output-file-filtering">Output File Filtering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#job">JOBの投入</a><ul>
+<li><a class="reference internal" href="#job-configuration-using-the-input-script">Job Configuration Using the Input Script</a><ul>
+<li><a class="reference internal" href="#the-input-parser">The Input Parser</a></li>
+<li><a class="reference internal" href="#rescale-specific-flags-for-the-input-script">Rescale Specific Flags for the Input Script</a></li>
+<li><a class="reference internal" href="#advanced-settings">Advanced Settings</a></li>
+<li><a class="reference internal" href="#example-scripts">Example Scripts</a></li>
+<li><a class="reference internal" href="#metadata">Metadata</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/cli/org-manu.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" role="search">
+  <h3>クイック検索</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="検索" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="file-transfer-manual">
+<h1>File Transfer Manual<a class="headerlink" href="#file-transfer-manual" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="upload-files">
+<h2>Upload Files<a class="headerlink" href="#upload-files" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>次のコマンドを使用して、ローカルファイルシステムから1つまたは複数のファイルをRescaleのクラウドストレージにアップロードすることができます。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar upload <span class="se">\</span>
+-p &lt;api-token&gt; <span class="se">\</span>
+-f &lt;file1&gt; ... &lt;fileN&gt;
+</pre></div>
+</div>
+<p>このコマンドは、指定されたすべてのファイルが実際にファイルであるかどうかをチェックし、指定されていないファイルがあれば停止します。 cliツールはまだディレクトリのアップロードをサポートしていないことに注意してください</p>
+<p>アップロード中、各ファイルが正常にアップロードされた後、それを示す内容が標準出力に表示されます。 したがって、ユーザーは出力をログファイルにリダイレクトして、成功したすべてのアップロードが記録されるようにすることもできます。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar <span class="se">\</span>
+-p &lt;api-token&gt; <span class="se">\</span>
+-f &lt;file1&gt; ... &lt;fileN&gt; &gt; upload_20141201.log
+</pre></div>
+</div>
+<p>デフォルトでは、uploadコマンドはアップロードされたファイルのメタデータのセットを返します。 拡張メタデータセットを表示するには、アップロード呼び出しで <code class="docutils literal"><span class="pre">-e</span></code> フラグを使用します。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar upload <span class="se">\</span>
+-p &lt;api-token&gt; <span class="se">\</span>
+-f &lt;file1&gt; ... &lt;fileN&gt; -e
+</pre></div>
+</div>
+<p>最後に、CLIがより大きなスクリプトに組み込まれている場合、<code class="docutils literal"><span class="pre">--quiet</span></code> フラグを使用して、コマンドから非json出力を抑制すると便利です。 これにより、解析の応答が簡単になります。</p>
+<div class="highlight-shell"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar <span class="se">\</span>
+--quiet upload <span class="se">\</span>
+-p &lt;api-token&gt; <span class="se">\</span>
+-f &lt;file1&gt; ... &lt;fileN&gt; -e
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-files">
+<h2>Download Files<a class="headerlink" href="#download-files" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="syncing-downloading">
+<h3>Syncing (Downloading)<a class="headerlink" href="#syncing-downloading" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>ユーザーは、リモート出力ファイルをローカルファイルシステムと同期させたい場合があります。 ユーザーがアプリケーションを通して出力ファイルを同期させたい理由の1つは、手動でジョブを通過してブラウザを介してファイルをダウンロードする必要はありません。 .rescaleファイルに同期状態を保存し、アプリケーションに組み込まれたファイルを同期する非常に基本的な実装があります。</p>
+<p>syncコマンドは、ダウンロードしたファイルを格納するのに十分なディスク容量を持つファイルシステムから実行する必要があります。</p>
+<p>ユーザーが単一のジョブのみを同期させたい場合、ユーザーは次のように実行します。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar sync <span class="se">\</span>
+-p &lt;api-token&gt; <span class="se">\</span>
+-j &lt;job-id&gt;
+</pre></div>
+</div>
+<p>また、ユーザーは特定のジョブよりも新しいすべてのジョブを同期させたい場合があります。その場合、ユーザーは次のコマンドを使用します。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar sync <span class="se">\</span>
+-p &lt;api-token&gt; <span class="se">\</span>
+-n &lt;job-id&gt;
+</pre></div>
+</div>
+<p>連続的な同期のために、ユーザは同期時間を指定することができます。 秒単位の時間は、2回の同期試行の間の遅延時間を決定します。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar sync <span class="se">\</span>
+-p &lt;api-token&gt; <span class="se">\</span>
+-d &lt;sync-time&gt;
+</pre></div>
+</div>
+<p>作業ディレクトリを指定すると、ジョブ出力ファイルはジョブごとに個々のディレクトリに同期されます。 たとえば、<em>zzzZZZ</em> 、<em>yyyYYY</em>、<em>xxxXXX</em>、<em>cccCCC</em>、<em>bbbBBB</em>、<a href="#id1"><span class="problematic" id="id2">*</span></a>aaaAAA*のように、作成日の古い順に次のジョブを実行することができます。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar sync <span class="se">\</span>
+-p &lt;api-token&gt; <span class="se">\</span>
+-n xxxXXX
+</pre></div>
+</div>
+<p>アプリケーションは <em>rescale_job_zzzZZZ</em> 、<em>rescale_job_yyyYYY</em> 、<em>rescale_job_xxxXXX</em> というディレクトリを作成し、これらのディレクトリ内の出力ファイルを同期させます。 <em>zzzZZZ</em> と <em>yyyYYY</em> の同期が成功したにもかかわらず <em>xxxXXX</em> の同期が失敗した場合、次回ユーザーが同じコマンドを実行すると、アプリケーションは <em>zzzZZZ</em> と <em>yyyYYY</em> を再び同期しようとはしませんが、<em>xxxXXX</em> を再び同期しようとします。</p>
+<p>同期状態ファイルはそれぞれの出力ファイルディレクトリに保存されるため、ユーザーが別の作業ディレクトリから <code class="docutils literal"><span class="pre">sync</span></code> コマンドを実行しようとすると、そのディレクトリにファイルが再同期されます。</p>
+</div>
+<div class="section" id="output-file-filtering">
+<h3>Output File Filtering<a class="headerlink" href="#output-file-filtering" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">submit</span></code> コマンドと <code class="docutils literal"><span class="pre">sync</span></code> コマンドの両方にオプションの -f フラグを指定すると、ダウンロードされた出力ファイルを指定されたファイル名のフィルタに一致するものに制限することができます。 使用例をいくつか紹介します：</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar rescale.jar submit <span class="se">\</span>
+-p &lt;api-token&gt; <span class="se">\</span>
+-i &lt;input-script&gt; <span class="se">\</span>
+-E <span class="se">\</span>
+-f *.out process_output.log
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar rescale.jar sync <span class="se">\</span>
+-p &lt;api-token&gt; <span class="se">\</span>
+-j &lt;job-id&gt; <span class="se">\</span>
+-f image?.png
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">submit</span></code> コマンドでは、ファイルフィルタリングオプションはエンドツーエンドジョブの実行時にのみ適用されます。</p>
+<p>1つ以上のファイル名マッチャーは、<code class="docutils literal"><span class="pre">-f</span></code> 引き数の後に指定することができます。 マッチャーはスペースで区切られています。 <code class="docutils literal"><span class="pre">*</span></code> は任意の文字列に一致するワイルドカードで、<code class="docutils literal"><span class="pre">？</span></code> 任意の1文字に一致するワイルドカードです。</p>
+<p>すべての照合はファイル名に対してのみ行われ、出力ファイルの完全なパスとは一致しないことに注意してください。</p>
+</div>
+</div>
+</div>
+<div class="section" id="job">
+<h1>JOBの投入<a class="headerlink" href="#job" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="job-configuration-using-the-input-script">
+<h2>Job Configuration Using the Input Script<a class="headerlink" href="#job-configuration-using-the-input-script" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="the-input-parser">
+<h3>The Input Parser<a class="headerlink" href="#the-input-parser" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>アプリケーションはデフォルトでSGE入力パーサを使用して、スクリプトからの情報を解析してRescaleの設定として使用し、送信スクリプトで不要なクラスタ固有の設定を解析します。 たとえば、次のような <em>submit.sh</em> という名前のスクリプトがあるとします。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="ch">#!/bin/bash</span>
+<span class="c1">#RESCALE_NAME=&quot;Hello World!&quot;</span>
+module load hello-world
+<span class="nb">source</span> /home/rescale/environments/hello_world
+/usr/lib64/openmpi/bin/mpirun <span class="nb">echo</span> <span class="s2">&quot;hello-world&quot;</span> &gt; <span class="k">$(</span>hostname<span class="k">)</span>
+</pre></div>
+</div>
+<p>パーサは、クラスタ固有のラインモジュールのロードを解析して、スクリプトがこの行でエラーにならないことを確認します。 次に、環境を変更するコマンドを削除しようとします。 この場合、ソースの後の行は解析され、Rescale環境を妨げません。 さらに、パーサーは、実行ファイルがローカルクラスタと同じRescale上に存在しない可能性が高いため、実行可能ファイル/バイナリへの絶対参照を削除しようとします。 この場合、mpirunへの参照は、Rescale環境のPATH環境変数を介して参照されます。 結果のスクリプトは、run.shという名前のファイルに保存され、次のようになります。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="ch">#!/bin/bash</span>
+<span class="c1">#RESCALE_NAME=&quot;Hello World!&quot;</span>
+<span class="c1">#module load hello-world</span>
+<span class="c1">#source /home/rescale/environments/hello_world</span>
+mpirun <span class="nb">echo</span> <span class="s2">&quot;hello-world&quot;</span> &gt; <span class="k">$(</span>hostname<span class="k">)</span>
+</pre></div>
+</div>
+<p>Rescale解析コマンドは <em>./run.sh</em> に設定されます。 このスクリプトは、入力ファイルと共にRescaleにアップロードされます。</p>
+</div>
+<div class="section" id="rescale-specific-flags-for-the-input-script">
+<h3>Rescale Specific Flags for the Input Script<a class="headerlink" href="#rescale-specific-flags-for-the-input-script" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>このアプリケーションでは、Submit スクリプト内で Rescale 固有の設定フラグを使用することができ、ユーザーは自分の希望するとおりにジョブを設定できます。 現在利用可能なフラグは次のとおりです。 これらのフラグが含まれていない場合、fallback value が最初に使用されます。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#RESCALE_CORES=&lt;integer&gt;</span>
+<span class="o">{</span>1<span class="p">|</span>2<span class="p">|</span>4<span class="p">|</span>8<span class="p">|</span>16<span class="p">|</span>32<span class="p">|</span>64<span class="p">|</span>128<span class="p">|</span>...<span class="o">}</span>
+</pre></div>
+</div>
+<p>使用するコアの数。 コアタイプに応じて、許可される値はリストされたオプションのサブセットです。 このオプションのフォールバック値は SGEにおける <code class="docutils literal"><span class="pre">#$</span> <span class="pre">-pe</span></code> の値です。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#RESCALE_CORE_TYPE=&lt;string&gt;</span>
+<span class="o">{</span>Marble<span class="p">|</span>Nickel<span class="p">|</span>Onyx<span class="p">|</span>Iron<span class="p">|</span>Gold<span class="p">|</span>Obsidian<span class="p">|</span>...<span class="o">}</span>
+</pre></div>
+</div>
+<p>使用するRescaleコアタイプ。 このオプションの代替値はありません。 このオプションの有効な値のリストを取得する方法については、このドキュメントの「メタデータ」を参照してください。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#RESCALE_NAME=&lt;string&gt;</span>
+</pre></div>
+</div>
+<p>あなたの仕事の名前。 このオプションのフォールバック値は SGEにおける <code class="docutils literal"><span class="pre">#$</span> <span class="pre">-N</span></code> 値です。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#RESCALE_ANALYSIS=&lt;string&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">{abaqus</span> <span class="pre">|</span> <span class="pre">adina</span> <span class="pre">|</span> <span class="pre">aermod</span> <span class="pre">|</span> <span class="pre">ansys_cfx</span> <span class="pre">|</span> <span class="pre">ansys_fluent</span> <span class="pre">|</span> <span class="pre">...</span> <span class="pre">|</span> <span class="pre">user_included</span> <span class="pre">|</span> <span class="pre">...}</span></code> 分析が使用されました。 これは解析コード値に設定する必要があります。 このドキュメントの「メタデータ」セクションには、このオプションの有効な値のリストを取得する方法が記載されています。 フォールバック値は、解析可能な任意の解析名であり、スクリプトのモジュールまたはソース行で指定されます。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#RESCALE_ANALYSIS_VERSION=&lt;string&gt;</span>
+</pre></div>
+</div>
+<p>使用する選択された分析の特定のバージョン。 これはオプションの設定です。 省略すると、最新のバージョンが使用されます。 これを指定する場合は、特定の解析バージョンの &#8220;versionCode&#8221; 値に設定する必要があります。 このドキュメントの「メタデータ」セクションには、このオプションの有効な値のリストを取得する方法が記載されています。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#RESCALE_EXISTING_FILES=&lt;comma delimited list of strings&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">#RESCALE_EXISTING_FILES</span> <span class="pre">=</span> <span class="pre">aAbBcC、dDeEfF、gGhHiI</span></code> すでにこのジョブにRescaleに格納されているリストされたファイルを含めます。 リストされたファイルが存在しない場合、検証時にジョブは失敗します。 このオプションの代替値はありません。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#USE_RESCALE_LICENSE</span>
+</pre></div>
+</div>
+<p>解析コードには、提供されているライセンスのサイズ変更を使用します。 すでに存在するライセンスを使用する場合は、実行スクリプトを使用して環境変数を使用して設定することができます。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#RESCALE_ENV_&lt;varname&gt;=&lt;value&gt;</span>
+</pre></div>
+</div>
+<p>Rescaleクラスタでライセンスサーバー情報を設定するために使用されます。 環境変数名の名前とライセンスサーバーの場所に置き換えます。 たとえば、<code class="docutils literal"><span class="pre">#RESCALE_ENV_RLM_LICENSE=8112&#64;license-proxy.rescale.com</span> <span class="pre">``</span> <span class="pre">は、クラスタノードで</span> <span class="pre">``8112&#64;license-proxy.rescale.com</span> <span class="pre">``に設定された</span> <span class="pre">``RLM_LICENSE</span></code> 環境変数を作成します。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#RESCALE_WALLTIME=&lt;# of hours&gt;</span>
+</pre></div>
+</div>
+<p>このジョブの実行を許可する最大時間を設定するオプションの値。 この時間数を超えるジョブは終了します。 指定しない場合は、Rescaleユーザーアカウント設定にリストされているデフォルトのMax Job Hours値が使用されます。</p>
+</div>
+<div class="section" id="advanced-settings">
+<h3>Advanced Settings<a class="headerlink" href="#advanced-settings" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>RescaleクラスタのマスターノードへのSSHアクセスを有効にするために使用できるいくつかの追加の高度な設定があります。 これはジョブの結果を調べたり変更したりするのに便利ですが、将来ジョブをクローンして再実行すると結果の再現性に悪影響を及ぼします。</p>
+<p>現在、CLIからマスターノードのIPアドレスを取得する方法はありません。 この情報を見つけるには、Web UI上のJob statusページを使用する必要があります。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#RESCALE_INBOUND_SSH_CIDR=&lt;string&gt;</span>
+<span class="k">for</span> example: <span class="c1">#RESCALE_INBOUND_SSH_CIDR=50.123.22.112/32</span>
+</pre></div>
+</div>
+<p>RescaleクラスタのマスターノードへのインバウンドSSHアクセスを許可するIP範囲を定義するために使用されます。 この値を省略すると、Rescaleユーザーアカウント設定にリストされているデフォルト値が使用されます。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#RESCALE_PUBLIC_KEY=&lt;string&gt;</span>
+<span class="k">for</span> example: <span class="c1">#RESCALE_PUBLIC_KEY=ssh-rsa AAAA...</span>
+</pre></div>
+</div>
+<p>Rescaleクラスタ上のマスターノードのauthorized_keysファイルに追加される公開鍵を設定するために使用します。 これにより、関連付けられた秘密鍵を使用してRescaleクラスタのマスターノードにSSHすることができます。 この値を省略すると、Rescaleユーザーアカウント設定にリストされているデフォルト値が使用されます。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="c1">#RESCALE_AUTO_TERMINATE_CLUSTER=&lt;boolean&gt;</span>
+<span class="o">{</span>true, false<span class="o">}</span>
+</pre></div>
+</div>
+<p>分析が完了した後にRescaleクラスタを実行したままにする必要があるかどうかを示すフラグ。 この値は、<code class="docutils literal"><span class="pre">RESCALE_INBOUND_SSH_CIDR</span></code> および <code class="docutils literal"><span class="pre">RESCALE_PUBLIC_KEY</span></code> ディレクティブが設定されている（またはデフォルトがユーザーアカウント設定に存在する）場合にのみ、<code class="docutils literal"><span class="pre">false</span></code> に設定できます。 この値を省略すると、Rescaleユーザーアカウント設定にリストされているデフォルトの自動終了値が使用されます。</p>
+</div>
+<div class="section" id="example-scripts">
+<h3>Example Scripts<a class="headerlink" href="#example-scripts" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>SGEとRescaleの両方で動作するサンプルスクリプトは、次のようになります（モジュール行はコメントアウトされ、mpirunへの絶対参照は削除されます）。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="ch">#!/bin/bash</span>
+<span class="c1">#RESCALE_NAME=&quot;Converge Sample&quot;</span>
+<span class="c1">#RESCALE_CORES=32</span>
+<span class="c1">#RESCALE_CORE_TYPE=HPC</span>
+<span class="c1">#RESCALE_ANALYSIS=converge_open_mpi</span>
+module load converge
+/usr/bin/mpirun -np <span class="m">32</span> converge-2.1.0
+</pre></div>
+</div>
+<p>Rescaleでしか動作しないスクリプトの例は、以下のようになります。 コマンドラインのコマンドは、解析コードテーブル（別の添付ファイル）にあります。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="ch">#!/bin/bash</span>
+<span class="c1">#RESCALE_NAME=&quot;Converge Sample&quot;</span>
+<span class="c1">#RESCALE_CORES=32</span>
+<span class="c1">#RESCALE_CORE_TYPE=HPC</span>
+<span class="c1">#RESCALE_ANALYSIS=converge_open_mpi</span>
+converge-mpi -n all -v 2.1
+</pre></div>
+</div>
+</div>
+<div class="section" id="metadata">
+<h3>Metadata<a class="headerlink" href="#metadata" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>ジョブを送信するときに記入する必要がある、いくつかのRescale固有のフラグがあります。 次のメタデータ検索コマンドを使用して、使用するデータを含むJSON BLOBを取得できます。</p>
+<p>次のコマンドは、コアタイプのリストを取得します。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar list-info -c -p &lt;api-token&gt;
+</pre></div>
+</div>
+<p>名前またはコードの値は、<code class="docutils literal"><span class="pre">RESCALE_CORE_TYPE</span></code> フラグで使用できます。 返されるリストには廃止された型が含まれており、時間の経過とともに変更される可能性があるので、ユーザーはisDeprecated値が目的のコアタイプに対してfalseに設定されていることを確認する必要があります。</p>
+<p>次のコマンドは、分析のリストとそのバージョンを取得します。</p>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar list-info -a -p &lt;api-token&gt;
+</pre></div>
+</div>
+<p>返されるリストの各項目は分析を表します。 <code class="docutils literal"><span class="pre">RESCALE_ANALYSIS</span></code> オプションで &#8220;code&#8221;の値を使用できます。 すべての分析の中に、バージョンのリストがあります。 「versionCode」フィールドは、<code class="docutils literal"><span class="pre">RESCALE_ANALYSIS_VERSION</span></code> オプションで使用できます。</p>
+<p>注：FAQセクションの方法2または3に従ってAPIキーを設定した場合は、上記のコマンドの[-p &lt;api-token&gt;]を省略することができます。</p>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Rescale CLI 虎の巻 0.1.0 ドキュメント</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2017, Daisuke Nagao.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.6.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>10. Hardware-code information &mdash; Rescale CLI 虎の巻 0.1.0 ドキュメント</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-simplex.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-simplex.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/standstone.min" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '0.1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="top" title="Rescale CLI 虎の巻 0.1.0 ドキュメント" href="../index.html" />
+    <link rel="prev" title="9. Application-code information" href="apps-json.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Rescale CLI 虎の巻 0.1.0 ドキュメント</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+
+            
+              <li><a href="apps-json.html" title="9. Application-code information" accesskey="P">前へ </a></li>
+              <li><a href="../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
+            
+            <li class="visible-xs"><a href="../_sources/cli/hw-json.txt" rel="nofollow">ソースコードを表示</a></li>
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="検索" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+      <!-- row -->
+      <div class="row">
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="apps-json.html"
+                        title="前の章へ">9. Application-code information</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/cli/hw-json.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" role="search">
+  <h3>クイック検索</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="検索" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="hardware-code-information">
+<h1>10. Hardware-code information<a class="headerlink" href="#hardware-code-information" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>作成日: 2017年 4月11日 火曜日 14時53分00秒 JST</p>
+<p>一般ユーザ権限で作成しています。
+ここにないHardwareはRescaleにお問い合わせください。</p>
+<div class="literal-block-wrapper container" id="id1">
+<div class="code-block-caption"><span class="caption-text">ソースコード</span><a class="headerlink" href="#id1" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450</pre></div></td><td class="code"><div class="highlight"><pre><span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: false,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;bronze&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: null,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Bronze&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 32,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: false,
+  <span class="s2">&quot;storage&quot;</span>: 30,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: null,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: true,
+  <span class="s2">&quot;displayOrder&quot;</span>: 4,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;100 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 4571,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    28
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: false,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2680 v4 (Broadwell)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: false,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;copper&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;5.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Copper&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 24,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: false,
+  <span class="s2">&quot;storage&quot;</span>: 40,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: <span class="s2">&quot;12.000&quot;</span>,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: true,
+  <span class="s2">&quot;displayOrder&quot;</span>: 4,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;56 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 3200,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    20
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: true,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2670 v2 (Ivy Bridge)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: true,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;gpu-kepler&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;6.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Jade&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 50,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 15,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: <span class="s2">&quot;25.000&quot;</span>,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 12,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;10 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 3750,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    4,
+    16
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: false,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;NVIDIA Kepler GK104, Intel Xeon E5-2670 (Sandy Bridge)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;Standard&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;GPU Kepler&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: true,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;granite&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;7.33&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Granite&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 40,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 50,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: null,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 17,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;10 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 7000,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    2,
+    4,
+    16,
+    20
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: true,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2673 v3 (Haswell)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: true,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;hi-io-plus&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;6.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Quartz&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 111,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 400,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: null,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 16,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;10 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 15250,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    2,
+    4,
+    8,
+    16
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: false,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2670 v2 (Ivy Bridge)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;High I/O+&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: true,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;hi-mem-hpc&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;5.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Gold&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 47,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 40,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: <span class="s2">&quot;24.000&quot;</span>,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 13,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;10 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 15000,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    1,
+    2,
+    4,
+    8,
+    16
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: false,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2670 v2 (Ivy Bridge)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;High Mem HPC&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: true,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;hpc-3&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;7.33&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Onyx&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 33,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 36,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: <span class="s2">&quot;18.000&quot;</span>,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 1,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;10 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 3300,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    1,
+    2,
+    4,
+    8,
+    18
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: true,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2666 v3 (Haswell)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;HPC++&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: false,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;hpc-infiniband&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;5.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Iron&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 48,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 24,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: null,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 3,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;32 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 7000,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    8,
+    16
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: true,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2670 (Sandy Bridge)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;HPC Infiniband&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: true,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;hpc-plus&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;6.75&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Nickel&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 29,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 40,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: <span class="s2">&quot;15.000&quot;</span>,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 2,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;10 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 3800,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    1,
+    2,
+    4,
+    8,
+    16
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: true,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2680 v2 (Ivy Bridge)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;HPC+&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: false,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;ivory&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;5.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Ivory&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 24,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: false,
+  <span class="s2">&quot;storage&quot;</span>: 50,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: null,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: true,
+  <span class="s2">&quot;displayOrder&quot;</span>: 10,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;56 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 8000,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    16
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: false,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2670 (Sandy Bridge)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: false,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;lithium&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;4.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Lithium&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 78,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 250,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: null,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 18,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;1 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 8000,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    16
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: false,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;NVIDIA K80 GPU-enabled, Intel Xeon E3-2620 v4 (Broadwell)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;K80 GPU-enabled&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: true,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;magnesium&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;6.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Magnesium&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 31,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 125,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: null,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 17,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;56 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 7000,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    8,
+    16
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: false,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2667 v3 (Haswell)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: true,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;obsidian&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;6.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Obsidian&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 117,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 56,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: <span class="s2">&quot;59.000&quot;</span>,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 17,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;10 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 31000,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    2,
+    16,
+    32
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: true,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;NVIDIA K80 GPU-enabled, Intel Xeon E5-2676 v3 (Haswell)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;K80 GPU-enabled&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: false,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;platinum-2&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;5.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Platinum&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 0.03,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: false,
+  <span class="s2">&quot;storage&quot;</span>: 1,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: null,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 9999,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;100 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 1400,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    68
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: true,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon Phi CPU 7250 (KNL)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: true,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;sapphire&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;6.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Sapphire&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 43,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 125,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: null,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 17,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;56 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 14000,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    8,
+    16
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: false,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2667 v3 (Haswell)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: true,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;standard-plus&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;6.00&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Marble&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 48,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 40,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: <span class="s2">&quot;24.000&quot;</span>,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 11,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;Standard&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 7500,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    1,
+    2,
+    4
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: false,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2670 v2 (Ivy Bridge)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;Standard&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: true,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;titanium&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;6.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Titanium&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 46,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 80,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: <span class="s2">&quot;23.000&quot;</span>,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 5,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;10 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 8000,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    1,
+    2,
+    4,
+    8,
+    20,
+    32
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: true,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E5-2676 v3 (Haswell)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;Standard++&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: true,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;topaz&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;6.50&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Topaz&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 80,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: true,
+  <span class="s2">&quot;storage&quot;</span>: 56,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: <span class="s2">&quot;41.000&quot;</span>,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: false,
+  <span class="s2">&quot;displayOrder&quot;</span>: 5,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;10 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 31000,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    32,
+    64
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: false,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;Intel Xeon E7-8880 v3 (Haswell)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;2 GB/s read, 1GB/s write&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;High cores, high memory&quot;</span>
+<span class="o">}</span>
+<span class="o">{</span>
+  <span class="s2">&quot;hasSsd&quot;</span>: false,
+  <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;tungsten&quot;</span>,
+  <span class="s2">&quot;compute&quot;</span>: <span class="s2">&quot;3.25&quot;</span>,
+  <span class="s2">&quot;name&quot;</span>: <span class="s2">&quot;Tungsten&quot;</span>,
+  <span class="s2">&quot;isDeprecated&quot;</span>: false,
+  <span class="s2">&quot;price&quot;</span>: 47,
+  <span class="s2">&quot;remoteVizAllowed&quot;</span>: false,
+  <span class="s2">&quot;storage&quot;</span>: 40,
+  <span class="s2">&quot;lowPriorityPrice&quot;</span>: <span class="s2">&quot;24.000&quot;</span>,
+  <span class="s2">&quot;walltimeRequired&quot;</span>: true,
+  <span class="s2">&quot;displayOrder&quot;</span>: 15,
+  <span class="s2">&quot;io&quot;</span>: <span class="s2">&quot;56 Gb/s&quot;</span>,
+  <span class="s2">&quot;memory&quot;</span>: 3200,
+  <span class="s2">&quot;cores&quot;</span>: <span class="o">[</span>
+    20
+  <span class="o">]</span>,
+  <span class="s2">&quot;isPrimary&quot;</span>: false,
+  <span class="s2">&quot;processorInfo&quot;</span>: <span class="s2">&quot;NVIDIA Tesla K40, Intel Xeon E5-2670 v2 (Ivy Bridge)&quot;</span>,
+  <span class="s2">&quot;storageIo&quot;</span>: <span class="s2">&quot;Standard&quot;</span>,
+  <span class="s2">&quot;description&quot;</span>: <span class="s2">&quot;GPU Tesla K40&quot;</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Rescale CLI 虎の巻 0.1.0 ドキュメント</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="apps-json.html" title="9. Application-code information" >前へ</a></li>
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2017, Daisuke Nagao.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.6.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>
