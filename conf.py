@@ -56,7 +56,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Rescale CLI 虎の巻'
+project = u'Rescale Documentation 有志のページ'
 copyright = u'2017, Daisuke Nagao'
 author = u'Daisuke Nagao'
 
@@ -235,7 +235,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'RescaleCLI.tex', u'Rescale CLI 虎の巻 Documentation',
+    (master_doc, 'RescaleCLI.tex', u'Rescale Documentation 有志のページ',
      u'Daisuke Nagao', 'manual'),
 ]
 
@@ -265,7 +265,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'rescalecli', u'Rescale CLI 虎の巻 Documentation',
+    (master_doc, 'rescalecli', u'Rescale Documentation 有志のページ',
      [author], 1)
 ]
 
@@ -279,8 +279,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'RescaleCLI', u'Rescale CLI 虎の巻 Documentation',
-     author, 'RescaleCLI', 'One line description of project.',
+    (master_doc, 'Rescale Docs', u'Rescale Documentation 有志のページ',
+     author, 'Daisuke Nagao', 'One line description of project.',
      'Miscellaneous'),
 ]
 

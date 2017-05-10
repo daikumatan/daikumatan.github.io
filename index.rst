@@ -13,6 +13,21 @@
 
 -------------
 
+Tips
+===================================
+
+.. toctree::
+    :caption: あの操作はどうすればよい?あれはできる?
+    :titlesonly:
+    :name: qa
+    :numbered: 2
+    :maxdepth: 1
+
+    qa/cannot-login
+    qa/jobid.rst
+    qa/spot-instance
+    qa/file-transfer-exeeds-set-budget
+
 
 Rescale CLI
 =============================
@@ -22,7 +37,7 @@ Rescale CLI
     :titlesonly:
     :name: clitoc
     :maxdepth: 2
-    :numbered:
+    :numbered: 2
 
     cli/setupcli-main.rst
     cli/cli-upload-files
@@ -35,17 +50,6 @@ Rescale CLI
     cli/apps-json
     cli/hw-json
 
-Q & A
-=============================
-
-.. toctree::
-    :caption: ちょっとした操作、あれはどうすればできる・・
-    :titlesonly:
-    :name: qa
-    :maxdepth: 2
-    :numbered:
-
-    qa/jobid.rst
 
 
 Indices and tables

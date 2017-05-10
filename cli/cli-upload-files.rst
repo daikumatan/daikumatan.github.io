@@ -6,11 +6,9 @@
 前提
 =====================================================
 
-下記を実施済みであること
+":doc:`setupcli-main`" を実施済みであること
 
-- :doc:`setupcli-main`
-
-.. note:: `rescale.jar` の保存先が `/usr/local/bin/rescale.jar` であることに注意してくださ
+.. note:: `rescale.jar` の保存先が ``/usr/local/bin/rescale.jar`` であることに注意してくださ
 
 
 スクリプトのダウンロード
@@ -18,7 +16,7 @@
 
 以下より `rescalecli-upload` をダウンロードしてください。
 
-- :download:`src/rescalecli-upload`
+- Download: :download:`src/rescalecli-upload`
 
 ダウンロードしたスクリプトに実行権限を付与します。
 
