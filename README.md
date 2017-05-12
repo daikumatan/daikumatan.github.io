@@ -21,7 +21,7 @@ git clone https://github.com/daikumatan/daikumatan.github.io
 cd daikumatan.github.io
 ```
 
-Sphinx環境を `docker build` コマンド で構築します
+Sphinx環境を `docker build` コマンド で構築します。
 
 ```
 docker build -t rescale-cli-sphinx .
