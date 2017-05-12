@@ -27,6 +27,7 @@ Tips
     qa/jobid.rst
     qa/spot-instance
     qa/file-transfer-exeeds-set-budget
+    qa/how-to-debug
 
 
 Rescale CLI
@@ -39,17 +40,17 @@ Rescale CLI
     :maxdepth: 2
     :numbered: 2
 
-    cli/setupcli-main.rst
+    cli/setupcli-main
     cli/cli-upload-files
     cli/cli-download-files
     cli/submitjob
     cli/inputFlag
-    cli/usecase.rst
     cli/proxy
+    cli/abaqus
     cli/reference
+    cli/oneliner
     cli/apps-json
     cli/hw-json
-
 
 
 Indices and tables

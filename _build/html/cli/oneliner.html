@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>9. Rescale CLI Oneliner &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-simplex.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-simplex.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/bootstrap.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '0.1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="top" title="Rescale Documentation 有志のページ 0.1.0 ドキュメント" href="../index.html" />
+    <link rel="next" title="10. Application-code information" href="apps-json.html" />
+    <link rel="prev" title="8. 参考サイト" href="reference.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">9. Rescale CLI Oneliner</a><ul>
+<li><a class="reference internal" href="#code">9.1. code 情報の取得</a></li>
+<li><a class="reference internal" href="#id2">9.2. ジョブ投入</a><ul>
+<li><a class="reference internal" href="#id3">計算終了後、全ファイルをダウンロード</a></li>
+<li><a class="reference internal" href="#id5">計算終了後、ファイル名を指定してダウンロード</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="reference.html" title="8. 参考サイト" accesskey="P">前へ </a></li>
+              <li><a href="apps-json.html" title="10. Application-code information" accesskey="N">次へ </a></li>
+              <li><a href="../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
+            
+            <li class="visible-xs"><a href="../_sources/cli/oneliner.txt" rel="nofollow">ソースコードを表示</a></li>
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="検索" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+      <!-- row -->
+      <div class="row">
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9. Rescale CLI Oneliner</a><ul>
+<li><a class="reference internal" href="#code">9.1. code 情報の取得</a></li>
+<li><a class="reference internal" href="#id2">9.2. ジョブ投入</a><ul>
+<li><a class="reference internal" href="#id3">計算終了後、全ファイルをダウンロード</a></li>
+<li><a class="reference internal" href="#id5">計算終了後、ファイル名を指定してダウンロード</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="reference.html"
+                        title="前の章へ">8. 参考サイト</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="apps-json.html"
+                        title="次の章へ">10. Application-code information</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/cli/oneliner.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" role="search">
+  <h3>クイック検索</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="検索" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="rescale-cli-oneliner">
+<h1>9. Rescale CLI Oneliner<a class="headerlink" href="#rescale-cli-oneliner" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="code">
+<h2>9.1. code 情報の取得<a class="headerlink" href="#code" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="literal-block-wrapper container" id="oneliner">
+<div class="code-block-caption"><span class="caption-text">アプリケーションリストを得るOneliner</span><a class="headerlink" href="#oneliner" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar <span class="se">\</span>
+-X https://platform.rescale.jp/ list-info -a -p <span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span> <span class="se">\</span>
+<span class="p">|</span> jq -c <span class="s1">&#39;{code: .code, versionCode: .versions[].versionCode, allowdCoreTypes: .versions[].allowedCoreTypes[]}&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id1">
+<div class="code-block-caption"><span class="caption-text">結果例(大部分省略)</span><a class="headerlink" href="#id1" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="s2">&quot;cd_adapco_star_ccm&quot;</span><span class="p">,</span><span class="nt">&quot;versionCode&quot;</span><span class="p">:</span><span class="s2">&quot;12.2.10&quot;</span><span class="p">,</span><span class="nt">&quot;allowdCoreTypes&quot;</span><span class="p">:</span><span class="s2">&quot;bronze&quot;</span><span class="p">}</span>
+<span class="p">{</span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="s2">&quot;cd_adapco_star_ccm&quot;</span><span class="p">,</span><span class="nt">&quot;versionCode&quot;</span><span class="p">:</span><span class="s2">&quot;12.2.10&quot;</span><span class="p">,</span><span class="nt">&quot;allowdCoreTypes&quot;</span><span class="p">:</span><span class="s2">&quot;copper&quot;</span><span class="p">}</span>
+<span class="p">{</span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="s2">&quot;cd_adapco_star_ccm&quot;</span><span class="p">,</span><span class="nt">&quot;versionCode&quot;</span><span class="p">:</span><span class="s2">&quot;12.2.10&quot;</span><span class="p">,</span><span class="nt">&quot;allowdCoreTypes&quot;</span><span class="p">:</span><span class="s2">&quot;gpu-kepler&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>9.2. ジョブ投入<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id3">
+<h3>計算終了後、全ファイルをダウンロード<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id4">
+<div class="code-block-caption"><span class="caption-text">必要な変数</span><a class="headerlink" href="#id4" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">RESCALE_API_TOKEN</span><span class="o">=</span><span class="s1">&#39;&lt;APIキー&gt;&#39;</span>
+<span class="nv">RUNSCRIPT</span><span class="o">=</span><span class="s1">&#39;&lt;ランスクリプトファイル名&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="bash">
+<div class="code-block-caption"><span class="caption-text">bashジョブ投入</span><a class="headerlink" href="#bash" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar <span class="se">\</span>
+-X https://platform.rescale.jp/ submit <span class="se">\</span>
+-p <span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span> <span class="se">\</span>
+-E -i <span class="si">${</span><span class="nv">RUNSCRIPT</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>計算終了後、ファイル名を指定してダウンロード<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id6">
+<div class="code-block-caption"><span class="caption-text">必要な変数</span><a class="headerlink" href="#id6" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">RESCALE_API_TOKEN</span><span class="o">=</span><span class="s1">&#39;&lt;APIキー&gt;&#39;</span>
+<span class="nv">RUNSCRIPT</span><span class="o">=</span><span class="s1">&#39;&lt;ランスクリプトファイル名&gt;&#39;</span>
+<span class="nv">DOWNLOAD_FILES</span><span class="o">=</span><span class="s1">&#39;&lt;ランスクリプトファイル名&gt; (e.g file1 file2 *.log)&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id7">
+<div class="code-block-caption"><span class="caption-text">ジョブ投入</span><a class="headerlink" href="#id7" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar /usr/local/bin/rescale.jar <span class="se">\</span>
+-X https://platform.rescale.jp/ submit <span class="se">\</span>
+-p <span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span> <span class="se">\</span>
+-E -i <span class="si">${</span><span class="nv">RUNSCRIPT</span><span class="si">}</span> -f <span class="si">${</span><span class="nv">DOWNLOAD_FILES</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="reference.html" title="8. 参考サイト" >前へ</a></li>
+        <li><a href="apps-json.html" title="10. Application-code information" >次へ</a></li>
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2017, Daisuke Nagao.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.6.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

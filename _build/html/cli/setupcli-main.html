@@ -51,7 +51,7 @@
 </script>
     <link rel="top" title="Rescale Documentation 有志のページ 0.1.0 ドキュメント" href="../index.html" />
     <link rel="next" title="2. ファイルのアップロード" href="cli-upload-files.html" />
-    <link rel="prev" title="Rescale CLI" href="../index.html" /> 
+    <link rel="prev" title="5. 簡単に Debug する方法 (計算が流れないとき..)" href="../qa/how-to-debug.html" /> 
   </head>
   <body role="document">
     <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
@@ -79,8 +79,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#rescale-cli-windows">1.4. Rescale CLI の使用準備 (Windowsのとき)</a><ul>
-<li><a class="reference internal" href="#id2">必要パッケージの準備</a></li>
-<li><a class="reference internal" href="#id3">API KEYの設定</a></li>
+<li><a class="reference internal" href="#id3">必要パッケージの準備</a></li>
+<li><a class="reference internal" href="#id4">API KEYの設定</a></li>
 </ul>
 </li>
 </ul>
@@ -91,7 +91,7 @@
               </li>
 
             
-              <li><a href="../index.html" title="Rescale CLI" accesskey="P">前へ </a></li>
+              <li><a href="../qa/how-to-debug.html" title="5. 簡単に Debug する方法 (計算が流れないとき..)" accesskey="P">前へ </a></li>
               <li><a href="cli-upload-files.html" title="2. ファイルのアップロード" accesskey="N">次へ </a></li>
               <li><a href="../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
             
@@ -137,8 +137,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#rescale-cli-windows">1.4. Rescale CLI の使用準備 (Windowsのとき)</a><ul>
-<li><a class="reference internal" href="#id2">必要パッケージの準備</a></li>
-<li><a class="reference internal" href="#id3">API KEYの設定</a></li>
+<li><a class="reference internal" href="#id3">必要パッケージの準備</a></li>
+<li><a class="reference internal" href="#id4">API KEYの設定</a></li>
 </ul>
 </li>
 </ul>
@@ -146,8 +146,8 @@
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="../index.html"
-                        title="前の章へ">Rescale CLI</a></p>
+  <p class="topless"><a href="../qa/how-to-debug.html"
+                        title="前の章へ">5. 簡単に Debug する方法 (計算が流れないとき..)</a></p>
   <h4>次のトピックへ</h4>
   <p class="topless"><a href="cli-upload-files.html"
                         title="次の章へ">2. ファイルのアップロード</a></p>
@@ -191,6 +191,7 @@
 <div class="line-block">
 <div class="line">コマンドラインから、Rescaleの認証/認可を得るため、API Keyを作成します。</div>
 <div class="line">操作方法は  &#8220;<a class="reference internal" href="setupcli-create-apikey.html"><em>API Key の作成手順</em></a>&#8221;  をご参照ください。</div>
+<div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="cli-rescale-jar">
@@ -198,39 +199,48 @@
 <div class="line-block">
 <div class="line">rescale CLI は JAVAで動きます。rescale.jarファイルをダウンロードします。</div>
 <div class="line">詳細なダウンロード方法は  &#8220;<a class="reference internal" href="setupcli-download-jarfile.html"><em>Rescale CLI ツールのダウンロード方法</em></a>&#8221;  をご参照ください。</div>
+<div class="line"><br /></div>
 </div>
 </div>
-<hr class="docutils" />
 <div class="section" id="rescale-cli-linux">
 <h2>1.3. Rescale CLI の使用準備 (LINUX)<a class="headerlink" href="#rescale-cli-linux" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="line-block">
 <div class="line">ダウンロードした rescale.jar を適当なところへ保存します。</div>
-<div class="line">この例では, <cite>/usr/local/bin/</cite> に保存しているものとします。</div>
-</div>
-<div class="highlight-bash"><div class="highlight"><pre>sudo cp ./rescale.jar /usr/local/bin/rescale.jar
-</pre></div>
+<div class="line">この例では, <code class="docutils literal"><span class="pre">/usr/local/bin/</span></code> とします。</div>
+<div class="line"><br /></div>
 </div>
 <div class="section" id="id1">
 <h3>API KEYの設定<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="line-block">
 <div class="line">API Key を設定します。毎回環境変数に設定するのは大変なので、<code class="docutils literal"><span class="pre">.bashrc</span></code> 等に書き込む事でシェル起動時に設定されるようにします。</div>
 </div>
+<div class="literal-block-wrapper container" id="id2">
+<div class="code-block-caption"><span class="caption-text">API Key を環境変数へ登録</span><a class="headerlink" href="#id2" title="このコードへのパーマリンク">¶</a></div>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nb">echo</span> <span class="s2">&quot;export RESCALE_API_TOKEN=&#39;&lt;上記で作成したAPI_KEY&gt;&#39;&quot;</span> &gt;&gt; ~/.bashrc
 </pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">注釈</p>
 <p class="last">この設定することで、スクリプト内に API Key を直接書き込む必要がなくなります。これにより、ソースコードを送付時、直書きされたAPI Keyも一緒に送ってしまったり、githubへアップロードし公開しまったりという事故を未然に防ぐことができます。スクリプトには環境変数を呼び出し、<code class="docutils literal"><span class="pre">RESCALE_API_TOKEN</span></code> の値を読み取るようにするよう実装してください。</p>
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 </div>
-<hr class="docutils" />
+</div>
 <div class="section" id="rescale-cli-windows">
 <h2>1.4. Rescale CLI の使用準備 (Windowsのとき)<a class="headerlink" href="#rescale-cli-windows" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>ダウンロードした rescale.ja を適当なところへ保存します。
 ここでは例として <code class="docutils literal"><span class="pre">C:¥rescale¥rescale.jar</span></code> とします。</p>
-<div class="section" id="id2">
-<h3>必要パッケージの準備<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id3">
+<h3>必要パッケージの準備<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><strong>1.Python (任意)</strong></p>
 <ul class="simple">
 <li>Windowsは シェルスクリプトのかわりに、つかっても良いかも。動作確認を行ったのは <a class="reference external" href="https://www.python.org/downloads/windows/">ver 3.6.1</a> です)</li>
@@ -245,9 +255,12 @@
 <li>Rescale CLI を動作させるために必須です</li>
 <li>今回確認したバージョンは、<a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">jdk-8u131-windows-x64.exe</a> です。</li>
 </ul>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
-<div class="section" id="id3">
-<h3>API KEYの設定<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="id4">
+<h3>API KEYの設定<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>API Key を設定します。環境変数に書き込んでおき、プログラムのどこからでも、この変数を見られるようにします。</p>
 <p>STEP1: <code class="docutils literal"><span class="pre">コントロール</span> <span class="pre">&gt;</span> <span class="pre">システムとセキュリティ</span> <span class="pre">&gt;</span> <span class="pre">システム</span> <span class="pre">&gt;</span> <span class="pre">システムの詳細設定</span></code> と操作し、<code class="docutils literal"><span class="pre">環境変数</span></code> をクリックします。</p>
 <a class="reference internal image-reference" href="../_images/win_enviroment_variable1.jpg"><img alt="../_images/win_enviroment_variable1.jpg" src="../_images/win_enviroment_variable1.jpg" style="width: 388.8px; height: 416.8px;" /></a>
@@ -259,7 +272,8 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p>STEP3: <strong>変数名(N):</strong> <code class="docutils literal"><span class="pre">RESCALE_API_TOKEN</span></code> と <strong>変数値(V):</strong> <code class="docutils literal"><span class="pre">&lt;`あなたが作成した</span> <span class="pre">|</span> <span class="pre">API</span> <span class="pre">Key`&gt;</span></code> を設定します。API の作成方法は &#8221; <a class="reference internal" href="setupcli-create-apikey.html"><em>API Key の作成手順</em></a> &#8221; をご参照ください。</p>
+<p>STEP3: <strong>変数名(N):</strong> <code class="docutils literal"><span class="pre">RESCALE_API_TOKEN</span></code> と <strong>変数値(V):</strong> <code class="docutils literal"><span class="pre">&lt;`あなたが作成した</span> <span class="pre">|</span> <span class="pre">API</span> <span class="pre">Key`&gt;</span></code> を設定します。</p>
+<p>(API の作成がまだであれば &#8221; <a class="reference internal" href="setupcli-create-apikey.html"><em>API Key の作成手順</em></a> &#8221; をご参照ください)</p>
 <p>入力後 <code class="docutils literal"><span class="pre">OK</span></code> をクリックして この設定を反映させます。</p>
 <a class="reference internal image-reference" href="../_images/win_enviroment_variable3.jpg"><img alt="../_images/win_enviroment_variable3.jpg" src="../_images/win_enviroment_variable3.jpg" style="width: 368.0px; height: 416.8px;" /></a>
 <div class="line-block">
@@ -292,7 +306,7 @@
     </ul>
 <ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
       
-        <li><a href="../index.html" title="Rescale CLI" >前へ</a></li>
+        <li><a href="../qa/how-to-debug.html" title="5. 簡単に Debug する方法 (計算が流れないとき..)" >前へ</a></li>
         <li><a href="cli-upload-files.html" title="2. ファイルのアップロード" >次へ</a></li>
         <li><a href="../genindex.html" title="総合索引" >索引</a></li>
         <li><a href="#">top</a></li> 

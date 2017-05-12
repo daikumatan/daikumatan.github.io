@@ -12,7 +12,7 @@ JOB ID とは
 
 - e.g.) ``https://platform.rescale.jp/jobs/XXXXXX/runs/1/results/``
 
-
+|
 
 JOB ID が生成されるタイミング
 ==========================
@@ -25,5 +25,6 @@ IDが生成されるタイミングは２つです。
 .. image:: image/createJob-and-submitJos.jpg
     :scale: 25%
 
+|
 
 .. note:: 正確にいうと、内部的には、"create Job" 時のみに、JOB ID が割り当てられます。ブラウザ上から "実行ボタン" を押すと、自動で "create Job" が行われ JOB ID を生成後、そのジョブを "submit" するという2段階で動作しています。 Rescale API を触るとその様子が分かります。
