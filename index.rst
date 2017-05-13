@@ -20,14 +20,15 @@ Tips
     :caption: あの操作はどうすればよい?あれはできる?
     :titlesonly:
     :name: qa
-    :numbered: 2
     :maxdepth: 1
 
     qa/cannot-login
     qa/jobid.rst
     qa/spot-instance
-    qa/file-transfer-exeeds-set-budget
     qa/how-to-debug
+    qa/file-transfer-exeeds-set-budget
+    cli/setupcli-create-apikey.rst
+    cli/setupcli-download-jarfile.rst
 
 
 Rescale CLI
@@ -51,6 +52,19 @@ Rescale CLI
     cli/oneliner
     cli/apps-json
     cli/hw-json
+
+
+Rescale API
+=============================
+
+.. toctree::
+    :caption: Hands-on で学ぶ Rescale CLI
+    :titlesonly:
+    :name: clitoc
+    :maxdepth: 2
+    :numbered: 2
+
+    api/persistet-cluster
 
 
 Indices and tables

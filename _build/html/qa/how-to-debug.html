@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     
-    <title>5. 簡単に Debug する方法 (計算が流れないとき..) &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
+    <title>簡単に Debug する方法 (計算が流れないとき..) &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -50,8 +50,8 @@
 <script type="text/javascript">
 </script>
     <link rel="top" title="Rescale Documentation 有志のページ 0.1.0 ドキュメント" href="../index.html" />
-    <link rel="next" title="1. RescaleCLIのセットアップ方法" href="../cli/setupcli-main.html" />
-    <link rel="prev" title="4. データ転送中に設定した予算を超過した場合" href="file-transfer-exeeds-set-budget.html" /> 
+    <link rel="next" title="データ転送中に設定した予算を超過した場合" href="file-transfer-exeeds-set-budget.html" />
+    <link rel="prev" title="“低優先度” で JOB を実行するとどうなるの?" href="spot-instance.html" /> 
   </head>
   <body role="document">
     <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
@@ -71,8 +71,8 @@
                 <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
                 <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
                 <ul>
-<li><a class="reference internal" href="#">5. 簡単に Debug する方法 (計算が流れないとき..)</a><ul>
-<li><a class="reference internal" href="#ssh-debug">5.1. ssh ログイン をして Debug する</a><ul>
+<li><a class="reference internal" href="#">簡単に Debug する方法 (計算が流れないとき..)</a><ul>
+<li><a class="reference internal" href="#ssh-debug">ssh ログイン をして Debug する</a><ul>
 <li><a class="reference internal" href="#step1">STEP1: 事前設定</a><ul>
 <li><a class="reference internal" href="#ssh">sshログインするための準備</a></li>
 </ul>
@@ -87,8 +87,8 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#in-browser-ssh-debug">5.2. In browser SSH を使って Debug する</a></li>
-<li><a class="reference internal" href="#persistet-cluster-debug">5.3. Persistet Cluster を使って Debug する</a></li>
+<li><a class="reference internal" href="#in-browser-ssh-debug">In browser SSH を使って Debug する</a></li>
+<li><a class="reference internal" href="#persistet-cluster-debug">Persistet Cluster を使って Debug する</a></li>
 </ul>
 </li>
 </ul>
@@ -97,8 +97,8 @@
               </li>
 
             
-              <li><a href="file-transfer-exeeds-set-budget.html" title="4. データ転送中に設定した予算を超過した場合" accesskey="P">前へ </a></li>
-              <li><a href="../cli/setupcli-main.html" title="1. RescaleCLIのセットアップ方法" accesskey="N">次へ </a></li>
+              <li><a href="spot-instance.html" title="“低優先度” で JOB を実行するとどうなるの?" accesskey="P">前へ </a></li>
+              <li><a href="file-transfer-exeeds-set-budget.html" title="データ転送中に設定した予算を超過した場合" accesskey="N">次へ </a></li>
               <li><a href="../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
             
             <li class="visible-xs"><a href="../_sources/qa/how-to-debug.txt" rel="nofollow">ソースコードを表示</a></li>
@@ -135,8 +135,8 @@
   <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
   <h3><a href="../index.html">目次</a></h3>
   <ul>
-<li><a class="reference internal" href="#">5. 簡単に Debug する方法 (計算が流れないとき..)</a><ul>
-<li><a class="reference internal" href="#ssh-debug">5.1. ssh ログイン をして Debug する</a><ul>
+<li><a class="reference internal" href="#">簡単に Debug する方法 (計算が流れないとき..)</a><ul>
+<li><a class="reference internal" href="#ssh-debug">ssh ログイン をして Debug する</a><ul>
 <li><a class="reference internal" href="#step1">STEP1: 事前設定</a><ul>
 <li><a class="reference internal" href="#ssh">sshログインするための準備</a></li>
 </ul>
@@ -151,18 +151,18 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#in-browser-ssh-debug">5.2. In browser SSH を使って Debug する</a></li>
-<li><a class="reference internal" href="#persistet-cluster-debug">5.3. Persistet Cluster を使って Debug する</a></li>
+<li><a class="reference internal" href="#in-browser-ssh-debug">In browser SSH を使って Debug する</a></li>
+<li><a class="reference internal" href="#persistet-cluster-debug">Persistet Cluster を使って Debug する</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="file-transfer-exeeds-set-budget.html"
-                        title="前の章へ">4. データ転送中に設定した予算を超過した場合</a></p>
+  <p class="topless"><a href="spot-instance.html"
+                        title="前の章へ">&#8220;低優先度&#8221; で JOB を実行するとどうなるの?</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="../cli/setupcli-main.html"
-                        title="次の章へ">1. RescaleCLIのセットアップ方法</a></p>
+  <p class="topless"><a href="file-transfer-exeeds-set-budget.html"
+                        title="次の章へ">データ転送中に設定した予算を超過した場合</a></p>
   <div role="note" aria-label="source link">
     <h3>このページ</h3>
     <ul class="this-page-menu">
@@ -197,7 +197,7 @@
                 <div class="body">
                   
   <div class="section" id="debug">
-<h1>5. 簡単に Debug する方法 (計算が流れないとき..)<a class="headerlink" href="#debug" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<h1>簡単に Debug する方法 (計算が流れないとき..)<a class="headerlink" href="#debug" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <p>以下の3つの方法があります。使いやすいものを選んでください。</p>
 <ol class="arabic simple">
 <li>ssh ログイン をして Debug する (インターネットに対する ssh が必要)</li>
@@ -205,7 +205,7 @@
 <li>Persistet Cluster を使って Debug する (実行コマンドのみの簡単な Debug であれば)</li>
 </ol>
 <div class="section" id="ssh-debug">
-<h2>5.1. ssh ログイン をして Debug する<a class="headerlink" href="#ssh-debug" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>ssh ログイン をして Debug する<a class="headerlink" href="#ssh-debug" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>計算実行後、実行中のクラスたにsshログインすることができます。これを使いデバグします。</p>
 <p>&#8220;ソフトウェアの選択&#8221; の画面で、アプリケーションを選択後に入力するコマンドで`sleep`文をいれておくと、計算が終了してもクラスタがターミネートしません。この間にクラスタに sshログインし、通常のLinuxのように操作することができます。DEBUGにとても便利です。</p>
 <div class="section" id="step1">
@@ -246,11 +246,11 @@
 </div>
 </div>
 <div class="section" id="in-browser-ssh-debug">
-<h2>5.2. In browser SSH を使って Debug する<a class="headerlink" href="#in-browser-ssh-debug" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>In browser SSH を使って Debug する<a class="headerlink" href="#in-browser-ssh-debug" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>工事中</p>
 </div>
 <div class="section" id="persistet-cluster-debug">
-<h2>5.3. Persistet Cluster を使って Debug する<a class="headerlink" href="#persistet-cluster-debug" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>Persistet Cluster を使って Debug する<a class="headerlink" href="#persistet-cluster-debug" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>工事中</p>
 </div>
 </div>
@@ -274,8 +274,8 @@
     </ul>
 <ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
       
-        <li><a href="file-transfer-exeeds-set-budget.html" title="4. データ転送中に設定した予算を超過した場合" >前へ</a></li>
-        <li><a href="../cli/setupcli-main.html" title="1. RescaleCLIのセットアップ方法" >次へ</a></li>
+        <li><a href="spot-instance.html" title="“低優先度” で JOB を実行するとどうなるの?" >前へ</a></li>
+        <li><a href="file-transfer-exeeds-set-budget.html" title="データ転送中に設定した予算を超過した場合" >次へ</a></li>
         <li><a href="../genindex.html" title="総合索引" >索引</a></li>
         <li><a href="#">top</a></li> 
       

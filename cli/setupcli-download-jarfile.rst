@@ -3,14 +3,14 @@ Rescale CLI ツールのダウンロード方法
 ###############################################
 
 
-STEP1 Rescaleへのログイン
+STEP1: Rescaleへのログイン
 ============================================
 
-Rescale へログインします。
+`Rescale へログイン <https://platform.rescale.jp/>`_ します。
 
-- https://platform.rescale.jp/
+|
 
-CLI ツール rescale.jar のダウンロード
+STEP2: CLI ツール rescale.jar のダウンロード
 ==================================================
 
 1. アカウントをクリックします

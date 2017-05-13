@@ -4,15 +4,14 @@
 API Key の作成手順
 ###################
 
-STEP1 Rescaleへのログイン
+STEP1: Rescaleへのログイン
 ============================
 
-Rescale へログインします。
+`Rescale へログイン <https://platform.rescale.jp/>`_ します。
 
-- https://platform.rescale.jp/
+|
 
-
-STEP2 API Key の作成
+STEP2: API Key の作成
 ============================
 
 Rescale ログイン後下記を実施します。
