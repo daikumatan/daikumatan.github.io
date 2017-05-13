@@ -13,6 +13,18 @@
 
 -------------
 
+Tuorial
+===================================
+
+.. toctree::
+    :caption: 触って見よう!Rescale
+    :titlesonly:
+    :name: application
+    :maxdepth: 1
+
+    apps/ls-dyna/ls-dyna
+
+
 Tips
 ===================================
 

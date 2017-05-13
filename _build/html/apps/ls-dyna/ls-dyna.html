@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>[LS-DYNA on Rescale] Hands-on 資料 &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../../_static/css/bootstrap3/bootswatch-simplex.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../../_static/css/adjust_theme/bootswatch-simplex.css" type="text/css" />
+
+<link rel="stylesheet" href="../../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/bootstrap.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../../',
+            VERSION:     '0.1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="top" title="Rescale Documentation 有志のページ 0.1.0 ドキュメント" href="../../index.html" />
+    <link rel="next" title="ログインできない" href="../../qa/cannot-login.html" />
+    <link rel="prev" title="Tuorial" href="../../index.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">[LS-DYNA on Rescale] Hands-on 資料</a><ul>
+<li><a class="reference internal" href="#id1">0. 事前準備</a></li>
+<li><a class="reference internal" href="#ls-dyna">1. LS-DYNAのジョブ実行</a><ul>
+<li><a class="reference internal" href="#id3">1.1 ジョブ作成の開始</a></li>
+<li><a class="reference internal" href="#id4">1.2 ジョブ名/ジョブの種類の決定とファイルアップロード</a></li>
+<li><a class="reference internal" href="#id5">1.3 ソフトウェアの設定</a><ul>
+<li><a class="reference internal" href="#id6">1.3.1 ソフトウェアの選択</a></li>
+<li><a class="reference internal" href="#id7">1.3.2 ソフトウェアの設定</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">1.4 ハードウェアの選択</a></li>
+<li><a class="reference internal" href="#id9">1.5 計算の実行</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">2. 計算状況の確認</a><ul>
+<li><a class="reference internal" href="#id11">2.1 計算実行直後</a></li>
+<li><a class="reference internal" href="#id12">2.2 標準出力の確認</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">3. 結果の確認</a><ul>
+<li><a class="reference internal" href="#id14">3.1 ジョブの選択</a></li>
+<li><a class="reference internal" href="#id17">3.2 結果の確認</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#remote-desktop">4. Remote Desktop</a><ul>
+<li><a class="reference internal" href="#id18">4.1 Remote Desktopの立ち上げ</a></li>
+<li><a class="reference internal" href="#id19">4.2 Remote Desktopの接続</a><ul>
+<li><a class="reference internal" href="#id20">4.2.1 起動中のデスクトップの選択</a></li>
+<li><a class="reference internal" href="#id23">4.2.2 Remote desktopのステータス画面</a></li>
+<li><a class="reference internal" href="#id24">4.2.3 接続方法の選択</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id27">4.3 計算結果の保存フォルダ確認</a></li>
+<li><a class="reference internal" href="#ls-prepost">4.4 LS-PREPOST の起動</a></li>
+<li><a class="reference internal" href="#id28">4.5 計算結果の読み込み</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="../../index.html" title="Tuorial" accesskey="P">前へ </a></li>
+              <li><a href="../../qa/cannot-login.html" title="ログインできない" accesskey="N">次へ </a></li>
+              <li><a href="../../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
+            
+            <li class="visible-xs"><a href="../../_sources/apps/ls-dyna/ls-dyna.txt" rel="nofollow">ソースコードを表示</a></li>
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="検索" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+      <!-- row -->
+      <div class="row">
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">[LS-DYNA on Rescale] Hands-on 資料</a><ul>
+<li><a class="reference internal" href="#id1">0. 事前準備</a></li>
+<li><a class="reference internal" href="#ls-dyna">1. LS-DYNAのジョブ実行</a><ul>
+<li><a class="reference internal" href="#id3">1.1 ジョブ作成の開始</a></li>
+<li><a class="reference internal" href="#id4">1.2 ジョブ名/ジョブの種類の決定とファイルアップロード</a></li>
+<li><a class="reference internal" href="#id5">1.3 ソフトウェアの設定</a><ul>
+<li><a class="reference internal" href="#id6">1.3.1 ソフトウェアの選択</a></li>
+<li><a class="reference internal" href="#id7">1.3.2 ソフトウェアの設定</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">1.4 ハードウェアの選択</a></li>
+<li><a class="reference internal" href="#id9">1.5 計算の実行</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">2. 計算状況の確認</a><ul>
+<li><a class="reference internal" href="#id11">2.1 計算実行直後</a></li>
+<li><a class="reference internal" href="#id12">2.2 標準出力の確認</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">3. 結果の確認</a><ul>
+<li><a class="reference internal" href="#id14">3.1 ジョブの選択</a></li>
+<li><a class="reference internal" href="#id17">3.2 結果の確認</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#remote-desktop">4. Remote Desktop</a><ul>
+<li><a class="reference internal" href="#id18">4.1 Remote Desktopの立ち上げ</a></li>
+<li><a class="reference internal" href="#id19">4.2 Remote Desktopの接続</a><ul>
+<li><a class="reference internal" href="#id20">4.2.1 起動中のデスクトップの選択</a></li>
+<li><a class="reference internal" href="#id23">4.2.2 Remote desktopのステータス画面</a></li>
+<li><a class="reference internal" href="#id24">4.2.3 接続方法の選択</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id27">4.3 計算結果の保存フォルダ確認</a></li>
+<li><a class="reference internal" href="#ls-prepost">4.4 LS-PREPOST の起動</a></li>
+<li><a class="reference internal" href="#id28">4.5 計算結果の読み込み</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="../../index.html"
+                        title="前の章へ">Tuorial</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="../../qa/cannot-login.html"
+                        title="次の章へ">ログインできない</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/apps/ls-dyna/ls-dyna.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" role="search">
+  <h3>クイック検索</h3>
+  <form class="search form-inline" action="../../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="検索" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="ls-dyna-on-rescale-hands-on">
+<h1>[LS-DYNA on Rescale] Hands-on 資料<a class="headerlink" href="#ls-dyna-on-rescale-hands-on" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p><a class="reference external" href="http://www.rescale.com/jp/">Rescale</a> 上でLS-Dynaを動かすハンズオンです。</p>
+<a class="reference internal image-reference" href="../../_images/79f3ecfd-7b83-0d03-fa5f-10c7550b7c9e.png"><img alt="../../_images/79f3ecfd-7b83-0d03-fa5f-10c7550b7c9e.png" src="../../_images/79f3ecfd-7b83-0d03-fa5f-10c7550b7c9e.png" style="width: 608.0px; height: 369.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id1">
+<h2>0. 事前準備<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://www.rescale.com/jp/">Signup</a> してください</li>
+<li>inputfileを <a class="reference external" href="https://s3-ap-northeast-1.amazonaws.com/dev-daisuke/2017-02-21-ls-dyna-hands-on/neon.refined.rev01.k">ココ</a> からDownloadしてください</li>
+<li>LS-Dynaを実際に動かすには <cite>support-japan&#64;rescale.com</cite> までご連絡ください。</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="ls-dyna">
+<h2>1. LS-DYNAのジョブ実行<a class="headerlink" href="#ls-dyna" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id3">
+<h3>1.1 ジョブ作成の開始<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>ジョブ作成をクリックします</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna1.png"><img alt="../../_images/ls-dyna1.png" src="../../_images/ls-dyna1.png" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>1.2 ジョブ名/ジョブの種類の決定とファイルアップロード<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>任意のジョブ名を入れます</li>
+<li>ジョブの種類が基本になっていることを確認します</li>
+<li>入力のアイコンをクリックします</li>
+<li>ファイルアップロードのアイコンをクリックし、上記でダウンロードした`neon.refined.rev01.k` をRescaleへアップロードします</li>
+<li>43.4MB程度のファイルがアップロードされていることを確認します</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna2.png"><img alt="../../_images/ls-dyna2.png" src="../../_images/ls-dyna2.png" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>1.3 ソフトウェアの設定<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id6">
+<h4>1.3.1 ソフトウェアの選択<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ol class="arabic simple">
+<li>ソフトウェアをクリックします</li>
+<li><cite>ls-dyna</cite> と入力し、ソフトウェアを検索します</li>
+<li>ls-dynaをクリックします</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna3.png"><img alt="../../_images/ls-dyna3.png" src="../../_images/ls-dyna3.png" style="width: 720.0px; height: 450.0px;" /></a>
+</div>
+<div class="section" id="id7">
+<h4>1.3.2 ソフトウェアの設定<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ol class="arabic">
+<li><p class="first">今回は &#8220;R9.0.0&#8221; を選択します。</p>
+</li>
+<li><p class="first">以下のように入力します。</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre>ls-dyna -n <span class="m">2</span> -i neon.refined.rev01.k -p single
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">ライセンスを自分で用意を選択します</p>
+</li>
+<li><p class="first">以下のように入力します</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="s1">&#39;&lt;Rescaleまでお問い合わせください: support-japan@rescale.com&gt;&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna4.png"><img alt="../../_images/ls-dyna4.png" src="../../_images/ls-dyna4.png" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>1.4 ハードウェアの選択<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>ハードウェアの選択をクリックします</li>
+<li>今回は、<cite>Onyx</cite> を選びます</li>
+<li><cite>i</cite> が緑色なら、<cite>低優先度</cite> を選択します</li>
+<li>今回はコア数を <cite>2</cite> にします</li>
+<li>ハードウェアの概要を確認します(上記4の値に応じて変化します)</li>
+<li>必要に応じて強制終了させる時間 [h] を入力します。今回は <cite>3</cite> を入力します。</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna5.png"><img alt="../../_images/ls-dyna5.png" src="../../_images/ls-dyna5.png" style="width: 721.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>1.5 計算の実行<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>実行ボタンをクリックします</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna6.png"><img alt="../../_images/ls-dyna6.png" src="../../_images/ls-dyna6.png" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>2. 計算状況の確認<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id11">
+<h3>2.1 計算実行直後<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>下記のような画面になります。インスタンスの立ち上げ中なのでしばらく待ちます。特に操作はありません。</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna7.png"><img alt="../../_images/ls-dyna7.png" src="../../_images/ls-dyna7.png" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>2.2 標準出力の確認<a class="headerlink" href="#id12" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>ステータスのタブになっていることを確認します</li>
+<li><cite>process_output.log</cite> を選択します。Rescaleは必ずこの名前のファイルに標準出力の内容が書き出されます。</li>
+<li>黒いフィールドに標準出力の内容が表示されたことを確認します</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna8.png"><img alt="../../_images/ls-dyna8.png" src="../../_images/ls-dyna8.png" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id13">
+<h2>3. 結果の確認<a class="headerlink" href="#id13" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id14">
+<h3>3.1 ジョブの選択<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li><a href="#id15"><span class="problematic" id="id16">`</span></a>ジョブ`をクリックします</li>
+<li>結果を確認したいジョブの名前をクリックします。</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna9.png"><img alt="../../_images/ls-dyna9.png" src="../../_images/ls-dyna9.png" style="width: 720.0px; height: 464.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h3>3.2 結果の確認<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>下記のような画面になります。ファイルを開いたり、ダウンロードしたり直感的に操作できるので、説明は割愛します。</li>
+<li>注意点として、ファイルサイズが大きいとブラウザーからはファイルを開けないようになっています。ダウンロードしてください。</li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/ls-dyna10.png"><img alt="../../_images/ls-dyna10.png" src="../../_images/ls-dyna10.png" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="remote-desktop">
+<h2>4. Remote Desktop<a class="headerlink" href="#remote-desktop" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id18">
+<h3>4.1 Remote Desktopの立ち上げ<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>上記の結果の確認を実施後、画面右上の <cite>可視化</cite> をクリックします。</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna11.png"><img alt="../../_images/ls-dyna11.png" src="../../_images/ls-dyna11.png" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h3>4.2 Remote Desktopの接続<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id20">
+<h4>4.2.1 起動中のデスクトップの選択<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ol class="arabic simple">
+<li><a href="#id21"><span class="problematic" id="id22">`</span></a>デスクトップ`をクリックします</li>
+<li>対象となる起動中のデスクトップをクリックします</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna12.png"><img alt="../../_images/ls-dyna12.png" src="../../_images/ls-dyna12.png" style="width: 720.0px; height: 450.0px;" /></a>
+</div>
+<div class="section" id="id23">
+<h4>4.2.2 Remote desktopのステータス画面<a class="headerlink" href="#id23" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ol class="arabic simple">
+<li><cite>接続</cite> をクリックします</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna13.png"><img alt="../../_images/ls-dyna13.png" src="../../_images/ls-dyna13.png" style="width: 720.0px; height: 450.0px;" /></a>
+</div>
+<div class="section" id="id24">
+<h4>4.2.3 接続方法の選択<a class="headerlink" href="#id24" title="このヘッドラインへのパーマリンク">¶</a></h4>
+<ol class="arabic simple">
+<li><a href="#id25"><span class="problematic" id="id26">`</span></a>ブラウザからリモートデスクトップへ接続`を選択します</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna14.png"><img alt="../../_images/ls-dyna14.png" src="../../_images/ls-dyna14.png" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id27">
+<h3>4.3 計算結果の保存フォルダ確認<a class="headerlink" href="#id27" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>attached_jobsのフォルダをクリックします</li>
+<li>run1の下までフォルダ階層を下がります。ここに計算結果が保存されています</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna15.png"><img alt="../../_images/ls-dyna15.png" src="../../_images/ls-dyna15.png" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="ls-prepost">
+<h3>4.4 LS-PREPOST の起動<a class="headerlink" href="#ls-prepost" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>LS-PREPOSTのアイコンをクリックします</li>
+<li>アプリが起動したことを確認します</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/ls-dyna16.png"><img alt="../../_images/ls-dyna16.png" src="../../_images/ls-dyna16.png" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id28">
+<h3>4.5 計算結果の読み込み<a class="headerlink" href="#id28" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ul class="simple">
+<li>上記のフォルダから計算結果を開いて、可視化します。</li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/ls-dyna17.png"><img alt="../../_images/ls-dyna17.png" src="../../_images/ls-dyna17.png" style="width: 720.0px; height: 450.0px;" /></a>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="../../index.html" title="Tuorial" >前へ</a></li>
+        <li><a href="../../qa/cannot-login.html" title="ログインできない" >次へ</a></li>
+        <li><a href="../../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2017, Daisuke Nagao.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.6.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>
