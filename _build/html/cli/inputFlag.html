@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     
-    <title>5. ランスクリプトの設定方法 (Rescale Specific Flags for the Input Script) &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
+    <title>5. ランスクリプトの書き方 (Rescale Specific Flags) &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -50,7 +50,7 @@
 <script type="text/javascript">
 </script>
     <link rel="top" title="Rescale Documentation 有志のページ 0.1.0 ドキュメント" href="../index.html" />
-    <link rel="next" title="6. ユースケース" href="usecase.html" />
+    <link rel="next" title="6. Proxy を越える必要がある時" href="proxy.html" />
     <link rel="prev" title="4. ジョブの投入" href="submitjob.html" /> 
   </head>
   <body role="document">
@@ -71,12 +71,16 @@
                 <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
                 <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
                 <ul>
-<li><a class="reference internal" href="#">5. ランスクリプトの設定方法 (Rescale Specific Flags for the Input Script)</a><ul>
-<li><a class="reference internal" href="#rescale-e-g-cradle">5.1. Rescale ライセンス (e.g. cradle製品などの従量アプリ)を利用するとき</a></li>
-<li><a class="reference internal" href="#pod-rescale-cli">5.2. PoDライセンスを Rescale CLI から利用する場合</a></li>
-<li><a class="reference internal" href="#id1">5.3. フラグで設定する内部コード名がわからないとき</a><ul>
-<li><a class="reference internal" href="#id2">アプリケーション</a></li>
-<li><a class="reference internal" href="#id3">コアタイプ</a></li>
+<li><a class="reference internal" href="#">5. ランスクリプトの書き方 (Rescale Specific Flags)</a><ul>
+<li><a class="reference internal" href="#id2">5.1. よく使うフラグ一覧表</a></li>
+<li><a class="reference internal" href="#id3">5.2. 具体例</a><ul>
+<li><a class="reference internal" href="#rescale-e-g-cradle">Rescale ライセンス (e.g. cradle製品などの従量アプリ)を利用するとき</a></li>
+<li><a class="reference internal" href="#pod-rescale-cli">PoDライセンスを Rescale CLI から利用する場合</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">5.3. フラグで設定する内部コード名がわからないとき</a><ul>
+<li><a class="reference internal" href="#get-application-code">アプリケーションコードを得る</a></li>
+<li><a class="reference internal" href="#get-hardware-code">コアタイプコードを得る</a></li>
 </ul>
 </li>
 </ul>
@@ -88,7 +92,7 @@
 
             
               <li><a href="submitjob.html" title="4. ジョブの投入" accesskey="P">前へ </a></li>
-              <li><a href="usecase.html" title="6. ユースケース" accesskey="N">次へ </a></li>
+              <li><a href="proxy.html" title="6. Proxy を越える必要がある時" accesskey="N">次へ </a></li>
               <li><a href="../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
             
             <li class="visible-xs"><a href="../_sources/cli/inputFlag.txt" rel="nofollow">ソースコードを表示</a></li>
@@ -125,12 +129,16 @@
   <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
   <h3><a href="../index.html">目次</a></h3>
   <ul>
-<li><a class="reference internal" href="#">5. ランスクリプトの設定方法 (Rescale Specific Flags for the Input Script)</a><ul>
-<li><a class="reference internal" href="#rescale-e-g-cradle">5.1. Rescale ライセンス (e.g. cradle製品などの従量アプリ)を利用するとき</a></li>
-<li><a class="reference internal" href="#pod-rescale-cli">5.2. PoDライセンスを Rescale CLI から利用する場合</a></li>
-<li><a class="reference internal" href="#id1">5.3. フラグで設定する内部コード名がわからないとき</a><ul>
-<li><a class="reference internal" href="#id2">アプリケーション</a></li>
-<li><a class="reference internal" href="#id3">コアタイプ</a></li>
+<li><a class="reference internal" href="#">5. ランスクリプトの書き方 (Rescale Specific Flags)</a><ul>
+<li><a class="reference internal" href="#id2">5.1. よく使うフラグ一覧表</a></li>
+<li><a class="reference internal" href="#id3">5.2. 具体例</a><ul>
+<li><a class="reference internal" href="#rescale-e-g-cradle">Rescale ライセンス (e.g. cradle製品などの従量アプリ)を利用するとき</a></li>
+<li><a class="reference internal" href="#pod-rescale-cli">PoDライセンスを Rescale CLI から利用する場合</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">5.3. フラグで設定する内部コード名がわからないとき</a><ul>
+<li><a class="reference internal" href="#get-application-code">アプリケーションコードを得る</a></li>
+<li><a class="reference internal" href="#get-hardware-code">コアタイプコードを得る</a></li>
 </ul>
 </li>
 </ul>
@@ -141,8 +149,8 @@
   <p class="topless"><a href="submitjob.html"
                         title="前の章へ">4. ジョブの投入</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="usecase.html"
-                        title="次の章へ">6. ユースケース</a></p>
+  <p class="topless"><a href="proxy.html"
+                        title="次の章へ">6. Proxy を越える必要がある時</a></p>
   <div role="note" aria-label="source link">
     <h3>このページ</h3>
     <ul class="this-page-menu">
@@ -176,60 +184,166 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <div class="section" id="rescale-specific-flags-for-the-input-script">
-<h1>5. ランスクリプトの設定方法 (Rescale Specific Flags for the Input Script)<a class="headerlink" href="#rescale-specific-flags-for-the-input-script" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <div class="section" id="rescale-specific-flags">
+<h1>5. ランスクリプトの書き方 (Rescale Specific Flags)<a class="headerlink" href="#rescale-specific-flags" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>Rescale CLI は <code class="docutils literal"><span class="pre">#RESCALE_</span> <span class="pre">....</span></code> で始まるフラグによって、環境を設定することができます。
+その一覧と使用例を示します。</p>
+<p>詳細は <a class="reference external" href="https://support.rescale.com/customer/en/portal/articles/2624542-rescale-cli">本家(英語)</a>  をご参照ください</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id2">
+<h2>5.1. よく使うフラグ一覧表<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="docutils" id="id7">
+<caption><span class="caption-text">Table of Rescale Specific Flags</span><a class="headerlink" href="#id7" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>#RESCALE_NAME=&lt;string&gt;</td>
+<td><div class="first last line-block">
+<div class="line">任意のジョブ名を入力する</div>
+<div class="line">e.g) <code class="docutils literal"><span class="pre">#RESCALE_NAME=hello_world</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>#RESCALE_CORES=&lt;integer&gt;</td>
+<td><div class="first last line-block">
+<div class="line">使用するコア数を入力する。完全に自由にはコア数を指定できるわけではないので注意。</div>
+<div class="line">実際に使用できるコア数は &#8220;<a class="reference internal" href="#get-hardware-code"><span>コアタイプコードを得る</span></a>&#8221; のセクションを参照してください。</div>
+<div class="line">e.g.) <code class="docutils literal"><span class="pre">#RESCALE_CORES=16</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>#RESCALE_CORE_TYPE=&lt;string&gt;</td>
+<td><div class="first last line-block">
+<div class="line">使用するコアタイプのコードを入力する。</div>
+<div class="line">コアタイプのコードは &#8220;<a class="reference internal" href="#get-hardware-code"><span>コアタイプコードを得る</span></a>&#8221; のセクションを参照してください</div>
+<div class="line">e.g.) <code class="docutils literal"><span class="pre">#RESCALE_CORE_TYPE=hpc-plus</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>#RESCALE_ANALYSIS=&lt;string&gt;</td>
+<td><div class="first last line-block">
+<div class="line">使用するアプリケーションコードを入力する。</div>
+<div class="line">アプリケーションコードは &#8220;<a class="reference internal" href="#get-application-code"><span>アプリケーションコードを得る</span></a>&#8221; のセクションを参照してください。</div>
+<div class="line">e.g.) <code class="docutils literal"><span class="pre">#RESCALE_ANALYSIS=sc_stream</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>#RESCALE_ANALYSIS_VERSION=&lt;string&gt;</td>
+<td><div class="first last line-block">
+<div class="line">使用するアプリケーションのバージョンコードを入力する。</div>
+<div class="line">アプリケーションのバージョンコードは &#8220;<a class="reference internal" href="#get-application-code"><span>アプリケーションコードを得る</span></a>&#8221; のセクションを参照してください</div>
+<div class="line">e.g.) <code class="docutils literal"><span class="pre">#RESCALE_ANALYSIS_VERSION=12.0.0-intelmpi</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>#RESCALE_LOW_PRIORITY=&lt;boolean&gt;</td>
+<td><div class="first last line-block">
+<div class="line">低優先度を指定する。すべてのコアタイプで使えるわけでは無いので注意。</div>
+<div class="line">e.g.) <code class="docutils literal"><span class="pre">#RESCALE_LOW_PRIORITY=true</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>#RESCALE_ENV_&lt;varname&gt;=&lt;value&gt;</td>
+<td><div class="first last line-block">
+<div class="line">環境変数を設定するとき</div>
+<div class="line">e.g.) <code class="docutils literal"><span class="pre">#RESCALE_ENV_LD_LIBRARY_PATH=&quot;~/work/shared/FrontISTR/lib&quot;:$LD_LIBRARY_PATH</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>#RESCALE_EXISTING_FILES=&lt;comma delimited list of strings&gt;</td>
+<td><div class="first last line-block">
+<div class="line">アップロード済みの FileIdを記述する。</div>
+<div class="line">e.g.) <code class="docutils literal"><span class="pre">#RESCALE_EXISTING_FILES=&quot;AbCdEf</span> <span class="pre">xyzwabc&quot;</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>#RESCALE_ENV_CDLMD_LICENSE_FILE</td>
+<td><div class="first last line-block">
+<div class="line">Licenseサーバを指定する必要があるとき使用する。</div>
+<div class="line">e.g.) <code class="docutils literal"><span class="pre">#RESCALE_ENV_CDLMD_LICENSE_FILE=1999&#64;flex.cd-adapco.com</span></code> (STAR-CCM+ のPoDのLicenseサーバ)</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>#RESCALE_ENV_LM_PROJECT</td>
+<td><div class="first last line-block">
+<div class="line">Licenseサーバを指定し、尚且つ環境変数等を設定する必要があるとき使用する。</div>
+<div class="line">e.g.) <code class="docutils literal"><span class="pre">#RESCALE_ENV_LM_PROJECT=XXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></code> (STAR-CCM+ のPoDキー)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>#USE_RESCALE_LICENSE</td>
+<td><div class="first last line-block">
+<div class="line">一部の従量課金のアプリケーションを使用するとき使用する。</div>
+<div class="line">e.g.) <code class="docutils literal"><span class="pre">#USE_RESCALE_LICENSE</span></code></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>#RESCALE_PROJECT_ID=&lt;project name or external id&gt;</td>
+<td><div class="first last line-block">
+<div class="line">&#8220;プロジェクト&#8221; を指定してジョブを投入する (プロジェクトに予算を設定されている場合など便利)</div>
+<div class="line">e.g.) <code class="docutils literal"><span class="pre">#USE_RESCALE_LICENSE=my_project</span></code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>5.2. 具体例<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="rescale-e-g-cradle">
-<h2>5.1. Rescale ライセンス (e.g. cradle製品などの従量アプリ)を利用するとき<a class="headerlink" href="#rescale-e-g-cradle" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h3>Rescale ライセンス (e.g. cradle製品などの従量アプリ)を利用するとき<a class="headerlink" href="#rescale-e-g-cradle" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Cradele製品は従量ラインセスなので <code class="docutils literal"><span class="pre">#USE_RESCALE_LICENSE</span></code> を指定している。</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="ch">#!/bin/sh -f</span>
 <span class="c1">#RESCALE_NAME=stream_from_cli</span>
 <span class="c1">#RESCALE_CORES=1</span>
 <span class="c1">#RESCALE_CORE_TYPE=hpc-plus</span>
 <span class="c1">#RESCALE_ANALYSIS=sc_stream</span>
 <span class="c1">#RESCALE_ANALYSIS_VERSION=12.0.0-intelmpi</span>
-<span class="c1">#RESCALE_LOW_PRIORITY=on</span>
+<span class="c1">#RESCALE_LOW_PRIORITY=true</span>
 <span class="c1">#USE_RESCALE_LICENSE</span>
+
+&lt;<span class="s1">&#39;アプリケーションをキックするためのコマンドを記述&#39;</span>&gt;
 </pre></div>
 </div>
-<p>上からそれぞれ</p>
-<ul class="simple">
-<li>Jobname</li>
-<li>コア数</li>
-<li>コアタイプ</li>
-<li>アプリケーションコード</li>
-<li>Versionコード</li>
-<li>Low Priorityの利用</li>
-<li>Rescale Licenseの利用</li>
-</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="section" id="pod-rescale-cli">
-<h2>5.2. PoDライセンスを Rescale CLI から利用する場合<a class="headerlink" href="#pod-rescale-cli" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h3>PoDライセンスを Rescale CLI から利用する場合<a class="headerlink" href="#pod-rescale-cli" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>PoD Licenseの指定方法がポイント</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="ch">#!/bin/sh -f</span>
 <span class="c1">#RESCALE_NAME=starccm_from_cli</span>
 <span class="c1">#RESCALE_CORES=1</span>
 <span class="c1">#RESCALE_CORE_TYPE=hpc-plus</span>
 <span class="c1">#RESCALE_ANALYSIS=cd_adapco_star_ccm</span>
 <span class="c1">#RESCALE_ANALYSIS_VERSION=12.2.10</span>
-<span class="c1">#RESCALE_LOW_PRIORITY=on</span>
+<span class="c1">#RESCALE_LOW_PRIORITY=true</span>
 <span class="c1">#RESCALE_ENV_CDLMD_LICENSE_FILE=1999@flex.cd-adapco.com</span>
 <span class="c1">#RESCALE_ENV_LM_PROJECT=XXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
+
+&lt;<span class="s1">&#39;アプリケーションをキックするためのコマンドを記述&#39;</span>&gt;
 </pre></div>
 </div>
-<p>上からそれぞれ</p>
-<ul class="simple">
-<li>Jobname</li>
-<li>コア数</li>
-<li>コアタイプ</li>
-<li>アプリケーションコード</li>
-<li>Versionコード</li>
-<li>Low Priorityの利用</li>
-<li>ライセンスサーバの指定</li>
-<li>PoDキーの入力</li>
-</ul>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
-<div class="section" id="id1">
-<h2>5.3. フラグで設定する内部コード名がわからないとき<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id2">
-<h3>アプリケーション<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>5.3. フラグで設定する内部コード名がわからないとき<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="get-application-code">
+<span id="id5"></span><h3>アプリケーションコードを得る<a class="headerlink" href="#get-application-code" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">RESCALE_API_TOKEN</span><span class="o">=</span>&lt;<span class="s1">&#39;取得したAPIキー&#39;</span>&gt;
 
 java -jar /usr/local/bin/rescale.jar <span class="se">\</span>
@@ -238,9 +352,12 @@ java -jar /usr/local/bin/rescale.jar <span class="se">\</span>
 <span class="p">|</span> jq -c <span class="s1">&#39;{code: .code, versionCode: .versions[].versionCode, allowdCoreTypes: .versions[].allowedCoreTypes[]}&#39;</span>
 </pre></div>
 </div>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
-<div class="section" id="id3">
-<h3>コアタイプ<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h3>
+</div>
+<div class="section" id="get-hardware-code">
+<span id="id6"></span><h3>コアタイプコードを得る<a class="headerlink" href="#get-hardware-code" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">RESCALE_API_TOKEN</span><span class="o">=</span>&lt;<span class="s1">&#39;取得したAPIキー&#39;</span>&gt;
 
 java -jar /usr/local/bin/rescale.jar <span class="se">\</span>
@@ -273,7 +390,7 @@ list-info -c <span class="se">\</span>
 <ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
       
         <li><a href="submitjob.html" title="4. ジョブの投入" >前へ</a></li>
-        <li><a href="usecase.html" title="6. ユースケース" >次へ</a></li>
+        <li><a href="proxy.html" title="6. Proxy を越える必要がある時" >次へ</a></li>
         <li><a href="../genindex.html" title="総合索引" >索引</a></li>
         <li><a href="#">top</a></li> 
       
