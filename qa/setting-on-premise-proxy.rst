@@ -19,11 +19,13 @@ Rescale に接続用 White list
 
 Rescaleは、BrowserからでもAPIでも、基本的には、RescaleのPlatform 経由、つまり ``platform.rescale.jp`` で、通信を行います。ただし例外もありあす。
 
+|
+
 **高速ファイル転送時の Cloud Storage へのダイレクトアクセス**
 
 Rescale CLIや、Browserのファイル転送モードで "高速" を選ぶと、ファイル転送の高速化を目的とし、クラウドストレージへ直接アクセスします。
 
-この時、ファイルの暗号化がローカルで行われ、さらにこの暗号化されたファイルを TLSv1.2 で通信、するため、ナマのAPIをキックするときより、セキュリティー的にもより強固になるメリットもあります。
+この時、ファイルの暗号化がローカルで行われ、さらにこの暗号化されたファイルを TLSv1.2 で通信するため、ナマのAPIをキックするときよりセキュリティー的にもより強固になるメリットがあります。
 
 まとめると、``platform.rescale.jp`` の他に、このS3への直接アクセスのFQDN, ``jpprod-rescale-platform.s3-ap-northeast-1.amazonaws.com`` をプロキシーに登録する必要があります。
 
