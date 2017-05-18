@@ -40,6 +40,7 @@ Tips
     qa/how-to-debug
     qa/file-transfer-exeeds-set-budget
     qa/setting-on-premise-proxy
+    qa/rescale-transfer-manager
     cli/setupcli-create-apikey
     cli/setupcli-download-jarfile
 
