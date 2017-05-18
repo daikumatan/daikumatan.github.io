@@ -1,17 +1,19 @@
-FROM centos:latest
+FROM ubuntu:latest
 
-RUN yum update -y && \
-    yum install -y epel-release && \
-    yum install -y make && \
-    yum install -y python-sphinx && \
-    yum install -y python-pip && \
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends apt-utils && \
+    apt-get install -y python-pip && \
+    apt-get install -y python-sphinx && \
+    apt-get install -y make && \
     pip install --upgrade pip && \
     pip install sphinx-autobuild && \
-    pip install sphinx_rtd_theme && \
     pip install sphinxjp.themes.basicstrap && \
     easy_install blockdiag && \
     pip install sphinxcontrib-blockdiag && \
     mkdir /sphinx && \
+    mkdir /script && \
     chmod 777 /sphinx
-    CMD ["/bin/sphinx-autobuild", "/sphinx", "/sphinx/_build/html"]
-
+ADD autobuild_on_docker.sh /script/
+EXPOSE 80
+CMD ["/script/autobuild_on_docker.sh"]

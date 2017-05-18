@@ -39,8 +39,9 @@ Tips
     qa/spot-instance
     qa/how-to-debug
     qa/file-transfer-exeeds-set-budget
-    cli/setupcli-create-apikey.rst
-    cli/setupcli-download-jarfile.rst
+    qa/setting-on-premise-proxy
+    cli/setupcli-create-apikey
+    cli/setupcli-download-jarfile
 
 
 Rescale CLI

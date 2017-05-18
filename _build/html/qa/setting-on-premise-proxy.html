@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>On-premise の Proxy に Rescale 接続用 の whitelist を登録する &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-simplex.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-simplex.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/bootstrap.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '0.1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="top" title="Rescale Documentation 有志のページ 0.1.0 ドキュメント" href="../index.html" />
+    <link rel="next" title="API Key の作成手順" href="../cli/setupcli-create-apikey.html" />
+    <link rel="prev" title="データ転送中に設定した予算を超過した場合" href="file-transfer-exeeds-set-budget.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">On-premise の Proxy に Rescale 接続用 の whitelist を登録する</a><ul>
+<li><a class="reference internal" href="#rescale-white-list">Rescale に接続用 White list</a></li>
+<li><a class="reference internal" href="#file">パケット解析による検証 (File のアップロード)</a><ul>
+<li><a class="reference internal" href="#id1">解析結果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="file-transfer-exeeds-set-budget.html" title="データ転送中に設定した予算を超過した場合" accesskey="P">前へ </a></li>
+              <li><a href="../cli/setupcli-create-apikey.html" title="API Key の作成手順" accesskey="N">次へ </a></li>
+              <li><a href="../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
+            
+            <li class="visible-xs"><a href="../_sources/qa/setting-on-premise-proxy.txt" rel="nofollow">ソースコードを表示</a></li>
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="検索" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+      <!-- row -->
+      <div class="row">
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">On-premise の Proxy に Rescale 接続用 の whitelist を登録する</a><ul>
+<li><a class="reference internal" href="#rescale-white-list">Rescale に接続用 White list</a></li>
+<li><a class="reference internal" href="#file">パケット解析による検証 (File のアップロード)</a><ul>
+<li><a class="reference internal" href="#id1">解析結果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="file-transfer-exeeds-set-budget.html"
+                        title="前の章へ">データ転送中に設定した予算を超過した場合</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="../cli/setupcli-create-apikey.html"
+                        title="次の章へ">API Key の作成手順</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/qa/setting-on-premise-proxy.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" role="search">
+  <h3>クイック検索</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="検索" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="on-premise-proxy-rescale-whitelist">
+<h1>On-premise の Proxy に Rescale 接続用 の whitelist を登録する<a class="headerlink" href="#on-premise-proxy-rescale-whitelist" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>オンプレミスのプロキシーにRescale接続のためのホワイトリストを設定したいなどのご要望がありました。</p>
+<p>そこで、Rescale に接続するための White list に登録するアドレスについて議論します。</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="rescale-white-list">
+<h2>Rescale に接続用 White list<a class="headerlink" href="#rescale-white-list" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>結論から言うと Default ストレージとして Amazon S3 を選択されている場合、下記2つを登録すれば良いでしょう。</p>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">platform.rescale.jp</span></code></li>
+<li><code class="docutils literal"><span class="pre">jpprod-rescale-platform.s3-ap-northeast-1.amazonaws.com</span></code></li>
+</ol>
+<p>Rescaleは、BrowserからでもAPIでも、基本的には、RescaleのPlatform 経由、つまり <code class="docutils literal"><span class="pre">platform.rescale.jp</span></code> で、通信を行います。ただし例外もありあす。</p>
+<p><strong>高速ファイル転送時の Cloud Storage へのダイレクトアクセス</strong></p>
+<p>Rescale CLIや、Browserのファイル転送モードで &#8220;高速&#8221; を選ぶと、ファイル転送の高速化を目的とし、クラウドストレージへ直接アクセスします。</p>
+<p>この時、ファイルの暗号化がローカルで行われ、さらにこの暗号化されたファイルを TLSv1.2 で通信、するため、ナマのAPIをキックするときより、セキュリティー的にもより強固になるメリットもあります。</p>
+<p>まとめると、<code class="docutils literal"><span class="pre">platform.rescale.jp</span></code> の他に、このS3への直接アクセスのFQDN, <code class="docutils literal"><span class="pre">jpprod-rescale-platform.s3-ap-northeast-1.amazonaws.com</span></code> をプロキシーに登録する必要があります。</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="file">
+<h2>パケット解析による検証 (File のアップロード)<a class="headerlink" href="#file" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>少し突っ込んで、<a class="reference external" href="https://www.wireshark.org/download.html">Wireshark</a> をつかってパケット解析をしてみました。</p>
+<p>尚、パケットですが、下図のように <code class="docutils literal"><span class="pre">パケットバイト列</span></code> を選択し、<code class="docutils literal"><span class="pre">文字列</span></code> で <code class="docutils literal"><span class="pre">rescale</span></code> で検索し、抽出しました。</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../_images/wireshark.jpg"><img alt="../_images/wireshark.jpg" src="../_images/wireshark.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+<p>以下結果を示しますが、プロトコル、DNSをみると、ちゃんとjpprod-rescale-platform.s3-ap-northeast-1.amazonaws.com があることが確認できます。</p>
+<p>ちなみに、APIだけ使った場合は、もちろんこのアドレスは表示されません。</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id1">
+<h3>解析結果<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<table border="1" class="docutils" id="id2">
+<caption><span class="caption-text">パケット解析結果, Rescale との通信のみを抽出しているため&#8221;No&#8221; は飛び飛びの値となっている</span><a class="headerlink" href="#id2" title="このテーブルへのパーマリンク">¶</a></caption>
+<colgroup>
+<col width="5%" />
+<col width="5%" />
+<col width="10%" />
+<col width="10%" />
+<col width="5%" />
+<col width="5%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">No.</th>
+<th class="head">Time</th>
+<th class="head">Source</th>
+<th class="head">Destination</th>
+<th class="head">Protocol</th>
+<th class="head">Length</th>
+<th class="head">Info</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>66</td>
+<td>1.666408</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TLSv1.2</td>
+<td>583</td>
+<td>Client Hello</td>
+</tr>
+<tr class="row-odd"><td>67</td>
+<td>1.739548</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>1434</td>
+<td>Server Hello</td>
+</tr>
+<tr class="row-even"><td>68</td>
+<td>1.740004</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>1434</td>
+<td>[TCP segment of a reassembled PDU]</td>
+</tr>
+<tr class="row-odd"><td>69</td>
+<td>1.740079</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62630  &gt;  443 [ACK] Seq=518 Ack=2737 Win=129696 Len=0 TSval=128616939 TSecr=776176988</td>
+</tr>
+<tr class="row-even"><td>70</td>
+<td>1.740442</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>1434</td>
+<td>[TCP segment of a reassembled PDU]</td>
+</tr>
+<tr class="row-odd"><td>71</td>
+<td>1.740447</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>731</td>
+<td>Certificate, Server Key Exchange, Server Hello Done</td>
+</tr>
+<tr class="row-even"><td>72</td>
+<td>1.740538</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62630  &gt;  443 [ACK] Seq=518 Ack=4770 Win=129024 Len=0 TSval=128616939 TSecr=776176988</td>
+</tr>
+<tr class="row-odd"><td>73</td>
+<td>1.741555</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TLSv1.2</td>
+<td>192</td>
+<td>Client Key Exchange, Change Cipher Spec, Encrypted Handshake Message</td>
+</tr>
+<tr class="row-even"><td>74</td>
+<td>1.795048</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>324</td>
+<td>New Session Ticket, Change Cipher Spec, Encrypted Handshake Message</td>
+</tr>
+<tr class="row-odd"><td>75</td>
+<td>1.795127</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62630  &gt;  443 [ACK] Seq=644 Ack=5028 Win=130784 Len=0 TSval=128616994 TSecr=776177002</td>
+</tr>
+<tr class="row-even"><td>76</td>
+<td>1.799505</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>1434</td>
+<td>[TCP segment of a reassembled PDU]</td>
+</tr>
+<tr class="row-odd"><td>77</td>
+<td>1.799506</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TLSv1.2</td>
+<td>382</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>78</td>
+<td>1.854933</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>66</td>
+<td>443  &gt;  62630 [ACK] Seq=5028 Ack=2328 Win=33408 Len=0 TSval=776177017 TSecr=128616998</td>
+</tr>
+<tr class="row-odd"><td>79</td>
+<td>1.863898</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>569</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>80</td>
+<td>1.864044</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>153</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-odd"><td>81</td>
+<td>1.864050</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>100</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>82</td>
+<td>1.864066</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62552  &gt;  443 [ACK] Seq=3380 Ack=14606 Win=4080 Len=0 TSval=128617061 TSecr=776177018</td>
+</tr>
+<tr class="row-odd"><td>83</td>
+<td>1.864109</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62552  &gt;  443 [ACK] Seq=3380 Ack=14693 Win=4093 Len=0 TSval=128617061 TSecr=776177018</td>
+</tr>
+<tr class="row-even"><td>84</td>
+<td>1.864109</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62552  &gt;  443 [ACK] Seq=3380 Ack=14727 Win=4092 Len=0 TSval=128617061 TSecr=776177019</td>
+</tr>
+<tr class="row-odd"><td>85</td>
+<td>1.903496</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>627</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>86</td>
+<td>1.903499</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>100</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-odd"><td>87</td>
+<td>1.903553</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62598  &gt;  443 [ACK] Seq=3402 Ack=1186 Win=4078 Len=0 TSval=128617098 TSecr=776177029</td>
+</tr>
+<tr class="row-even"><td>88</td>
+<td>1.903554</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62598  &gt;  443 [ACK] Seq=3402 Ack=1220 Win=4077 Len=0 TSval=128617098 TSecr=776177029</td>
+</tr>
+<tr class="row-odd"><td>89</td>
+<td>1.984986</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>635</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>90</td>
+<td>1.984991</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>100</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-odd"><td>91</td>
+<td>1.985068</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62630  &gt;  443 [ACK] Seq=2328 Ack=5597 Win=130496 Len=0 TSval=128617178 TSecr=776177049</td>
+</tr>
+<tr class="row-even"><td>92</td>
+<td>1.985068</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62630  &gt;  443 [ACK] Seq=2328 Ack=5631 Win=130464 Len=0 TSval=128617178 TSecr=776177049</td>
+</tr>
+<tr class="row-odd"><td>93</td>
+<td>2.326767</td>
+<td>HuaweiTe_69:79:25</td>
+<td>Spanning-tree-(for-bridges)_00</td>
+<td>STP</td>
+<td>52</td>
+<td>Conf. Root = 32768/0/a4:71:74:69:79:24  Cost = 0  Port = 0x8002</td>
+</tr>
+<tr class="row-even"><td>94</td>
+<td>2.594332</td>
+<td>192.168.100.111</td>
+<td>130.211.38.145</td>
+<td>TLSv1.2</td>
+<td>720</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-odd"><td>95</td>
+<td>2.653859</td>
+<td>130.211.38.145</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>66</td>
+<td>443  &gt;  62613 [ACK] Seq=1 Ack=655 Win=590 Len=0 TSval=2601391496 TSecr=128617785</td>
+</tr>
+<tr class="row-even"><td>96</td>
+<td>2.794428</td>
+<td>130.211.38.145</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>1122</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-odd"><td>97</td>
+<td>2.794536</td>
+<td>192.168.100.111</td>
+<td>130.211.38.145</td>
+<td>TCP</td>
+<td>66</td>
+<td>62613  &gt;  443 [ACK] Seq=655 Ack=1057 Win=4063 Len=0 TSval=128617983 TSecr=2601391634</td>
+</tr>
+<tr class="row-even"><td>98</td>
+<td>3.803909</td>
+<td>192.168.100.111</td>
+<td>192.168.100.1</td>
+<td>DNS</td>
+<td>79</td>
+<td>Standard query 0x0e7a A platform.rescale.jp</td>
+</tr>
+<tr class="row-odd"><td>99</td>
+<td>3.804773</td>
+<td>192.168.100.111</td>
+<td>192.168.100.1</td>
+<td>DNS</td>
+<td>79</td>
+<td>Standard query 0xd15e AAAA platform.rescale.jp</td>
+</tr>
+<tr class="row-even"><td>100</td>
+<td>3.811649</td>
+<td>192.168.100.1</td>
+<td>192.168.100.111</td>
+<td>DNS</td>
+<td>163</td>
+<td>Standard query response 0x0e7a A platform.rescale.jp CNAME ec2-54-64-177-245.ap-northeast-1.compute.amazonaws.com A 54.64.177.245</td>
+</tr>
+<tr class="row-odd"><td>101</td>
+<td>3.812191</td>
+<td>192.168.100.111</td>
+<td>192.168.100.1</td>
+<td>DNS</td>
+<td>114</td>
+<td>Standard query 0xd15e AAAA ec2-54-64-177-245.ap-northeast-1.compute.amazonaws.com</td>
+</tr>
+<tr class="row-even"><td>102</td>
+<td>3.857281</td>
+<td>192.168.100.1</td>
+<td>192.168.100.111</td>
+<td>DNS</td>
+<td>215</td>
+<td>Standard query response 0xd15e AAAA platform.rescale.jp CNAME ec2-54-64-177-245.ap-northeast-1.compute.amazonaws.com SOA dns-external-master.amazon.com</td>
+</tr>
+<tr class="row-odd"><td>103</td>
+<td>3.868714</td>
+<td>192.168.100.1</td>
+<td>192.168.100.111</td>
+<td>DNS</td>
+<td>182</td>
+<td>Standard query response 0xd15e AAAA ec2-54-64-177-245.ap-northeast-1.compute.amazonaws.com SOA dns-external-master.amazon.com</td>
+</tr>
+<tr class="row-even"><td>104</td>
+<td>3.947822</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>78</td>
+<td>62632  &gt;  443 [SYN] Seq=0 Win=65535 Len=0 MSS=1460 WS=32 TSval=128619134 TSecr=0 SACK_PERM=1</td>
+</tr>
+<tr class="row-odd"><td>105</td>
+<td>4.010324</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>74</td>
+<td>443  &gt;  62632 [SYN, ACK] Seq=0 Ack=1 Win=26847 Len=0 MSS=1380 SACK_PERM=1 TSval=776177554 TSecr=128619134 WS=128</td>
+</tr>
+<tr class="row-even"><td>106</td>
+<td>4.010443</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=1 Ack=1 Win=131328 Len=0 TSval=128619196 TSecr=776177554</td>
+</tr>
+<tr class="row-odd"><td>107</td>
+<td>4.010522</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TLSv1.2</td>
+<td>264</td>
+<td>Client Hello</td>
+</tr>
+<tr class="row-even"><td>108</td>
+<td>4.070945</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>1434</td>
+<td>Server Hello</td>
+</tr>
+<tr class="row-odd"><td>109</td>
+<td>4.071372</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>1434</td>
+<td>[TCP segment of a reassembled PDU]</td>
+</tr>
+<tr class="row-even"><td>110</td>
+<td>4.071437</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=199 Ack=2737 Win=129696 Len=0 TSval=128619256 TSecr=776177570</td>
+</tr>
+<tr class="row-odd"><td>111</td>
+<td>4.071959</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>1434</td>
+<td>[TCP segment of a reassembled PDU]</td>
+</tr>
+<tr class="row-even"><td>112</td>
+<td>4.072046</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=199 Ack=4105 Win=131072 Len=0 TSval=128619257 TSecr=776177570</td>
+</tr>
+<tr class="row-odd"><td>113</td>
+<td>4.072250</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>750</td>
+<td>Certificate, Server Key Exchange, Server Hello Done</td>
+</tr>
+<tr class="row-even"><td>114</td>
+<td>4.072294</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=199 Ack=4789 Win=130368 Len=0 TSval=128619257 TSecr=776177570</td>
+</tr>
+<tr class="row-odd"><td>115</td>
+<td>4.094253</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TLSv1.2</td>
+<td>141</td>
+<td>Client Key Exchange</td>
+</tr>
+<tr class="row-even"><td>116</td>
+<td>4.183500</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>66</td>
+<td>443  &gt;  62632 [ACK] Seq=4789 Ack=274 Win=28032 Len=0 TSval=776177599 TSecr=128619278</td>
+</tr>
+<tr class="row-odd"><td>117</td>
+<td>4.183606</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TLSv1.2</td>
+<td>117</td>
+<td>Change Cipher Spec, Hello Request, Hello Request</td>
+</tr>
+<tr class="row-even"><td>118</td>
+<td>4.225823</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>66</td>
+<td>443  &gt;  62632 [ACK] Seq=4789 Ack=325 Win=28032 Len=0 TSval=776177609 TSecr=128619366</td>
+</tr>
+<tr class="row-odd"><td>119</td>
+<td>4.225828</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>117</td>
+<td>Change Cipher Spec, Encrypted Handshake Message</td>
+</tr>
+<tr class="row-even"><td>120</td>
+<td>4.225903</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=325 Ack=4840 Win=131008 Len=0 TSval=128619408 TSecr=776177609</td>
+</tr>
+<tr class="row-odd"><td>121</td>
+<td>4.244756</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TLSv1.2</td>
+<td>243</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>122</td>
+<td>4.319223</td>
+<td>HuaweiTe_69:79:25</td>
+<td>Spanning-tree-(for-bridges)_00</td>
+<td>STP</td>
+<td>52</td>
+<td>Conf. Root = 32768/0/a4:71:74:69:79:24  Cost = 0  Port = 0x8002</td>
+</tr>
+<tr class="row-odd"><td>123</td>
+<td>4.343962</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>66</td>
+<td>443  &gt;  62632 [ACK] Seq=4840 Ack=502 Win=29056 Len=0 TSval=776177639 TSecr=128619426</td>
+</tr>
+<tr class="row-even"><td>124</td>
+<td>4.367708</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>1434</td>
+<td>[TCP segment of a reassembled PDU]</td>
+</tr>
+<tr class="row-odd"><td>125</td>
+<td>4.367725</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>498</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>126</td>
+<td>4.367727</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>100</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-odd"><td>127</td>
+<td>4.367839</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=502 Ack=6640 Win=129248 Len=0 TSval=128619547 TSecr=776177644</td>
+</tr>
+<tr class="row-even"><td>128</td>
+<td>4.367840</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=502 Ack=6674 Win=129216 Len=0 TSval=128619547 TSecr=776177644</td>
+</tr>
+<tr class="row-odd"><td>129</td>
+<td>5.035810</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TLSv1.2</td>
+<td>243</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>130</td>
+<td>5.096455</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>66</td>
+<td>443  &gt;  62632 [ACK] Seq=6674 Ack=679 Win=30080 Len=0 TSval=776177827 TSecr=128620213</td>
+</tr>
+<tr class="row-odd"><td>131</td>
+<td>5.173950</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>570</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>132</td>
+<td>5.174030</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=679 Ack=7178 Win=130560 Len=0 TSval=128620350 TSecr=776177846</td>
+</tr>
+<tr class="row-odd"><td>133</td>
+<td>5.174290</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>1391</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>134</td>
+<td>5.174295</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>100</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-odd"><td>135</td>
+<td>5.174346</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=679 Ack=8503 Win=129728 Len=0 TSval=128620350 TSecr=776177846</td>
+</tr>
+<tr class="row-even"><td>136</td>
+<td>5.174347</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=679 Ack=8537 Win=129696 Len=0 TSval=128620350 TSecr=776177846</td>
+</tr>
+<tr class="row-odd"><td>137</td>
+<td>5.318610</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TLSv1.2</td>
+<td>526</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>138</td>
+<td>5.326451</td>
+<td>192.168.100.111</td>
+<td>17.252.157.4</td>
+<td>TCP</td>
+<td>275</td>
+<td>62437  &gt;  5223 [FIN, PSH, ACK] Seq=1 Ack=1 Win=4104 Len=209 TSval=128620501 TSecr=1827943833</td>
+</tr>
+<tr class="row-odd"><td>139</td>
+<td>5.386390</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>66</td>
+<td>443  &gt;  62632 [ACK] Seq=8537 Ack=1139 Win=31232 Len=0 TSval=776177899 TSecr=128620494</td>
+</tr>
+<tr class="row-even"><td>140</td>
+<td>5.920449</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>1434</td>
+<td>[TCP segment of a reassembled PDU]</td>
+</tr>
+<tr class="row-odd"><td>141</td>
+<td>5.920450</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TLSv1.2</td>
+<td>375</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>142</td>
+<td>5.921363</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>1434</td>
+<td>[TCP segment of a reassembled PDU]</td>
+</tr>
+<tr class="row-odd"><td>143</td>
+<td>5.921363</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TLSv1.2</td>
+<td>387</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>144</td>
+<td>5.995101</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>66</td>
+<td>443  &gt;  62598 [ACK] Seq=1220 Ack=4770 Win=844 Len=0 TSval=776178052 TSecr=128621094</td>
+</tr>
+<tr class="row-odd"><td>145</td>
+<td>5.995118</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>66</td>
+<td>443  &gt;  62598 [ACK] Seq=1220 Ack=5091 Win=844 Len=0 TSval=776178052 TSecr=128621094</td>
+</tr>
+<tr class="row-even"><td>146</td>
+<td>5.995141</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>66</td>
+<td>443  &gt;  62630 [ACK] Seq=5631 Ack=4005 Win=38912 Len=0 TSval=776178052 TSecr=128621094</td>
+</tr>
+<tr class="row-odd"><td>147</td>
+<td>6.045939</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>569</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>148</td>
+<td>6.045945</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>153</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-odd"><td>149</td>
+<td>6.045946</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>100</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>150</td>
+<td>6.046045</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62598  &gt;  443 [ACK] Seq=5091 Ack=1723 Win=4080 Len=0 TSval=128621218 TSecr=776178065</td>
+</tr>
+<tr class="row-odd"><td>151</td>
+<td>6.046046</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62598  &gt;  443 [ACK] Seq=5091 Ack=1810 Win=4077 Len=0 TSval=128621218 TSecr=776178065</td>
+</tr>
+<tr class="row-even"><td>152</td>
+<td>6.046046</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62598  &gt;  443 [ACK] Seq=5091 Ack=1844 Win=4076 Len=0 TSval=128621218 TSecr=776178065</td>
+</tr>
+<tr class="row-odd"><td>153</td>
+<td>6.096209</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>563</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>154</td>
+<td>6.096280</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=1139 Ack=9034 Win=130560 Len=0 TSval=128621267 TSecr=776178077</td>
+</tr>
+<tr class="row-odd"><td>155</td>
+<td>6.096577</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>852</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-even"><td>156</td>
+<td>6.096582</td>
+<td>54.64.177.245</td>
+<td>192.168.100.111</td>
+<td>TLSv1.2</td>
+<td>100</td>
+<td>Application Data</td>
+</tr>
+<tr class="row-odd"><td>157</td>
+<td>6.096630</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=1139 Ack=9820 Win=130272 Len=0 TSval=128621267 TSecr=776178077</td>
+</tr>
+<tr class="row-even"><td>158</td>
+<td>6.096630</td>
+<td>192.168.100.111</td>
+<td>54.64.177.245</td>
+<td>TCP</td>
+<td>66</td>
+<td>62632  &gt;  443 [ACK] Seq=1139 Ack=9854 Win=130240 Len=0 TSval=128621267 TSecr=776178077</td>
+</tr>
+<tr class="row-odd"><td>159</td>
+<td>6.144949</td>
+<td>192.168.100.111</td>
+<td>192.168.100.1</td>
+<td>DNS</td>
+<td>115</td>
+<td>Standard query 0xc7f6 A jpprod-rescale-platform.s3-ap-northeast-1.amazonaws.com</td>
+</tr>
+<tr class="row-even"><td>160</td>
+<td>6.145142</td>
+<td>192.168.100.111</td>
+<td>192.168.100.1</td>
+<td>DNS</td>
+<td>115</td>
+<td>Standard query 0x732a AAAA jpprod-rescale-platform.s3-ap-northeast-1.amazonaws.com</td>
+</tr>
+<tr class="row-odd"><td>161</td>
+<td>6.207167</td>
+<td>192.168.100.1</td>
+<td>192.168.100.111</td>
+<td>DNS</td>
+<td>167</td>
+<td>Standard query response 0xc7f6 A jpprod-rescale-platform.s3-ap-northeast-1.amazonaws.com CNAME s3-r-w.ap-northeast-1.amazonaws.com A 52.219.4.79</td>
+</tr>
+<tr class="row-even"><td>162</td>
+<td>6.207172</td>
+<td>192.168.100.1</td>
+<td>192.168.100.111</td>
+<td>DNS</td>
+<td>233</td>
+<td>Standard query response 0x732a AAAA jpprod-rescale-platform.s3-ap-northeast-1.amazonaws.com CNAME s3-r-w.ap-northeast-1.amazonaws.com SOA ns-1264.awsdns-30.org</td>
+</tr>
+<tr class="row-odd"><td>163</td>
+<td>6.207730</td>
+<td>192.168.100.111</td>
+<td>192.168.100.1</td>
+<td>DNS</td>
+<td>95</td>
+<td>Standard query 0x732a AAAA s3-r-w.ap-northeast-1.amazonaws.com</td>
+</tr>
+<tr class="row-even"><td>164</td>
+<td>6.269701</td>
+<td>192.168.100.1</td>
+<td>192.168.100.111</td>
+<td>DNS</td>
+<td>177</td>
+<td>Standard query response 0x732a AAAA s3-r-w.ap-northeast-1.amazonaws.com SOA ns-1264.awsdns-30.org</td>
+</tr>
+<tr class="row-odd"><td>165</td>
+<td>6.271346</td>
+<td>192.168.100.111</td>
+<td>52.219.4.79</td>
+<td>TCP</td>
+<td>78</td>
+<td>62634  &gt;  443 [SYN] Seq=0 Win=65535 Len=0 MSS=1460 WS=32 TSval=128621440 TSecr=0 SACK_PERM=1</td>
+</tr>
+<tr class="row-even"><td>166</td>
+<td>6.322495</td>
+<td>HuaweiTe_69:79:25</td>
+<td>Spanning-tree-(for-bridges)_00</td>
+<td>STP</td>
+<td>52</td>
+<td>Conf. Root = 32768/0/a4:71:74:69:79:24  Cost = 0  Port = 0x8002</td>
+</tr>
+<tr class="row-odd"><td>167</td>
+<td>6.330202</td>
+<td>52.219.4.79</td>
+<td>192.168.100.111</td>
+<td>TCP</td>
+<td>66</td>
+<td>443  &gt;  62634 [SYN, ACK] Seq=0 Ack=1 Win=65535 Len=0 MSS=1380 WS=256 SACK_PERM=1</td>
+</tr>
+<tr class="row-even"><td>168</td>
+<td>6.330320</td>
+<td>192.168.100.111</td>
+<td>52.219.4.79</td>
+<td>TCP</td>
+<td>54</td>
+<td>62634  &gt;  443 [ACK] Seq=1 Ack=1 Win=262144 Len=0</td>
+</tr>
+<tr class="row-odd"><td>169</td>
+<td>6.330403</td>
+<td>192.168.100.111</td>
+<td>52.219.4.79</td>
+<td>TLSv1.2</td>
+<td>316</td>
+<td>Client Hello</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="file-transfer-exeeds-set-budget.html" title="データ転送中に設定した予算を超過した場合" >前へ</a></li>
+        <li><a href="../cli/setupcli-create-apikey.html" title="API Key の作成手順" >次へ</a></li>
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2017, Daisuke Nagao.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.6.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

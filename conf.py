@@ -36,7 +36,7 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
-    'sphinxjp.themes.basicstrap'
+    'sphinxjp.themes.basicstrap',
 
 #    'sphinx.ext.githubpages',
 ]
@@ -373,11 +373,15 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 #import sphinx_rtd_theme
 #html_theme = "sphinx_rtd_theme"
 #html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+#html_theme_path = ["."]
 
+#import sphinxtheme
 html_theme = 'basicstrap'
 # 下記オプションで内部テーマを変更する事が可能です。※必須ではありません
 # また、これ以外にも細かい設定変更が可能です。
 html_theme_options = {
+    'header_inverse': False,
+    'relbar_inverse': False,
     'inner_theme': True,
     'inner_theme_name': 'bootswatch-simplex',
 }
@@ -385,8 +389,8 @@ html_theme_options = {
 def setup(app):
     app.add_stylesheet('bootstrap.min.css')
 
-[extensions]
-todo_include_todos=True
+#[extensions]
+#todo_include_todos=True
 
 #def setup(app):
 #    app.add_stylesheet('standstone.min')

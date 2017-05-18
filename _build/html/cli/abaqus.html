@@ -174,7 +174,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">update:</th><td class="field-body">2017 年 05 月 12 日</td>
+<tr class="field-odd field"><th class="field-name">update:</th><td class="field-body">2017 年 05 月 18 日</td>
 </tr>
 <tr class="field-even field"><th class="field-name">author:</th><td class="field-body">Daisuke Nagao</td>
 </tr>
@@ -189,7 +189,7 @@
 <h2>7.1. スクリプトのダウンロード<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>下記をダウンロードしてください。</p>
 <ul class="simple">
-<li><a class="reference download internal" href="../_downloads/abaqus_rescale.py" download=""><code class="xref download docutils literal"><span class="pre">src/win/abaqus_rescale.py</span></code></a></li>
+<li><code class="xref download docutils literal"><span class="pre">src/win/abaqus_rescale.py</span></code></li>
 </ul>
 <p>下記のソースコード例を参考に、ダウンロードしたスクリプトを修正します</p>
 <div class="line-block">
@@ -239,7 +239,7 @@
 </div>
 <p>このファイルをバッチファイルにしても便利です。Rescale CLIを実行するフォルダでクリックすれば良いです。</p>
 <ul class="simple">
-<li>Download: <a class="reference download internal" href="../_downloads/test.bat" download=""><code class="xref download docutils literal"><span class="pre">src/win/test.bat</span></code></a></li>
+<li>Download: <code class="xref download docutils literal"><span class="pre">src/win/test.bat</span></code></li>
 </ul>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -247,188 +247,6 @@
 </div>
 <div class="section" id="id4">
 <h2>7.3. ソースコード例<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="literal-block-wrapper container" id="abaqus-rescale-py">
-<div class="code-block-caption"><span class="caption-text">abaqus_rescale.py</span><a class="headerlink" href="#abaqus-rescale-py" title="このコードへのパーマリンク">¶</a></div>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89</pre></div></td><td class="code"><div class="highlight"><pre><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="c1">################################################################</span>
-<span class="c1"># download_files: files you want to download</span>
-<span class="c1"># rescalecli: the path you stored rescale.jar</span>
-<span class="c1"># runscript_name: this script is sent to rescale by rescale.jar</span>
-<span class="c1">#                 and executed by rescale platform.</span>
-<span class="c1">################################################################</span>
-<span class="hll"><span class="n">download_files</span> <span class="o">=</span> <span class="s2">&quot;*.log&quot;</span>
-</span><span class="hll"><span class="n">rescalecli</span> <span class="o">=</span> <span class="s2">&quot;C:/rescale/rescale.jar&quot;</span>
-</span><span class="n">runscript_name</span> <span class="o">=</span> <span class="s2">&quot;submit.sh&quot;</span>
-
-<span class="c1">################################################################</span>
-
-
-
-<span class="k">def</span> <span class="nf">create_run_script</span><span class="p">(</span><span class="n">abaqus_info</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">script_name</span><span class="p">):</span>
-
-    <span class="n">cpus</span> <span class="o">=</span> <span class="n">abaqus_info</span><span class="p">[</span><span class="s1">&#39;cpus&#39;</span><span class="p">]</span>
-    <span class="n">job</span> <span class="o">=</span> <span class="n">abaqus_info</span><span class="p">[</span><span class="s1">&#39;job&#39;</span><span class="p">]</span>
-    <span class="n">scratch</span> <span class="o">=</span> <span class="n">abaqus_info</span><span class="p">[</span><span class="s1">&#39;scratch&#39;</span><span class="p">]</span>
-
-    <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;abaqus &quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-
-    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;#!/bin/sh -f</span>
-<span class="s2">    #RESCALE_NAME=Abaqus_from_isight_</span><span class="si">%(job)s</span><span class="s2"></span>
-<span class="s2">    #RESCALE_CORES=</span><span class="si">%(cpus)s</span><span class="s2"></span>
-<span class="s2">    #RESCALE_CORE_TYPE=hpc-3</span>
-<span class="s2">    #RESCALE_LOW_PRIORITY=true</span>
-<span class="s2">    #RESCALE_ANALYSIS=abaqus</span>
-<span class="s2">    #RESCALE_ANALYSIS_VERSION=2016.extended-pcmpi</span>
-<span class="s2">    #USE_RESCALE_LICENSE</span>
-<span class="s2">    </span><span class="si">%(cmd)s</span><span class="se">\n</span><span class="s2"></span>
-<span class="s2">    &quot;&quot;&quot;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
-
-    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">script_name</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="c1"># 書き込みモードで開く</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;    &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span> <span class="c1">#</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># ファイルを閉じる</span>
-
-<span class="k">def</span> <span class="nf">extract_abaqus_info</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-    <span class="n">scratch</span> <span class="o">=</span> <span class="s2">&quot;${PWD}/tmp&quot;</span>
-
-    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-        <span class="k">if</span> <span class="n">arg</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;cpus=&#39;</span><span class="p">):</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
-            <span class="n">np</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">arg</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;job=&#39;</span><span class="p">):</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
-            <span class="n">job</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">arg</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;scratch=&#39;</span><span class="p">):</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">)</span>
-            <span class="n">scratch</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-    <span class="n">flags</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">flags</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;cpus&quot;</span> <span class="p">:</span> <span class="n">np</span><span class="p">,</span>
-                <span class="s2">&quot;job&quot;</span> <span class="p">:</span> <span class="n">job</span><span class="p">,</span>
-                <span class="s2">&quot;scratch&quot;</span> <span class="p">:</span> <span class="n">scratch</span>
-            <span class="p">}</span>
-
-    <span class="k">return</span> <span class="n">flags</span>
-
-<span class="k">def</span> <span class="nf">execute_rescalecli</span><span class="p">(</span><span class="n">rescalecli</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">runscript</span><span class="p">,</span> <span class="n">download_files</span><span class="p">):</span>
-    <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    java -jar </span><span class="si">%(rescalecli)s</span><span class="s2"> </span><span class="se">\</span>
-<span class="s2">    -X https://platform.rescale.jp/ submit </span><span class="se">\</span>
-<span class="s2">    -p </span><span class="si">%(token)s</span><span class="s2"> -E -i </span><span class="si">%(runscript)s</span><span class="s2"> -f </span><span class="si">%(download_files)s</span><span class="s2"></span>
-<span class="s2">    &quot;&quot;&quot;</span> <span class="o">%</span> <span class="nb">locals</span><span class="p">()</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
-    <span class="n">chk</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span> <span class="n">cmd</span> <span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">chk</span>
-
-
-
-<span class="c1"># setup your token from os-enviroment-variable</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s1">&#39;RESCALE_API_TOKEN&#39;</span><span class="p">:</span>
-        <span class="n">token</span> <span class="o">=</span> <span class="n">val</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
-
-<span class="c1"># get arg-values &amp; extract num_procs, jobname, scratch path</span>
-<span class="n">args</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span>
-<span class="n">abq_info</span> <span class="o">=</span> <span class="n">extract_abaqus_info</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-<span class="n">create_run_script</span><span class="p">(</span><span class="n">abq_info</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">runscript_name</span><span class="p">)</span>
-<span class="n">execute_rescalecli</span><span class="p">(</span><span class="n">rescalecli</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">runscript_name</span><span class="p">,</span> <span class="n">download_files</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
-</div>
 </div>
 </div>
 
