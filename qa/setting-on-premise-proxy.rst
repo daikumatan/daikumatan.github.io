@@ -2,6 +2,9 @@
 On-premise の Proxy に Rescale 接続用 の whitelist を登録する
 ##############################################################
 
+:update: |today|
+:author: Daisuke Nagao
+
 オンプレミスのプロキシーにRescale接続のためのホワイトリストを設定したいなどのご要望がありました。
 
 そこで、Rescale に接続するための White list に登録するアドレスについて議論します。
@@ -42,6 +45,8 @@ Rescale CLIや、Browserのファイル転送モードで "高速" を選ぶと�
 
 .. image:: image/wireshark.jpg
     :scale: 25%
+
+|
 
 以下結果を示しますが、プロトコル、DNSをみると、ちゃんとjpprod-rescale-platform.s3-ap-northeast-1.amazonaws.com があることが確認できます。
 

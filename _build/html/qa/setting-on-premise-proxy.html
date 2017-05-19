@@ -174,6 +174,16 @@
                   
   <div class="section" id="on-premise-proxy-rescale-whitelist">
 <h1>On-premise の Proxy に Rescale 接続用 の whitelist を登録する<a class="headerlink" href="#on-premise-proxy-rescale-whitelist" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">update:</th><td class="field-body">2017 年 05 月 18 日</td>
+</tr>
+<tr class="field-even field"><th class="field-name">author:</th><td class="field-body">Daisuke Nagao</td>
+</tr>
+</tbody>
+</table>
 <p>オンプレミスのプロキシーにRescale接続のためのホワイトリストを設定したいなどのご要望がありました。</p>
 <p>そこで、Rescale に接続するための White list に登録するアドレスについて議論します。</p>
 <div class="line-block">
@@ -206,6 +216,9 @@
 <div class="line"><br /></div>
 </div>
 <a class="reference internal image-reference" href="../_images/wireshark.jpg"><img alt="../_images/wireshark.jpg" src="../_images/wireshark.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p>以下結果を示しますが、プロトコル、DNSをみると、ちゃんとjpprod-rescale-platform.s3-ap-northeast-1.amazonaws.com があることが確認できます。</p>
 <p>ちなみに、APIだけ使った場合は、もちろんこのアドレスは表示されません。</p>
 <div class="line-block">
