@@ -41,6 +41,7 @@ Tips
     qa/file-transfer-exeeds-set-budget
     qa/setting-on-premise-proxy
     qa/rescale-transfer-manager
+    qa/inbrowser-desktops-copypaste
     cli/setupcli-create-apikey
     cli/setupcli-download-jarfile
 
