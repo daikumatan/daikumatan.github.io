@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     
-    <title>“低優先度” で JOB を実行するとどうなるの? &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
+    <title>ブラウザ内仮想デスクトップでコピー＆ペーストしたい &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -50,8 +50,8 @@
 <script type="text/javascript">
 </script>
     <link rel="top" title="Rescale Documentation 有志のページ 0.1.0 ドキュメント" href="../index.html" />
-    <link rel="next" title="簡単に Debug する方法 (計算が流れないとき..)" href="how-to-debug.html" />
-    <link rel="prev" title="JOB ID とは何？" href="jobid.html" /> 
+    <link rel="next" title="API Key の作成手順" href="../cli/setupcli-create-apikey.html" />
+    <link rel="prev" title="Rescaleファイル転送ツールで特定のファイルだけダウンロードしたい" href="rescale-transfer-manager.html" /> 
   </head>
   <body role="document">
     <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
@@ -67,27 +67,13 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown visible-xs">
-                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
-                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
-                <ul>
-<li><a class="reference internal" href="#">&#8220;低優先度&#8221; で JOB を実行するとどうなるの?</a><ul>
-<li><a class="reference internal" href="#iaas">IaaS 側の仕組み</a></li>
-<li><a class="reference internal" href="#rescale">Rescale を使うことでリスクを軽減</a></li>
-<li><a class="reference internal" href="#id1">それでも強制ターミネートが起こった場合</a></li>
-</ul>
-</li>
-</ul>
-
-                </ul>
-              </li>
 
             
-              <li><a href="jobid.html" title="JOB ID とは何？" accesskey="P">前へ </a></li>
-              <li><a href="how-to-debug.html" title="簡単に Debug する方法 (計算が流れないとき..)" accesskey="N">次へ </a></li>
+              <li><a href="rescale-transfer-manager.html" title="Rescaleファイル転送ツールで特定のファイルだけダウンロードしたい" accesskey="P">前へ </a></li>
+              <li><a href="../cli/setupcli-create-apikey.html" title="API Key の作成手順" accesskey="N">次へ </a></li>
               <li><a href="../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
             
-            <li class="visible-xs"><a href="../_sources/qa/spot-instance.txt" rel="nofollow">ソースコードを表示</a></li>
+            <li class="visible-xs"><a href="../_sources/qa/inbrowser-desktops-copypaste.txt" rel="nofollow">ソースコードを表示</a></li>
 
             <li class="visible-xs">
                 <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
@@ -119,26 +105,16 @@
          
 <div class="col-md-3 hidden-xs" id="sidebar-wrapper">
   <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
-  <h3><a href="../index.html">目次</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">&#8220;低優先度&#8221; で JOB を実行するとどうなるの?</a><ul>
-<li><a class="reference internal" href="#iaas">IaaS 側の仕組み</a></li>
-<li><a class="reference internal" href="#rescale">Rescale を使うことでリスクを軽減</a></li>
-<li><a class="reference internal" href="#id1">それでも強制ターミネートが起こった場合</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="jobid.html"
-                        title="前の章へ">JOB ID とは何？</a></p>
+  <p class="topless"><a href="rescale-transfer-manager.html"
+                        title="前の章へ">Rescaleファイル転送ツールで特定のファイルだけダウンロードしたい</a></p>
   <h4>次のトピックへ</h4>
-  <p class="topless"><a href="how-to-debug.html"
-                        title="次の章へ">簡単に Debug する方法 (計算が流れないとき..)</a></p>
+  <p class="topless"><a href="../cli/setupcli-create-apikey.html"
+                        title="次の章へ">API Key の作成手順</a></p>
   <div role="note" aria-label="source link">
     <h3>このページ</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/qa/spot-instance.txt"
+      <li><a href="../_sources/qa/inbrowser-desktops-copypaste.txt"
             rel="nofollow">ソースコードを表示</a></li>
     </ul>
    </div>
@@ -168,47 +144,22 @@
               <div class="bodywrapper">
                 <div class="body">
                   
-  <div class="section" id="job">
-<h1>&#8220;低優先度&#8221; で JOB を実行するとどうなるの?<a class="headerlink" href="#job" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <div class="section" id="id1">
+<h1>ブラウザ内仮想デスクトップでコピー＆ペーストしたい<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">2017 年 05 月 19 日</td>
+<tr class="field-odd field"><th class="field-name">date:</th><td class="field-body">May 22, 2017</td>
 </tr>
-<tr class="field-even field"><th class="field-name">author:</th><td class="field-body">Daisuke Nagao</td>
+<tr class="field-even field"><th class="field-name">author:</th><td class="field-body">Shinnosuke Furuya</td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="iaas">
-<h2>IaaS 側の仕組み<a class="headerlink" href="#iaas" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>一部のパブリッククラウドでは、データセンタの需要に応じて、安くインスタンスを提供する仕組みがあります。ただし、需要が逼迫するとインスタンスが強制ターミネートされるリスクがあります。</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
-<div class="section" id="rescale">
-<h2>Rescale を使うことでリスクを軽減<a class="headerlink" href="#rescale" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>内部的に、変動するインスタンス価格の履歴を解析して、強制ターミネートされるリスクを軽減しています。その代わり、強制ターミネートされるリスクが高い時は計算は流れません(iのアイコンが赤い時)。安全になるまで待ちます。</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
-<div class="section" id="id1">
-<h2>それでも強制ターミネートが起こった場合<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>HWに関してはスタートに戻り、通常ジョブとして再投入されます</p>
-<ul class="simple">
-<li>即刻(on-demand) ジョブとして再投入されます</li>
-<li>再投入時の料金は 即刻(on-demand) 価格です</li>
-</ul>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">警告</p>
-<p class="last"><strong>SWに関しては適応されません</strong> SWに関してはISV様とお客様との取引となっているため、上記の仕組みは適応されず、強制ターミネートされるまでの時間も含め課金されます。</p>
-</div>
-</div>
+<p>ブラウザ内仮想デスクトップを起動します。
+右上の方につまみがあり、そこをクリックするとコピー＆ペーストするための箱が出てきます。</p>
+<a class="reference internal image-reference" href="../_images/desktop-copypaste1.png"><img alt="../_images/desktop-copypaste1.png" src="../_images/desktop-copypaste1.png" style="width: 307.2px; height: 293.4px;" /></a>
+<a class="reference internal image-reference" href="../_images/desktop-copypaste2.png"><img alt="../_images/desktop-copypaste2.png" src="../_images/desktop-copypaste2.png" style="width: 308.4px; height: 297.0px;" /></a>
 </div>
 
 
@@ -230,8 +181,8 @@
     </ul>
 <ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
       
-        <li><a href="jobid.html" title="JOB ID とは何？" >前へ</a></li>
-        <li><a href="how-to-debug.html" title="簡単に Debug する方法 (計算が流れないとき..)" >次へ</a></li>
+        <li><a href="rescale-transfer-manager.html" title="Rescaleファイル転送ツールで特定のファイルだけダウンロードしたい" >前へ</a></li>
+        <li><a href="../cli/setupcli-create-apikey.html" title="API Key の作成手順" >次へ</a></li>
         <li><a href="../genindex.html" title="総合索引" >索引</a></li>
         <li><a href="#">top</a></li> 
       
