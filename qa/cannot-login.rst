@@ -2,8 +2,9 @@
 ログインできない
 #####################################
 
-:date: |today|
+:date: June 6th, 2017
 :author: Daisuke Nagao
+:affiliation: Rescale Japan
 
 良くある原因と対策
 ====================

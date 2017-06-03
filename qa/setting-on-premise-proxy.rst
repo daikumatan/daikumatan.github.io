@@ -2,7 +2,7 @@
 On-premise の Proxy に Rescale 接続用 の whitelist を登録する
 ##############################################################
 
-:update: |today|
+:update: June 6th, 2017 
 :author: Daisuke Nagao
 
 オンプレミスのプロキシーにRescale接続のためのホワイトリストを設定したいなどのご要望がありました。

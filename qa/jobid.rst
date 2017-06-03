@@ -2,8 +2,9 @@
 JOB ID とは何？
 #####################################
 
-:Date: |today|
+:date: June 6th, 2017
 :author: Daisuke Nagao
+:affiliation: Rescale Japan
 
 JOB ID とは
 ==========================

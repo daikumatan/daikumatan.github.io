@@ -2,8 +2,9 @@
 "低優先度" で JOB を実行するとどうなるの?
 ##########################################
 
-:date: |today|
+:date: June 6th, 2017
 :author: Daisuke Nagao
+:affiliation: Rescale Japan
 
 IaaS 側の仕組み
 ================

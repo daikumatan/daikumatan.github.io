@@ -3,8 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-:Date: |today|
+:date: June 6th, 2017
 :author: Daisuke Nagao
+:affiliation: Rescale Japan
 
 ..
     .. contents:: Topic
