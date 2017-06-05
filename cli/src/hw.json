@@ -1,5 +1,27 @@
 {
   "hasSsd": false,
+  "code": "bauxite",
+  "compute": null,
+  "name": "Bauxite",
+  "isDeprecated": false,
+  "price": 40,
+  "remoteVizAllowed": false,
+  "storage": 30,
+  "lowPriorityPrice": null,
+  "walltimeRequired": false,
+  "displayOrder": 4,
+  "io": "100 Gb/s",
+  "memory": 4571,
+  "cores": [
+    28
+  ],
+  "isPrimary": false,
+  "processorInfo": "NVIDIA P100-enabled, Intel Xeon E5-2680 v4 (Broadwell)",
+  "storageIo": "",
+  "description": ""
+}
+{
+  "hasSsd": false,
   "code": "bronze",
   "compute": null,
   "name": "Bronze",
@@ -29,7 +51,7 @@
   "price": 24,
   "remoteVizAllowed": false,
   "storage": 40,
-  "lowPriorityPrice": "12.000",
+  "lowPriorityPrice": null,
   "walltimeRequired": true,
   "displayOrder": 4,
   "io": "56 Gb/s",
@@ -313,7 +335,7 @@
   "compute": "5.50",
   "name": "Platinum",
   "isDeprecated": false,
-  "price": 0.03,
+  "price": 10,
   "remoteVizAllowed": false,
   "storage": 1,
   "lowPriorityPrice": null,

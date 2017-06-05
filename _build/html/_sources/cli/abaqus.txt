@@ -2,9 +2,8 @@
 USECASE1: Rescale CLI on Windows
 ##############################################################
 
-:Date: June 6th, 2017
+:update: June 6th, 2017 
 :author: Daisuke Nagao
-:Affiliation: Rescale Japan
 
 Windows上からつかってみます。Rescale CLIをつかうことが目的です。
 

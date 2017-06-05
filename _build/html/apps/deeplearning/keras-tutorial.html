@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>1. KerasのチュートリアルジョブをCloneしてRescale操作の概要をつかむ &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../../_static/css/bootstrap3/bootswatch-simplex.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../../_static/css/adjust_theme/bootswatch-simplex.css" type="text/css" />
+
+<link rel="stylesheet" href="../../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/bootstrap.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../../',
+            VERSION:     '0.1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="top" title="Rescale Documentation 有志のページ 0.1.0 ドキュメント" href="../../index.html" />
+    <link rel="next" title="2. Rescale CLI/API 事前準備" href="setup.html" />
+    <link rel="prev" title="[LS-DYNA on Rescale] Hands-on 資料" href="../ls-dyna/ls-dyna.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">1. KerasのチュートリアルジョブをCloneしてRescale操作の概要をつかむ</a><ul>
+<li><a class="reference internal" href="#id1">1.1. ジョブの作成</a><ul>
+<li><a class="reference internal" href="#id2">1.1.1. ジョブのインポート</a></li>
+<li><a class="reference internal" href="#clone">1.1.2. ジョブの Clone</a></li>
+<li><a class="reference internal" href="#id4">1.1.3. 入力ファイルの設定</a></li>
+<li><a class="reference internal" href="#id5">1.1.4. アプリケーションの設定</a></li>
+<li><a class="reference internal" href="#hw">1.1.5. HWの設定</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">1.2. ジョブの実行 (学習の開始)</a><ul>
+<li><a class="reference internal" href="#id7">1.2.1. ジョブの実行</a></li>
+<li><a class="reference internal" href="#id8">1.2.2. クラスタの起動確認</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">1.3. 実行中のジョブ確認</a><ul>
+<li><a class="reference internal" href="#id10">1.3.1. 標準出力の確認</a></li>
+<li><a class="reference internal" href="#in-browser-ssh">1.3.2. In Browser SSH</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="../ls-dyna/ls-dyna.html" title="[LS-DYNA on Rescale] Hands-on 資料" accesskey="P">前へ </a></li>
+              <li><a href="setup.html" title="2. Rescale CLI/API 事前準備" accesskey="N">次へ </a></li>
+              <li><a href="../../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
+            
+            <li class="visible-xs"><a href="../../_sources/apps/deeplearning/keras-tutorial.txt" rel="nofollow">ソースコードを表示</a></li>
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="検索" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+      <!-- row -->
+      <div class="row">
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. KerasのチュートリアルジョブをCloneしてRescale操作の概要をつかむ</a><ul>
+<li><a class="reference internal" href="#id1">1.1. ジョブの作成</a><ul>
+<li><a class="reference internal" href="#id2">1.1.1. ジョブのインポート</a></li>
+<li><a class="reference internal" href="#clone">1.1.2. ジョブの Clone</a></li>
+<li><a class="reference internal" href="#id4">1.1.3. 入力ファイルの設定</a></li>
+<li><a class="reference internal" href="#id5">1.1.4. アプリケーションの設定</a></li>
+<li><a class="reference internal" href="#hw">1.1.5. HWの設定</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">1.2. ジョブの実行 (学習の開始)</a><ul>
+<li><a class="reference internal" href="#id7">1.2.1. ジョブの実行</a></li>
+<li><a class="reference internal" href="#id8">1.2.2. クラスタの起動確認</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">1.3. 実行中のジョブ確認</a><ul>
+<li><a class="reference internal" href="#id10">1.3.1. 標準出力の確認</a></li>
+<li><a class="reference internal" href="#in-browser-ssh">1.3.2. In Browser SSH</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="../ls-dyna/ls-dyna.html"
+                        title="前の章へ">[LS-DYNA on Rescale] Hands-on 資料</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="setup.html"
+                        title="次の章へ">2. Rescale CLI/API 事前準備</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/apps/deeplearning/keras-tutorial.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" role="search">
+  <h3>クイック検索</h3>
+  <form class="search form-inline" action="../../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="検索" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="kerasclonerescale">
+<h1>1. KerasのチュートリアルジョブをCloneしてRescale操作の概要をつかむ<a class="headerlink" href="#kerasclonerescale" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">目的:</th><td class="field-body">クローンの機能を使いこなし、ゼロベースの設定なしにジョブを実行することを学ぶ</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id1">
+<h2>1.1. ジョブの作成<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id2">
+<h3>1.1.1. ジョブのインポート<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>RescaleのJP環境へ <a class="reference external" href="https://platform.rescale.jp/">ログイン</a> します。</p>
+<p>ログイン後、こちらをクリックしてモデルをインポートしてください(jp環境のみ)</p>
+<ul class="simple">
+<li><a class="reference external" href="https://platform.rescale.jp/jobs/CGrXc/">https://platform.rescale.jp/jobs/CGrXc/</a></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="clone">
+<h3>1.1.2. ジョブの Clone<a class="headerlink" href="#clone" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>インポートしたジョブをテンプレートに新しいジョブを実行します</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/clone-job.jpg"><img alt="../../_images/clone-job.jpg" src="../../_images/clone-job.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>1.1.3. 入力ファイルの設定<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li>必要に応じて、ジョブ名を任意のジョブ名に変更します</li>
+<li>必要に応じて、<code class="docutils literal"><span class="pre">入力ファイル指定</span></code> の中のファイルを入れ替えます (今回は変更する必要はありません)</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/inputfile.jpg"><img alt="../../_images/inputfile.jpg" src="../../_images/inputfile.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>1.1.4. アプリケーションの設定<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">ソフトウェアのアイコン <code class="docutils literal"><span class="pre">Keras</span></code> をクリックします</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">バージョン</span></code> を確認します(今回は変更する必要はありません)</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">コマンド</span></code> を編集します。今回は以下のように``time`` コマンドと、最後にechoコマンドを追記します)</p>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span class="nb">time</span> python train-unet-iou.py
+rm -rf object-dataset object-detection-crowdai
+<span class="nb">echo</span> <span class="s2">&quot;my job is finish&quot;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/apps.jpg"><img alt="../../_images/apps.jpg" src="../../_images/apps.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="hw">
+<h3>1.1.5. HWの設定<a class="headerlink" href="#hw" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">ハードウェア選択</span></code> のアイコンをクリックします</li>
+<li>選択されているコアを確認します。(i) のマークが緑であれば、<code class="docutils literal"><span class="pre">低優先度</span></code> を選択します</li>
+<li><code class="docutils literal"><span class="pre">コア数</span></code> を確認します</li>
+<li>コア数に応じて、<code class="docutils literal"><span class="pre">ハードウェアの概要</span></code> に表示されているスペックと <code class="docutils literal"><span class="pre">毎時料金</span></code> が動的に変化することを確認します</li>
+<li><code class="docutils literal"><span class="pre">最長ジョブ実行時間</span></code> を入力します。この学習は半日程度かかるので今回は &#8220;2&#8221; と入力して、強制終了させます</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/hw.jpg"><img alt="../../_images/hw.jpg" src="../../_images/hw.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>1.2. ジョブの実行 (学習の開始)<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id7">
+<h3>1.2.1. ジョブの実行<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">実行</span></code> をクリックします</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/submit.jpg"><img alt="../../_images/submit.jpg" src="../../_images/submit.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>1.2.2. クラスタの起動確認<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>実行ボタンクリック後、下図に自動的に遷移します</p>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">検証中</span></code> にチェックがついて、<code class="docutils literal"><span class="pre">クラスタ起動中</span></code> になっていることを確認します</li>
+<li><code class="docutils literal"><span class="pre">ジョブログ</span></code> に <code class="docutils literal"><span class="pre">Starting</span> <span class="pre">Server(s)</span></code> になっていることを確認します</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/startjob.jpg"><img alt="../../_images/startjob.jpg" src="../../_images/startjob.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>1.3. 実行中のジョブ確認<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id10">
+<h3>1.3.1. 標準出力の確認<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">ファイル</span></code> の検索窓に <code class="docutils literal"><span class="pre">process_output.log</span></code> と入力します</li>
+<li><code class="docutils literal"><span class="pre">テール</span></code> 内の黒い枠に tensorFlow が標準出力に出すログが表示されていることを確認します</li>
+<li>公開鍵を設定していれば、ここに ssh ログインするためのコマンドが表示されます</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/monitorjob.jpg"><img alt="../../_images/monitorjob.jpg" src="../../_images/monitorjob.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="in-browser-ssh">
+<h3>1.3.2. In Browser SSH<a class="headerlink" href="#in-browser-ssh" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">SSH</span></code> 内の <code class="docutils literal"><span class="pre">サーバーIP</span></code> をクリックします</li>
+<li>ブラウザー内に、計算ノード(学習しているマシン)の ターミナルが表示されたことを確認し、また適当なコマンドを実行できることを確認します。</li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/inbrowserssh1.jpg"><img alt="../../_images/inbrowserssh1.jpg" src="../../_images/inbrowserssh1.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/inbrowserssh2.jpg"><img alt="../../_images/inbrowserssh2.jpg" src="../../_images/inbrowserssh2.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="../ls-dyna/ls-dyna.html" title="[LS-DYNA on Rescale] Hands-on 資料" >前へ</a></li>
+        <li><a href="setup.html" title="2. Rescale CLI/API 事前準備" >次へ</a></li>
+        <li><a href="../../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2017, Daisuke Nagao.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.6.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

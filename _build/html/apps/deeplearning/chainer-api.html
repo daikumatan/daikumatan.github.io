@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>5. Chaniner Hands-on (CLI/API編) &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../../_static/css/bootstrap3/bootswatch-simplex.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../../_static/css/adjust_theme/bootswatch-simplex.css" type="text/css" />
+
+<link rel="stylesheet" href="../../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/bootstrap.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../../',
+            VERSION:     '0.1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="top" title="Rescale Documentation 有志のページ 0.1.0 ドキュメント" href="../../index.html" />
+    <link rel="next" title="ログインできない" href="../../qa/cannot-login.html" />
+    <link rel="prev" title="4. Chaniner Hands-on (CLI編)" href="chainer-cli1.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">5. Chaniner Hands-on (CLI/API編)</a><ul>
+<li><a class="reference internal" href="#id1">5.1. 事前準備</a><ul>
+<li><a class="reference internal" href="#rescale-cli-api">5.1.1. Rescale CLI/API設定</a></li>
+<li><a class="reference internal" href="#id2">5.1.2. 必要変数の設定確認</a></li>
+<li><a class="reference internal" href="#id4">5.1.3. 実行ディレクトリーの作成</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">5.2. ファイルのアップロード</a><ul>
+<li><a class="reference internal" href="#id7">5.2.1. アップロードするサンプルの準備</a></li>
+<li><a class="reference internal" href="#id">5.2.2. ファイルのアップロードとファイルIDの取得</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-job">5.3. ジョブの作成 Create Job</a><ul>
+<li><a class="reference internal" href="#json">5.3.1. JSONにより計算環境を定義する</a></li>
+<li><a class="reference internal" href="#id15">5.3.2. ジョブを生成する</a></li>
+<li><a class="reference internal" href="#id19">5.3.3. ジョブ生成確認</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#submit-job">5.4. ジョブの実行 Submit Job</a></li>
+<li><a class="reference internal" href="#id22">5.5. ジョブのモニタリング</a></li>
+<li><a class="reference internal" href="#id25">5.6. ファイルのダウンロード</a><ul>
+<li><a class="reference internal" href="#rescale-cli">5.6.1. Rescale CLIによるファイルダウンロード</a></li>
+<li><a class="reference internal" href="#id29">5.6.2. ダウンロードファイルの確認</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="chainer-cli1.html" title="4. Chaniner Hands-on (CLI編)" accesskey="P">前へ </a></li>
+              <li><a href="../../qa/cannot-login.html" title="ログインできない" accesskey="N">次へ </a></li>
+              <li><a href="../../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
+            
+            <li class="visible-xs"><a href="../../_sources/apps/deeplearning/chainer-api.txt" rel="nofollow">ソースコードを表示</a></li>
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="検索" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+      <!-- row -->
+      <div class="row">
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. Chaniner Hands-on (CLI/API編)</a><ul>
+<li><a class="reference internal" href="#id1">5.1. 事前準備</a><ul>
+<li><a class="reference internal" href="#rescale-cli-api">5.1.1. Rescale CLI/API設定</a></li>
+<li><a class="reference internal" href="#id2">5.1.2. 必要変数の設定確認</a></li>
+<li><a class="reference internal" href="#id4">5.1.3. 実行ディレクトリーの作成</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">5.2. ファイルのアップロード</a><ul>
+<li><a class="reference internal" href="#id7">5.2.1. アップロードするサンプルの準備</a></li>
+<li><a class="reference internal" href="#id">5.2.2. ファイルのアップロードとファイルIDの取得</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-job">5.3. ジョブの作成 Create Job</a><ul>
+<li><a class="reference internal" href="#json">5.3.1. JSONにより計算環境を定義する</a></li>
+<li><a class="reference internal" href="#id15">5.3.2. ジョブを生成する</a></li>
+<li><a class="reference internal" href="#id19">5.3.3. ジョブ生成確認</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#submit-job">5.4. ジョブの実行 Submit Job</a></li>
+<li><a class="reference internal" href="#id22">5.5. ジョブのモニタリング</a></li>
+<li><a class="reference internal" href="#id25">5.6. ファイルのダウンロード</a><ul>
+<li><a class="reference internal" href="#rescale-cli">5.6.1. Rescale CLIによるファイルダウンロード</a></li>
+<li><a class="reference internal" href="#id29">5.6.2. ダウンロードファイルの確認</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="chainer-cli1.html"
+                        title="前の章へ">4. Chaniner Hands-on (CLI編)</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="../../qa/cannot-login.html"
+                        title="次の章へ">ログインできない</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/apps/deeplearning/chainer-api.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" role="search">
+  <h3>クイック検索</h3>
+  <form class="search form-inline" action="../../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="検索" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="chaniner-hands-on-cli-api">
+<h1>5. Chaniner Hands-on (CLI/API編)<a class="headerlink" href="#chaniner-hands-on-cli-api" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>本ハンズオンは、コード部分をひたすらコピーして、Linux のTerminalに貼り付けてください。</p>
+<p>間違わなければ、最後まで実行できるようになっています。</p>
+<p>Rescale API でもUpload/Downloadは可能ですが、Rescale CLIの方が、よりセキュアで高速な転送が可能なため、こちらを使います。</p>
+<p>具体的には Rescale CLIを使うことで、</p>
+<ul class="simple">
+<li>Rescale CLIを実行した場合、ファイル転送を https を使用するだけでなく、localマシンで暗号化/復号化を行い、Rescale Storageに直接アクセスする(2重に暗号化されS3に対して直接転送)</li>
+<li>ファイルを分割して複数のスレッドで転送するためAPIより高速</li>
+</ul>
+<p>そのため、ここではファイル転送は Rescale API を使わず、Rescale CLI を使うこととします.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id1">
+<h2>5.1. 事前準備<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="rescale-cli-api">
+<h3>5.1.1. Rescale CLI/API設定<a class="headerlink" href="#rescale-cli-api" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Rescale CLI/API環境を設定されていない場合は <a class="reference internal" href="setup.html"><em>Rescale CLI/API 事前準備</em></a> を実施してください</p>
+</div>
+<div class="section" id="id2">
+<h3>5.1.2. 必要変数の設定確認<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id3">
+<div class="code-block-caption"><span class="caption-text">変数の設定確認</span><a class="headerlink" href="#id3" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; ETX</span>
+
+<span class="s">WORK_DIR: ${WORK_DIR}</span>
+<span class="s">BIN: ${BIN}</span>
+<span class="s">RESCALE_CLI_PATH: ${RESCALE_CLI_PATH}</span>
+<span class="s">RESCALE_API_TOKEN: ${RESCALE_API_TOKEN}</span>
+
+<span class="s">ETX</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>5.1.3. 実行ディレクトリーの作成<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id5">
+<div class="code-block-caption"><span class="caption-text">ハンズオンディレクトリの作成</span><a class="headerlink" href="#id5" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>mkdir <span class="si">${</span><span class="nv">WORK_DIR</span><span class="si">}</span>/chainerAPI
+<span class="nb">cd</span> <span class="si">${</span><span class="nv">WORK_DIR</span><span class="si">}</span>/chainerAPI
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>5.2. ファイルのアップロード<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id7">
+<h3>5.2.1. アップロードするサンプルの準備<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="run-chainer-from-api-sh">
+<div class="code-block-caption"><span class="caption-text">ランスクリプト <code class="docutils literal"><span class="pre">run_chainer_from_API.sh</span></code> の作成</span><a class="headerlink" href="#run-chainer-from-api-sh" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; EOF &gt; run_chainer_from_API.sh</span>
+<span class="s">#!/bin/sh</span>
+<span class="s">wget https://github.com/pfnet/chainer/archive/v1.22.0.tar.gz</span>
+<span class="s">tar xzf v1.22.0.tar.gz</span>
+<span class="s">python chainer-1.22.0/examples/mnist/train_mnist.py -g 0</span>
+
+<span class="s">EOF</span>
+cat run_chainer_from_API.sh
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id">
+<h3>5.2.2. ファイルのアップロードとファイルIDの取得<a class="headerlink" href="#id" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id8">
+<div class="code-block-caption"><span class="caption-text">アップロードしたいファイル名を決定</span><a class="headerlink" href="#id8" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">FILENAME</span><span class="o">=</span><span class="s1">&#39;run_chainer_from_API.sh&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id9">
+<div class="code-block-caption"><span class="caption-text">変数の確認</span><a class="headerlink" href="#id9" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; ETX</span>
+
+<span class="s">FILENAME: ${FILENAME}</span>
+<span class="s">RESCALE_CLI_PATH: ${RESCALE_CLI_PATH}</span>
+<span class="s">RESCALE_API_TOKEN: ${RESCALE_API_TOKEN}</span>
+
+<span class="s">ETX</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id10">
+<div class="code-block-caption"><span class="caption-text">ファイルのアップロードとファイルIDの取得</span><a class="headerlink" href="#id10" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">JSON</span><span class="o">=</span><span class="k">$(</span>java -jar <span class="si">${</span><span class="nv">RESCALE_CLI_PATH</span><span class="si">}</span>/rescale.jar <span class="se">\</span>
+-X https://platform.rescale.jp/ <span class="se">\</span>
+--quiet upload <span class="se">\</span>
+-p <span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span> <span class="se">\</span>
+-f <span class="si">${</span><span class="nv">FILENAME</span><span class="si">}</span> <span class="se">\</span>
+-e<span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="si">${</span><span class="nv">JSON</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id11">
+<div class="code-block-caption"><span class="caption-text">結果例(返り値)</span><a class="headerlink" href="#id11" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;startTime&quot;</span><span class="p">:</span><span class="mi">1496576499829</span><span class="p">,</span><span class="nt">&quot;endTime&quot;</span><span class="p">:</span><span class="mi">1496576501642</span><span class="p">,</span><span class="nt">&quot;files&quot;</span><span class="p">:[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;run_chainer_from_API.sh&quot;</span><span class="p">,</span><span class="nt">&quot;storage&quot;</span><span class="p">:{</span><span class="nt">&quot;storageType&quot;</span><span class="p">:</span><span class="s2">&quot;S3Storage&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;pCTMk&quot;</span><span class="p">,</span><span class="nt">&quot;encryptionType&quot;</span><span class="p">:</span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="nt">&quot;connectionSettings&quot;</span><span class="p">:{</span><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="s2">&quot;ap-northeast-1&quot;</span><span class="p">}},</span><span class="nt">&quot;pathParts&quot;</span><span class="p">:{</span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="s2">&quot;user/user_QbQWc/run_chainer_from_API.sh-a688855d-c99a-4145-959a-8c1b930ce01b&quot;</span><span class="p">,</span><span class="nt">&quot;container&quot;</span><span class="p">:</span><span class="s2">&quot;jpprod-rescale-platform&quot;</span><span class="p">},</span><span class="nt">&quot;isUploaded&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;decryptedSize&quot;</span><span class="p">:</span><span class="mi">152</span><span class="p">,</span><span class="nt">&quot;encodedEncryptionKey&quot;</span><span class="p">:</span><span class="s2">&quot;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><span class="p">,</span><span class="nt">&quot;typeId&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;md5&quot;</span><span class="p">:</span><span class="s2">&quot;88484647e1d2c00ca5407f22635703bc&quot;</span><span class="p">,</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;JVHffb&quot;</span><span class="p">}]}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="jqid">
+<div class="code-block-caption"><span class="caption-text">jqによるファイルIDの抽出</span><a class="headerlink" href="#jqid" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">FILE_ID</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="si">${</span><span class="nv">JSON</span><span class="si">}</span> <span class="p">|</span> jq -r .files<span class="o">[]</span>.id<span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="si">${</span><span class="nv">FILE_ID</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id12">
+<div class="code-block-caption"><span class="caption-text">結果例(返り値)</span><a class="headerlink" href="#id12" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>JVHffb
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="create-job">
+<h2>5.3. ジョブの作成 Create Job<a class="headerlink" href="#create-job" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="json">
+<h3>5.3.1. JSONにより計算環境を定義する<a class="headerlink" href="#json" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">${FILENAME}</span></code> と <code class="docutils literal"><span class="pre">${FILE_ID}</span></code> にちゃんと値が入っていることを確認してください。</p>
+<div class="literal-block-wrapper container" id="id13">
+<div class="code-block-caption"><span class="caption-text">jsonの作成</span><a class="headerlink" href="#id13" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; EOF &gt; rescale.json</span>
+<span class="s">{</span>
+<span class="s">    &quot;name&quot;: &quot;Hello Chainer!&quot;,</span>
+<span class="s">    &quot;jobanalyses&quot;: [</span>
+<span class="s">        {</span>
+<span class="s">            &quot;useMpi&quot;: &quot;true&quot;,</span>
+<span class="s">            &quot;command&quot;: &quot;./${FILENAME}&quot;,</span>
+<span class="s">            &quot;analysis&quot;: {</span>
+<span class="s">                &quot;code&quot;: &quot;chainer&quot;,</span>
+<span class="s">                &quot;name&quot;: &quot;Chainer&quot;,</span>
+<span class="s">                &quot;version&quot;: &quot;1.22.0-cuda8-gpu-centos&quot;</span>
+<span class="s">            },</span>
+<span class="s">            &quot;hardware&quot;: {</span>
+<span class="s">                &quot;coresPerSlot&quot;: 2,</span>
+<span class="s">                &quot;slots&quot;: 1,</span>
+<span class="s">                &quot;coreType&quot;: &quot;obsidian&quot;</span>
+<span class="s">            },</span>
+<span class="s">            &quot;inputFiles&quot;: [</span>
+<span class="s">                {</span>
+<span class="s">                    &quot;id&quot;:&quot;${FILE_ID}&quot;</span>
+<span class="s">                }</span>
+<span class="s">            ]</span>
+
+<span class="s">        }</span>
+<span class="s">    ],</span>
+<span class="s">    &quot;isLowPriority&quot;: &quot;true&quot;</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+cat rescale.json
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id14">
+<div class="code-block-caption"><span class="caption-text">結果例(返り値)</span><a class="headerlink" href="#id14" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>上記と同じJSON。ただし、<span class="si">${</span><span class="nv">FILENAME</span><span class="si">}</span><span class="sb">``</span> と <span class="si">${</span><span class="nv">FILE_ID</span><span class="si">}</span> の変数に値が入っていること<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id15">
+<h3>5.3.2. ジョブを生成する<a class="headerlink" href="#id15" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id16">
+<div class="code-block-caption"><span class="caption-text">jsonの変数への格納</span><a class="headerlink" href="#id16" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">MY_JSON</span><span class="o">=</span><span class="k">$(</span>cat rescale.json<span class="k">)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id17">
+<div class="code-block-caption"><span class="caption-text">変数の確認</span><a class="headerlink" href="#id17" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; ETX</span>
+
+<span class="s">RESCALE_API_TOKEN: ${RESCALE_API_TOKEN}</span>
+<span class="s">MY_JSON: ${MY_JSON}</span>
+
+<span class="s">ETX</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="create-rescale-job-with-rescaleapi">
+<div class="code-block-caption"><span class="caption-text">create Rescale Job with RescaleAPI</span><a class="headerlink" href="#create-rescale-job-with-rescaleapi" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">JOB_JSON</span><span class="o">=</span><span class="k">$(</span>curl -s -X POST <span class="se">\</span>
+-H <span class="s2">&quot;Authorization: Token </span><span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+-H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+https://platform.rescale.jp/api/v2/jobs/ <span class="se">\</span>
+-d <span class="s2">&quot;</span><span class="si">${</span><span class="nv">MY_JSON</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="si">${</span><span class="nv">JOB_JSON</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="job-id">
+<div class="code-block-caption"><span class="caption-text">JOB ID を取得する</span><a class="headerlink" href="#job-id" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">JOB_ID</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="si">${</span><span class="nv">JOB_JSON</span><span class="si">}</span> <span class="p">|</span> jq -r .id<span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="si">${</span><span class="nv">JOB_ID</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id18">
+<div class="code-block-caption"><span class="caption-text">結果例(返り値)</span><a class="headerlink" href="#id18" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>tGaYS
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id19">
+<h3>5.3.3. ジョブ生成確認<a class="headerlink" href="#id19" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>必要に応じて、Browserを開いて、ジョブが作成されていることを確認してください。</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="submit-job">
+<h2>5.4. ジョブの実行 Submit Job<a class="headerlink" href="#submit-job" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="literal-block-wrapper container" id="id20">
+<div class="code-block-caption"><span class="caption-text">変数の確認</span><a class="headerlink" href="#id20" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; ETX</span>
+
+<span class="s">RESCALE_API_TOKEN: ${RESCALE_API_TOKEN}</span>
+<span class="s">JOB_ID: ${JOB_ID}</span>
+
+<span class="s">ETX</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id21">
+<div class="code-block-caption"><span class="caption-text">JOB ID を取得する</span><a class="headerlink" href="#id21" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>curl -s -X POST -H <span class="s2">&quot;Authorization: Token </span><span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+https://platform.rescale.jp/api/v2/jobs/<span class="si">${</span><span class="nv">JOB_ID</span><span class="si">}</span>/submit/
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id22">
+<h2>5.5. ジョブのモニタリング<a class="headerlink" href="#id22" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="literal-block-wrapper container" id="id23">
+<div class="code-block-caption"><span class="caption-text">変数の確認</span><a class="headerlink" href="#id23" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; ETX</span>
+
+<span class="s">RESCALE_API_TOKEN: ${RESCALE_API_TOKEN}</span>
+<span class="s">JOB_ID: ${JOB_ID}</span>
+
+<span class="s">ETX</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id24">
+<div class="code-block-caption"><span class="caption-text">JOB ID を取得する</span><a class="headerlink" href="#id24" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>curl -s -H <span class="s2">&quot;Authorization: Token </span><span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+https://platform.rescale.jp/api/v2/jobs/<span class="si">${</span><span class="nv">JOB_ID</span><span class="si">}</span>/statuses/ <span class="se">\</span>
+<span class="p">|</span> jq .
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="clusterjson">
+<div class="code-block-caption"><span class="caption-text">結果例(返り値): 時間とともにClusterの状態が変化しこのJSONも変化します</span><a class="headerlink" href="#clusterjson" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="nt">&quot;previous&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Validated&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-06-04T11:55:35.002000Z&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;xoxfp&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusReason&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nt">&quot;jobId&quot;</span><span class="p">:</span> <span class="s2">&quot;tGaYS&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Started&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-06-04T11:55:34.686000Z&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;iMDtd&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusReason&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nt">&quot;jobId&quot;</span><span class="p">:</span> <span class="s2">&quot;tGaYS&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Queued&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-06-04T11:55:32.002868Z&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;kdxfp&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusReason&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nt">&quot;jobId&quot;</span><span class="p">:</span> <span class="s2">&quot;tGaYS&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Pending&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-06-04T11:55:18.069054Z&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;WADtd&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusReason&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nt">&quot;jobId&quot;</span><span class="p">:</span> <span class="s2">&quot;tGaYS&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;next&quot;</span><span class="p">:</span> <span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id25">
+<h2>5.6. ファイルのダウンロード<a class="headerlink" href="#id25" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="rescale-cli">
+<h3>5.6.1. Rescale CLIによるファイルダウンロード<a class="headerlink" href="#rescale-cli" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>この例ではログをダウンロードすることとします。</p>
+<div class="literal-block-wrapper container" id="id26">
+<div class="code-block-caption"><span class="caption-text">ダウンロードするファイル名の決定</span><a class="headerlink" href="#id26" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">DOWNLOAD_FILES</span><span class="o">=</span><span class="s2">&quot;*.log&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id27">
+<div class="code-block-caption"><span class="caption-text">変数の確認</span><a class="headerlink" href="#id27" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; ETX</span>
+
+<span class="s">RESCALE_CLI_PATH: ${RESCALE_CLI_PATH}</span>
+<span class="s">RESCALE_API_TOKEN: ${RESCALE_API_TOKEN}</span>
+<span class="s">DOWNLOAD_FILES: ${DOWNLOAD_FILES}</span>
+<span class="s">JOB_ID: ${JOB_ID}</span>
+
+<span class="s">ETX</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id28">
+<div class="code-block-caption"><span class="caption-text">ファイルをダウンロードする</span><a class="headerlink" href="#id28" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>java -jar <span class="si">${</span><span class="nv">RESCALE_CLI_PATH</span><span class="si">}</span>/rescale.jar <span class="se">\</span>
+-X https://platform.rescale.jp/ sync <span class="se">\</span>
+-p <span class="s2">&quot;</span><span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span> -j <span class="s2">&quot;</span><span class="si">${</span><span class="nv">JOB_ID</span><span class="si">}</span><span class="s2">&quot;</span> -f <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DOWNLOAD_FILES</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id29">
+<h3>5.6.2. ダウンロードファイルの確認<a class="headerlink" href="#id29" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p><code class="docutils literal"><span class="pre">rescale_job_&lt;JOB_ID&gt;</span></code> という名前のディレクトリが作成され、その中に &#8220;process_output.log&#8221; というファイルがあることを確認してください</p>
+<div class="literal-block-wrapper container" id="id30">
+<div class="code-block-caption"><span class="caption-text">ファイルをダウンロードする</span><a class="headerlink" href="#id30" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>ls rescale_job_*
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id31">
+<div class="code-block-caption"><span class="caption-text">結果例</span><a class="headerlink" href="#id31" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>process_output.log
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="chainer-cli1.html" title="4. Chaniner Hands-on (CLI編)" >前へ</a></li>
+        <li><a href="../../qa/cannot-login.html" title="ログインできない" >次へ</a></li>
+        <li><a href="../../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2017, Daisuke Nagao.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.6.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>2. Rescale CLI/API 事前準備 &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../../_static/css/bootstrap3/bootswatch-simplex.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../../_static/css/adjust_theme/bootswatch-simplex.css" type="text/css" />
+
+<link rel="stylesheet" href="../../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../../_static/bootstrap.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../../',
+            VERSION:     '0.1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="top" title="Rescale Documentation 有志のページ 0.1.0 ドキュメント" href="../../index.html" />
+    <link rel="next" title="3. Chaniner Hands-on (Browser編)" href="chainer.html" />
+    <link rel="prev" title="1. KerasのチュートリアルジョブをCloneしてRescale操作の概要をつかむ" href="keras-tutorial.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">2. Rescale CLI/API 事前準備</a><ul>
+<li><a class="reference internal" href="#api-key">2.1. API Key の作成</a></li>
+<li><a class="reference internal" href="#rescale-cli">2.2. Rescale CLI のダウンロード</a><ul>
+<li><a class="reference internal" href="#id1">2.2.1. 作業ディレクトリー、スクリプト格納先の決定</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">2.3. 必要ツールのセットアップ</a><ul>
+<li><a class="reference internal" href="#rescale-jar">2.3.1. rescale.jar の格納</a></li>
+<li><a class="reference internal" href="#jq">2.3.2. jqの準備</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">2.4. パスの設定</a><ul>
+<li><a class="reference internal" href="#path-api-key">2.4.1. PATHの追加と, API-Keyを環境変数としてエクスポートする</a></li>
+<li><a class="reference internal" href="#id11">2.4.2. パスの確認</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="keras-tutorial.html" title="1. KerasのチュートリアルジョブをCloneしてRescale操作の概要をつかむ" accesskey="P">前へ </a></li>
+              <li><a href="chainer.html" title="3. Chaniner Hands-on (Browser編)" accesskey="N">次へ </a></li>
+              <li><a href="../../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
+            
+            <li class="visible-xs"><a href="../../_sources/apps/deeplearning/setup.txt" rel="nofollow">ソースコードを表示</a></li>
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="検索" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+      <!-- row -->
+      <div class="row">
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Rescale CLI/API 事前準備</a><ul>
+<li><a class="reference internal" href="#api-key">2.1. API Key の作成</a></li>
+<li><a class="reference internal" href="#rescale-cli">2.2. Rescale CLI のダウンロード</a><ul>
+<li><a class="reference internal" href="#id1">2.2.1. 作業ディレクトリー、スクリプト格納先の決定</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">2.3. 必要ツールのセットアップ</a><ul>
+<li><a class="reference internal" href="#rescale-jar">2.3.1. rescale.jar の格納</a></li>
+<li><a class="reference internal" href="#jq">2.3.2. jqの準備</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">2.4. パスの設定</a><ul>
+<li><a class="reference internal" href="#path-api-key">2.4.1. PATHの追加と, API-Keyを環境変数としてエクスポートする</a></li>
+<li><a class="reference internal" href="#id11">2.4.2. パスの確認</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="keras-tutorial.html"
+                        title="前の章へ">1. KerasのチュートリアルジョブをCloneしてRescale操作の概要をつかむ</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="chainer.html"
+                        title="次の章へ">3. Chaniner Hands-on (Browser編)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/apps/deeplearning/setup.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" role="search">
+  <h3>クイック検索</h3>
+  <form class="search form-inline" action="../../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="検索" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="rescale-cli-api">
+<h1>2. Rescale CLI/API 事前準備<a class="headerlink" href="#rescale-cli-api" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="api-key">
+<h2>2.1. API Key の作成<a class="headerlink" href="#api-key" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><a class="reference internal" href="../../cli/setupcli-create-apikey.html"><em>API Key の作成手順</em></a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="rescale-cli">
+<h2>2.2. Rescale CLI のダウンロード<a class="headerlink" href="#rescale-cli" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p><a class="reference internal" href="../../cli/setupcli-download-jarfile.html"><em>Rescale CLI ツールのダウンロード方法</em></a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="id1">
+<h3>2.2.1. 作業ディレクトリー、スクリプト格納先の決定<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id2">
+<div class="code-block-caption"><span class="caption-text">作業ディレクトリーへの移動</span><a class="headerlink" href="#id2" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> &lt;<span class="s1">&#39;任意のディレクトリー (e.g.) cd {HOME}/work&#39;</span>&gt;
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id3">
+<div class="code-block-caption"><span class="caption-text">作業ディレクトリーと、スクリプト格納先を定義する(後で使用)</span><a class="headerlink" href="#id3" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">WORK_DIR</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
+<span class="nv">BIN</span><span class="o">=</span><span class="si">${</span><span class="nv">WORK_DIR</span><span class="si">}</span>/bin
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id4">
+<div class="code-block-caption"><span class="caption-text">スクリプト格納のためのディレクトリーを作成</span><a class="headerlink" href="#id4" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>mkdir <span class="si">${</span><span class="nv">BIN</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>2.3. 必要ツールのセットアップ<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="rescale-jar">
+<h3>2.3.1. rescale.jar の格納<a class="headerlink" href="#rescale-jar" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>先ほど、ダウンロードした &#8220;<a href="#id6"><span class="problematic" id="id7">*</span></a>.jar&#8221; ファイルを、<code class="docutils literal"><span class="pre">${BIN}</span></code> へ格納します。</p>
+<div class="literal-block-wrapper container" id="id8">
+<div class="code-block-caption"><span class="caption-text">rescale.jarをパスの通ったディレクトリーへ移動</span><a class="headerlink" href="#id8" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cp &lt;<span class="s1">&#39;/Download先のパス/rescale.jar&#39;</span>&gt; <span class="si">${</span><span class="nv">BIN</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="jq">
+<h3>2.3.2. jqの準備<a class="headerlink" href="#jq" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>jqがあるとJSONの取扱がとても便利なのでインストールします。</p>
+<div class="literal-block-wrapper container" id="id9">
+<div class="code-block-caption"><span class="caption-text">jqのインストール</span><a class="headerlink" href="#id9" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">cd</span> <span class="si">${</span><span class="nv">BIN</span><span class="si">}</span>
+wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+chmod +x jq-linux64
+ln -s <span class="si">${</span><span class="nv">BIN</span><span class="si">}</span>/jq-linux64 <span class="si">${</span><span class="nv">BIN</span><span class="si">}</span>/jq
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>2.4. パスの設定<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="path-api-key">
+<h3>2.4.1. PATHの追加と, API-Keyを環境変数としてエクスポートする<a class="headerlink" href="#path-api-key" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>これらの変数は良く使用するので予め、設定しておきます。</p>
+<div class="literal-block-wrapper container" id="rescale-jar-path-api-key">
+<div class="code-block-caption"><span class="caption-text">rescale.jar のPATH と API-Key の情報</span><a class="headerlink" href="#rescale-jar-path-api-key" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">BIN</span><span class="si">}</span>:<span class="si">${</span><span class="nv">PATH</span><span class="si">}</span>
+<span class="nb">export</span> <span class="nv">RESCALE_CLI_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">BIN</span><span class="si">}</span>
+<span class="nb">export</span> <span class="nv">RESCALE_API_TOKEN</span><span class="o">=</span>&lt;<span class="s1">&#39;作成したAPI Key&#39;</span>&gt;
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>2.4.2. パスの確認<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id12">
+<div class="code-block-caption"><span class="caption-text">パス設定確認</span><a class="headerlink" href="#id12" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>which jq
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id13">
+<div class="code-block-caption"><span class="caption-text">結果例(返り値)</span><a class="headerlink" href="#id13" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>~/work/bin/jq
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="keras-tutorial.html" title="1. KerasのチュートリアルジョブをCloneしてRescale操作の概要をつかむ" >前へ</a></li>
+        <li><a href="chainer.html" title="3. Chaniner Hands-on (Browser編)" >次へ</a></li>
+        <li><a href="../../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2017, Daisuke Nagao.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.6.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

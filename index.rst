@@ -3,8 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-:Date: |today|
+:date: June 6th, 2017
 :author: Daisuke Nagao
+:affiliation: Rescale Japan
 
 ..
     .. contents:: Topic
@@ -23,6 +24,19 @@ Tuorial
     :maxdepth: 1
 
     apps/ls-dyna/ls-dyna
+
+.. toctree::
+    :caption: 触って見よう!Deep Learning
+    :titlesonly:
+    :name: application
+    :maxdepth: 3
+    :numbered: 3
+
+    apps/deeplearning/keras-tutorial
+    apps/deeplearning/setup
+    apps/deeplearning/chainer
+    apps/deeplearning/chainer-cli1
+    apps/deeplearning/chainer-api
 
 
 Tips

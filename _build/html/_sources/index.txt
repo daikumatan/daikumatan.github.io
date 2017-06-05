@@ -25,6 +25,19 @@ Tuorial
 
     apps/ls-dyna/ls-dyna
 
+.. toctree::
+    :caption: 触って見よう!Deep Learning
+    :titlesonly:
+    :name: application
+    :maxdepth: 3
+    :numbered: 3
+
+    apps/deeplearning/keras-tutorial
+    apps/deeplearning/setup
+    apps/deeplearning/chainer
+    apps/deeplearning/chainer-cli1
+    apps/deeplearning/chainer-api
+
 
 Tips
 ===================================
