@@ -10,7 +10,7 @@ KerasのチュートリアルジョブをCloneしてRescale操作の概要をつ
 RescaleのJP環境へ `ログイン <https://platform.rescale.jp/>`_ します。
 
 .. image:: ./image/login.jpg
-    :scale: 25%
+    :scale: 20%
 
 ジョブの作成
 ======================
@@ -30,7 +30,7 @@ RescaleのJP環境へ `ログイン <https://platform.rescale.jp/>`_ します�
 1. ``クローン`` をクリックします。インポートしたジョブをテンプレートに新しいジョブを作成することができます。
 
 .. image:: ./image/clone-job.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -41,7 +41,7 @@ RescaleのJP環境へ `ログイン <https://platform.rescale.jp/>`_ します�
 2. 必要に応じて、``入力ファイル指定`` を操作しファイルを入れ替えます (今回は変更する必要はありません)
 
 .. image:: ./image/inputfile.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -60,7 +60,7 @@ RescaleのJP環境へ `ログイン <https://platform.rescale.jp/>`_ します�
 
 
 .. image:: ./image/apps.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -74,7 +74,7 @@ HWの設定
 5. ``最長ジョブ実行時間`` を入力します。この学習は半日程度かかるので今回は "2" と入力して、強制終了させます
 
 .. image:: ./image/hw.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -87,7 +87,7 @@ HWの設定
 1. ``実行`` をクリックします
 
 .. image:: ./image/submit.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -100,7 +100,7 @@ HWの設定
 2. ``ジョブログ`` に ``Starting Server(s)`` になっていることを確認します
 
 .. image:: ./image/startjob.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -116,7 +116,7 @@ HWの設定
 
 
 .. image:: ./image/monitorjob.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -127,9 +127,9 @@ In Browser SSH
 2. ブラウザー内に、計算ノード(学習しているマシン)の ターミナルが表示されたことを確認し、また適当なコマンドを実行できることを確認します。
 
 .. image:: ./image/inbrowserssh1.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
 .. image:: ./image/inbrowserssh2.jpg
-    :scale: 25%
+    :scale: 20%

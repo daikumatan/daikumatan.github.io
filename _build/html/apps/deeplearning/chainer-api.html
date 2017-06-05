@@ -468,7 +468,7 @@ https://platform.rescale.jp/api/v2/jobs/<span class="si">${</span><span class="n
 </div>
 </div>
 <div class="literal-block-wrapper container" id="id24">
-<div class="code-block-caption"><span class="caption-text">JOB ID を取得する</span><a class="headerlink" href="#id24" title="このコードへのパーマリンク">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">ジョブの状態確認</span><a class="headerlink" href="#id24" title="このコードへのパーマリンク">¶</a></div>
 <div class="highlight-bash"><div class="highlight"><pre>curl -s -H <span class="s2">&quot;Authorization: Token </span><span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
 https://platform.rescale.jp/api/v2/jobs/<span class="si">${</span><span class="nv">JOB_ID</span><span class="si">}</span>/statuses/ <span class="se">\</span>
 <span class="p">|</span> jq .
@@ -522,7 +522,7 @@ https://platform.rescale.jp/api/v2/jobs/<span class="si">${</span><span class="n
 <h3>5.6.1. Rescale CLIによるファイルダウンロード<a class="headerlink" href="#rescale-cli" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>この例ではログをダウンロードすることとします。</p>
 <div class="literal-block-wrapper container" id="id26">
-<div class="code-block-caption"><span class="caption-text">ダウンロードするファイル名の決定</span><a class="headerlink" href="#id26" title="このコードへのパーマリンク">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">ファイル名の決定</span><a class="headerlink" href="#id26" title="このコードへのパーマリンク">¶</a></div>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">DOWNLOAD_FILES</span><span class="o">=</span><span class="s2">&quot;*.log&quot;</span>
 </pre></div>
 </div>
@@ -553,7 +553,7 @@ https://platform.rescale.jp/api/v2/jobs/<span class="si">${</span><span class="n
 <h3>5.6.2. ダウンロードファイルの確認<a class="headerlink" href="#id29" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p><code class="docutils literal"><span class="pre">rescale_job_&lt;JOB_ID&gt;</span></code> という名前のディレクトリが作成され、その中に &#8220;process_output.log&#8221; というファイルがあることを確認してください</p>
 <div class="literal-block-wrapper container" id="id30">
-<div class="code-block-caption"><span class="caption-text">ファイルをダウンロードする</span><a class="headerlink" href="#id30" title="このコードへのパーマリンク">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">ダウンロードしたファイルの存在確認</span><a class="headerlink" href="#id30" title="このコードへのパーマリンク">¶</a></div>
 <div class="highlight-bash"><div class="highlight"><pre>ls rescale_job_*
 </pre></div>
 </div>

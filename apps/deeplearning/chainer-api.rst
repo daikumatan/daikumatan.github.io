@@ -250,7 +250,7 @@ JSONにより計算環境を定義する
     ETX
 
 .. code-block:: bash
-    :caption: JOB ID を取得する
+    :caption: ジョブの状態確認
 
     curl -s -H "Authorization: Token ${RESCALE_API_TOKEN}" \
     https://platform.rescale.jp/api/v2/jobs/${JOB_ID}/statuses/ \
@@ -305,7 +305,7 @@ Rescale CLIによるファイルダウンロード
 この例ではログをダウンロードすることとします。
 
 .. code-block:: bash
-    :caption: ダウンロードするファイル名の決定
+    :caption: ファイル名の決定
 
     DOWNLOAD_FILES="*.log"
 
@@ -334,7 +334,7 @@ Rescale CLIによるファイルダウンロード
 ``rescale_job_<JOB_ID>`` という名前のディレクトリが作成され、その中に "process_output.log" というファイルがあることを確認してください
 
 .. code-block:: bash
-    :caption: ファイルをダウンロードする
+    :caption: ダウンロードしたファイルの存在確認
 
     ls rescale_job_*
 

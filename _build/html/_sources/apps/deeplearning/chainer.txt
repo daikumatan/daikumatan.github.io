@@ -15,7 +15,7 @@ Rescaleへのログイン
 https://platform.rescale.jp/ をクリックして、ログインします。
 
 .. image:: ./image/login.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -25,7 +25,7 @@ https://platform.rescale.jp/ をクリックして、ログインします。
 1. ログイン後、ジョブの作成をクリックします
 
 .. image:: ./image/chainer0.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -37,7 +37,7 @@ https://platform.rescale.jp/ をクリックして、ログインします。
 3. 今回は、次の Rescale CLI ハンズ を見越して、``rescale.jar`` をアップロードします。このハンズオンのみであればこの作業は不要です。
 
 .. image:: ./image/chainer1.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -52,7 +52,7 @@ https://platform.rescale.jp/ をクリックして、ログインします。
 3. ``Chainer`` を選択します
 
 .. image:: ./image/chainer2.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -73,7 +73,7 @@ https://platform.rescale.jp/ をクリックして、ログインします。
     env
 
 .. image:: ./image/chainer2-2.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -88,7 +88,7 @@ HWの設定
 6. ``最長ジョブ実行時間`` を入力します。この学習は半日程度かかるので今回は "3" と入力して、強制終了させます
 
 .. image:: ./image/chainer3.jpg
-    :scale: 25%
+    :scale: 20%
 
 .. note::
     | 持続的クラスタとは、ジョブが終わってもインスタンスがターミネートされない使い方です。
@@ -110,7 +110,7 @@ HWの設定
 1. ``実行`` をクリックします
 
 .. image:: ./image/chainer4.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -121,7 +121,7 @@ HWの設定
 2. ``クラスタの作成`` を入力します
 
 .. image:: ./image/chainer4-2.jpg
-    :scale: 25%
+    :scale: 20%
 
 |
 
@@ -134,4 +134,4 @@ HWの設定
 2. ``ジョブログ`` に ``Starting Server(s)`` になっていることを確認します
 
 .. image:: ./image/chainer4-3.jpg
-    :scale: 25%
+    :scale: 20%
