@@ -200,6 +200,7 @@
                   
   <div class="section" id="chaniner-hands-on-browser">
 <h1>3. Chaniner Hands-on (Browser編)<a class="headerlink" href="#chaniner-hands-on-browser" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p><strong>ゼロベースのジョブ作成と持続的クラスタの意味を理解する</strong></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -287,6 +288,14 @@ env
 <div class="last line-block">
 <div class="line">持続的クラスタとは、ジョブが終わってもインスタンスがターミネートされない使い方です。</div>
 <div class="line">今回は、このあとの Rescale CLI/API のハンズオンでこのクラスタにログインして作業するために使用します</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<div class="last line-block">
+<div class="line">持続的クラスタは手動によるターミネートが必要です。</div>
+<div class="line">消し忘れると課金され続けます。</div>
+<div class="line">このミス防止のためにも 持続的クラスタを使用するときは、必ず <code class="docutils literal"><span class="pre">最長ジョブ実行時間</span></code> を設定するようにしましょう</div>
 </div>
 </div>
 <div class="line-block">

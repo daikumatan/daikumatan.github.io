@@ -212,15 +212,20 @@
                   
   <div class="section" id="chaniner-hands-on-cli-api">
 <h1>5. Chaniner Hands-on (CLI/API編)<a class="headerlink" href="#chaniner-hands-on-cli-api" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>本ハンズオンは、コード部分をひたすらコピーして、Linux のTerminalに貼り付けてください。</p>
-<p>間違わなければ、最後まで実行できるようになっています。</p>
-<p>Rescale API でもUpload/Downloadは可能ですが、Rescale CLIの方が、よりセキュアで高速な転送が可能なため、こちらを使います。</p>
-<p>具体的には Rescale CLIを使うことで、</p>
+<p><strong>システム連携を目的にCLIによる操作を習得する</strong></p>
+<p>Rescale API でもUpload/Downloadは可能ですが、Rescale CLIの方が、よりセキュアで高速な転送が可能なため、こちらを使います。具体的には Rescale CLIを使うことで、</p>
 <ul class="simple">
 <li>Rescale CLIを実行した場合、ファイル転送を https を使用するだけでなく、localマシンで暗号化/復号化を行い、Rescale Storageに直接アクセスする(2重に暗号化されS3に対して直接転送)</li>
 <li>ファイルを分割して複数のスレッドで転送するためAPIより高速</li>
 </ul>
 <p>そのため、ここではファイル転送は Rescale API を使わず、Rescale CLI を使うこととします.</p>
+<div class="admonition note">
+<p class="first admonition-title">注釈</p>
+<div class="last line-block">
+<div class="line">本ハンズオンは、コード部分をひたすらコピーして、Linux のTerminalに貼り付けてください</div>
+<div class="line">間違わなければ、最後まで実行できるようになっています。</div>
+</div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
