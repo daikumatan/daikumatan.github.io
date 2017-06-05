@@ -12,6 +12,10 @@ Rescaleへのログイン
 
 https://platform.rescale.jp/ をクリックして、ログインします。
 
+
+.. image:: ./image/login.jpg
+    :scale: 25%
+
 |
 
 ジョブの作成開始

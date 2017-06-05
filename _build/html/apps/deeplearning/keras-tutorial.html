@@ -72,22 +72,23 @@
                 <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
                 <ul>
 <li><a class="reference internal" href="#">1. KerasのチュートリアルジョブをCloneしてRescale操作の概要をつかむ</a><ul>
-<li><a class="reference internal" href="#id1">1.1. ジョブの作成</a><ul>
-<li><a class="reference internal" href="#id2">1.1.1. ジョブのインポート</a></li>
-<li><a class="reference internal" href="#clone">1.1.2. ジョブの Clone</a></li>
-<li><a class="reference internal" href="#id4">1.1.3. 入力ファイルの設定</a></li>
-<li><a class="reference internal" href="#id5">1.1.4. アプリケーションの設定</a></li>
-<li><a class="reference internal" href="#hw">1.1.5. HWの設定</a></li>
+<li><a class="reference internal" href="#id1">1.1. ログイン</a></li>
+<li><a class="reference internal" href="#id3">1.2. ジョブの作成</a><ul>
+<li><a class="reference internal" href="#id4">1.2.1. ジョブのインポート</a></li>
+<li><a class="reference internal" href="#clone">1.2.2. ジョブの Clone</a></li>
+<li><a class="reference internal" href="#id5">1.2.3. 入力ファイルの設定</a></li>
+<li><a class="reference internal" href="#id6">1.2.4. アプリケーションの設定</a></li>
+<li><a class="reference internal" href="#hw">1.2.5. HWの設定</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">1.2. ジョブの実行 (学習の開始)</a><ul>
-<li><a class="reference internal" href="#id7">1.2.1. ジョブの実行</a></li>
-<li><a class="reference internal" href="#id8">1.2.2. クラスタの起動確認</a></li>
+<li><a class="reference internal" href="#id7">1.3. ジョブの実行 (学習の開始)</a><ul>
+<li><a class="reference internal" href="#id8">1.3.1. ジョブの実行</a></li>
+<li><a class="reference internal" href="#id9">1.3.2. クラスタの起動確認</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id9">1.3. 実行中のジョブ確認</a><ul>
-<li><a class="reference internal" href="#id10">1.3.1. 標準出力の確認</a></li>
-<li><a class="reference internal" href="#in-browser-ssh">1.3.2. In Browser SSH</a></li>
+<li><a class="reference internal" href="#id10">1.4. 実行中のジョブ確認</a><ul>
+<li><a class="reference internal" href="#id11">1.4.1. 標準出力の確認</a></li>
+<li><a class="reference internal" href="#in-browser-ssh">1.4.2. In Browser SSH</a></li>
 </ul>
 </li>
 </ul>
@@ -137,22 +138,23 @@
   <h3><a href="../../index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">1. KerasのチュートリアルジョブをCloneしてRescale操作の概要をつかむ</a><ul>
-<li><a class="reference internal" href="#id1">1.1. ジョブの作成</a><ul>
-<li><a class="reference internal" href="#id2">1.1.1. ジョブのインポート</a></li>
-<li><a class="reference internal" href="#clone">1.1.2. ジョブの Clone</a></li>
-<li><a class="reference internal" href="#id4">1.1.3. 入力ファイルの設定</a></li>
-<li><a class="reference internal" href="#id5">1.1.4. アプリケーションの設定</a></li>
-<li><a class="reference internal" href="#hw">1.1.5. HWの設定</a></li>
+<li><a class="reference internal" href="#id1">1.1. ログイン</a></li>
+<li><a class="reference internal" href="#id3">1.2. ジョブの作成</a><ul>
+<li><a class="reference internal" href="#id4">1.2.1. ジョブのインポート</a></li>
+<li><a class="reference internal" href="#clone">1.2.2. ジョブの Clone</a></li>
+<li><a class="reference internal" href="#id5">1.2.3. 入力ファイルの設定</a></li>
+<li><a class="reference internal" href="#id6">1.2.4. アプリケーションの設定</a></li>
+<li><a class="reference internal" href="#hw">1.2.5. HWの設定</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id6">1.2. ジョブの実行 (学習の開始)</a><ul>
-<li><a class="reference internal" href="#id7">1.2.1. ジョブの実行</a></li>
-<li><a class="reference internal" href="#id8">1.2.2. クラスタの起動確認</a></li>
+<li><a class="reference internal" href="#id7">1.3. ジョブの実行 (学習の開始)</a><ul>
+<li><a class="reference internal" href="#id8">1.3.1. ジョブの実行</a></li>
+<li><a class="reference internal" href="#id9">1.3.2. クラスタの起動確認</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id9">1.3. 実行中のジョブ確認</a><ul>
-<li><a class="reference internal" href="#id10">1.3.1. 標準出力の確認</a></li>
-<li><a class="reference internal" href="#in-browser-ssh">1.3.2. In Browser SSH</a></li>
+<li><a class="reference internal" href="#id10">1.4. 実行中のジョブ確認</a><ul>
+<li><a class="reference internal" href="#id11">1.4.1. 標準出力の確認</a></li>
+<li><a class="reference internal" href="#in-browser-ssh">1.4.2. In Browser SSH</a></li>
 </ul>
 </li>
 </ul>
@@ -209,10 +211,14 @@
 </tbody>
 </table>
 <div class="section" id="id1">
-<h2>1.1. ジョブの作成<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="section" id="id2">
-<h3>1.1.1. ジョブのインポート<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h2>1.1. ログイン<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>RescaleのJP環境へ <a class="reference external" href="https://platform.rescale.jp/">ログイン</a> します。</p>
+<a class="reference internal image-reference" href="../../_images/login.jpg"><img alt="../../_images/login.jpg" src="../../_images/login.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+</div>
+<div class="section" id="id3">
+<h2>1.2. ジョブの作成<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id4">
+<h3>1.2.1. ジョブのインポート<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>ログイン後、こちらをクリックしてモデルをインポートしてください(jp環境のみ)</p>
 <ul class="simple">
 <li><a class="reference external" href="https://platform.rescale.jp/jobs/CGrXc/">https://platform.rescale.jp/jobs/CGrXc/</a></li>
@@ -222,28 +228,28 @@
 </div>
 </div>
 <div class="section" id="clone">
-<h3>1.1.2. ジョブの Clone<a class="headerlink" href="#clone" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>1.2.2. ジョブの Clone<a class="headerlink" href="#clone" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ol class="arabic simple">
-<li>インポートしたジョブをテンプレートに新しいジョブを実行します</li>
+<li><code class="docutils literal"><span class="pre">クローン</span></code> をクリックします。インポートしたジョブをテンプレートに新しいジョブを作成することができます。</li>
 </ol>
 <a class="reference internal image-reference" href="../../_images/clone-job.jpg"><img alt="../../_images/clone-job.jpg" src="../../_images/clone-job.jpg" style="width: 720.0px; height: 450.0px;" /></a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h3>1.1.3. 入力ファイルの設定<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id5">
+<h3>1.2.3. 入力ファイルの設定<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ol class="arabic simple">
-<li>必要に応じて、ジョブ名を任意のジョブ名に変更します</li>
-<li>必要に応じて、<code class="docutils literal"><span class="pre">入力ファイル指定</span></code> の中のファイルを入れ替えます (今回は変更する必要はありません)</li>
+<li>任意のジョブ名に変更します</li>
+<li>必要に応じて、<code class="docutils literal"><span class="pre">入力ファイル指定</span></code> を操作しファイルを入れ替えます (今回は変更する必要はありません)</li>
 </ol>
 <a class="reference internal image-reference" href="../../_images/inputfile.jpg"><img alt="../../_images/inputfile.jpg" src="../../_images/inputfile.jpg" style="width: 720.0px; height: 450.0px;" /></a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id5">
-<h3>1.1.4. アプリケーションの設定<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id6">
+<h3>1.2.4. アプリケーションの設定<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">ソフトウェアのアイコン <code class="docutils literal"><span class="pre">Keras</span></code> をクリックします</p>
 </li>
@@ -265,7 +271,7 @@ rm -rf object-dataset object-detection-crowdai
 </div>
 </div>
 <div class="section" id="hw">
-<h3>1.1.5. HWの設定<a class="headerlink" href="#hw" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>1.2.5. HWの設定<a class="headerlink" href="#hw" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ol class="arabic simple">
 <li><code class="docutils literal"><span class="pre">ハードウェア選択</span></code> のアイコンをクリックします</li>
 <li>選択されているコアを確認します。(i) のマークが緑であれば、<code class="docutils literal"><span class="pre">低優先度</span></code> を選択します</li>
@@ -279,10 +285,10 @@ rm -rf object-dataset object-detection-crowdai
 </div>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>1.2. ジョブの実行 (学習の開始)<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <div class="section" id="id7">
-<h3>1.2.1. ジョブの実行<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h2>1.3. ジョブの実行 (学習の開始)<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id8">
+<h3>1.3.1. ジョブの実行<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ol class="arabic simple">
 <li><code class="docutils literal"><span class="pre">実行</span></code> をクリックします</li>
 </ol>
@@ -291,20 +297,23 @@ rm -rf object-dataset object-detection-crowdai
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id8">
-<h3>1.2.2. クラスタの起動確認<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="section" id="id9">
+<h3>1.3.2. クラスタの起動確認<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <p>実行ボタンクリック後、下図に自動的に遷移します</p>
 <ol class="arabic simple">
 <li><code class="docutils literal"><span class="pre">検証中</span></code> にチェックがついて、<code class="docutils literal"><span class="pre">クラスタ起動中</span></code> になっていることを確認します</li>
 <li><code class="docutils literal"><span class="pre">ジョブログ</span></code> に <code class="docutils literal"><span class="pre">Starting</span> <span class="pre">Server(s)</span></code> になっていることを確認します</li>
 </ol>
 <a class="reference internal image-reference" href="../../_images/startjob.jpg"><img alt="../../_images/startjob.jpg" src="../../_images/startjob.jpg" style="width: 720.0px; height: 450.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id9">
-<h2>1.3. 実行中のジョブ確認<a class="headerlink" href="#id9" title="このヘッドラインへのパーマリンク">¶</a></h2>
+</div>
 <div class="section" id="id10">
-<h3>1.3.1. 標準出力の確認<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h2>1.4. 実行中のジョブ確認<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id11">
+<h3>1.4.1. 標準出力の確認<a class="headerlink" href="#id11" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ol class="arabic simple">
 <li><code class="docutils literal"><span class="pre">ファイル</span></code> の検索窓に <code class="docutils literal"><span class="pre">process_output.log</span></code> と入力します</li>
 <li><code class="docutils literal"><span class="pre">テール</span></code> 内の黒い枠に tensorFlow が標準出力に出すログが表示されていることを確認します</li>
@@ -316,7 +325,7 @@ rm -rf object-dataset object-detection-crowdai
 </div>
 </div>
 <div class="section" id="in-browser-ssh">
-<h3>1.3.2. In Browser SSH<a class="headerlink" href="#in-browser-ssh" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<h3>1.4.2. In Browser SSH<a class="headerlink" href="#in-browser-ssh" title="このヘッドラインへのパーマリンク">¶</a></h3>
 <ol class="arabic simple">
 <li><code class="docutils literal"><span class="pre">SSH</span></code> 内の <code class="docutils literal"><span class="pre">サーバーIP</span></code> をクリックします</li>
 <li>ブラウザー内に、計算ノード(学習しているマシン)の ターミナルが表示されたことを確認し、また適当なコマンドを実行できることを確認します。</li>
