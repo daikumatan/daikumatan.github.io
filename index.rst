@@ -77,6 +77,7 @@ Rescale CLI
     cli/inputFlag
     cli/proxy
     cli/abaqus
+    cli/lammps
     cli/reference
     cli/oneliner
     cli/apps-json
@@ -93,7 +94,9 @@ Rescale API
     :maxdepth: 2
     :numbered: 2
 
-    api/persistet-cluster
+    api/persistent-cluster-shell
+    api/persistent-cluster-python
+    api/get-fileinfo
 
 
 Indices and tables
