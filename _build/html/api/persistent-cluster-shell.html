@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>1. [shell] Persisstent Cluster Hands-on with Resacle API &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-simplex.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-simplex.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/bootstrap.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '0.1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="top" title="Rescale Documentation 有志のページ 0.1.0 ドキュメント" href="../index.html" />
+    <link rel="next" title="2. [Python] Persisstent Cluster Hands-on with Resacle API" href="persistent-cluster-python.html" />
+    <link rel="prev" title="12. Hardware-code information" href="../cli/hw-json.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">1. [shell] Persisstent Cluster Hands-on with Resacle API</a><ul>
+<li><a class="reference internal" href="#precondition">1.1. Precondition (前提)</a></li>
+<li><a class="reference internal" href="#create-the-persistent-cluster">1.2. Create the persistent cluster (永続クラスタを定義する)</a><ul>
+<li><a class="reference internal" href="#sample-code">Sample code の作成</a></li>
+<li><a class="reference internal" href="#id4">コマンドの実行とその結果</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#start-the-persistent-cluster">1.3. Start the persistent cluster (永続クラスタの起動)</a><ul>
+<li><a class="reference internal" href="#id7">Sample code の作成</a></li>
+<li><a class="reference internal" href="#id10">コマンドの実行とその結果</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poll-the-cluster">1.4. Poll the cluster 永続クラスタの状態確認</a><ul>
+<li><a class="reference internal" href="#id14">Sample code の作成</a></li>
+<li><a class="reference internal" href="#id17">コマンドの実行とその結果</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id20">1.5. ジョブの生成</a><ul>
+<li><a class="reference internal" href="#id21">Sample code の作成</a></li>
+<li><a class="reference internal" href="#id26">コマンドの実行とその結果</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id30">1.6. 永続クラスタによるジョブの実行</a><ul>
+<li><a class="reference internal" href="#id31">Sample code の作成</a></li>
+<li><a class="reference internal" href="#id34">コマンドの実行とその結果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="../cli/hw-json.html" title="12. Hardware-code information" accesskey="P">前へ </a></li>
+              <li><a href="persistent-cluster-python.html" title="2. [Python] Persisstent Cluster Hands-on with Resacle API" accesskey="N">次へ </a></li>
+              <li><a href="../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
+            
+            <li class="visible-xs"><a href="../_sources/api/persistent-cluster-shell.txt" rel="nofollow">ソースコードを表示</a></li>
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="検索" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+      <!-- row -->
+      <div class="row">
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. [shell] Persisstent Cluster Hands-on with Resacle API</a><ul>
+<li><a class="reference internal" href="#precondition">1.1. Precondition (前提)</a></li>
+<li><a class="reference internal" href="#create-the-persistent-cluster">1.2. Create the persistent cluster (永続クラスタを定義する)</a><ul>
+<li><a class="reference internal" href="#sample-code">Sample code の作成</a></li>
+<li><a class="reference internal" href="#id4">コマンドの実行とその結果</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#start-the-persistent-cluster">1.3. Start the persistent cluster (永続クラスタの起動)</a><ul>
+<li><a class="reference internal" href="#id7">Sample code の作成</a></li>
+<li><a class="reference internal" href="#id10">コマンドの実行とその結果</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#poll-the-cluster">1.4. Poll the cluster 永続クラスタの状態確認</a><ul>
+<li><a class="reference internal" href="#id14">Sample code の作成</a></li>
+<li><a class="reference internal" href="#id17">コマンドの実行とその結果</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id20">1.5. ジョブの生成</a><ul>
+<li><a class="reference internal" href="#id21">Sample code の作成</a></li>
+<li><a class="reference internal" href="#id26">コマンドの実行とその結果</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id30">1.6. 永続クラスタによるジョブの実行</a><ul>
+<li><a class="reference internal" href="#id31">Sample code の作成</a></li>
+<li><a class="reference internal" href="#id34">コマンドの実行とその結果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="../cli/hw-json.html"
+                        title="前の章へ">12. Hardware-code information</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="persistent-cluster-python.html"
+                        title="次の章へ">2. [Python] Persisstent Cluster Hands-on with Resacle API</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/persistent-cluster-shell.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" role="search">
+  <h3>クイック検索</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="検索" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="shell-persisstent-cluster-hands-on-with-resacle-api">
+<h1>1. [shell] Persisstent Cluster Hands-on with Resacle API<a class="headerlink" href="#shell-persisstent-cluster-hands-on-with-resacle-api" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>上から順にコピペすれば、動くようにしております</p>
+<div class="section" id="precondition">
+<h2>1.1. Precondition (前提)<a class="headerlink" href="#precondition" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="literal-block-wrapper container" id="command-api">
+<div class="code-block-caption"><span class="caption-text">[command] APIキーの設定</span><a class="headerlink" href="#command-api" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">RESCALE_API_TOKEN</span><span class="o">=</span>&lt;<span class="s1">&#39;APIキー&#39;</span>&gt;
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>ここから下のグレーのコード領域は、お手持ちのターミナルにコピペするだけで、一通りのハンズオンが可能です。</p>
+<div class="literal-block-wrapper container" id="command">
+<div class="code-block-caption"><span class="caption-text">[command] 作業環境の構築</span><a class="headerlink" href="#command" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">workDir</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
+<span class="nv">script</span><span class="o">=</span><span class="si">${</span><span class="nv">workDir</span><span class="si">}</span>/api
+mkdir <span class="si">${</span><span class="nv">script</span><span class="si">}</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">script</span><span class="si">}</span>:$PATH
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="create-the-persistent-cluster">
+<h2>1.2. Create the persistent cluster (永続クラスタを定義する)<a class="headerlink" href="#create-the-persistent-cluster" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="sample-code">
+<h3>Sample code の作成<a class="headerlink" href="#sample-code" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>起動するClusterの条件をJSONで定義します。</p>
+<div class="literal-block-wrapper container" id="id1">
+<div class="code-block-caption"><span class="caption-text">[command] ファイル名の決定</span><a class="headerlink" href="#id1" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">CLUSTER_JSON</span><span class="o">=</span><span class="s2">&quot;testCluster.json&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="command-json">
+<div class="code-block-caption"><span class="caption-text">[command] jsonファイルの作成</span><a class="headerlink" href="#command-json" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; EOF &gt; ${CLUSTER_JSON}</span>
+<span class="s">{</span>
+<span class="s">  &quot;name&quot;: &quot;Untitled Cluster 3&quot;,</span>
+<span class="s">  &quot;hardware&quot;: {</span>
+<span class="s">    &quot;coresPerSlot&quot;: 1,</span>
+<span class="s">    &quot;slots&quot;: 1,</span>
+<span class="s">    &quot;coreType&quot;: {</span>
+<span class="s">      &quot;code&quot;: &quot;hpc-3&quot;</span>
+<span class="s">    },</span>
+<span class="s">    &quot;walltime&quot;: 10</span>
+<span class="s">  },</span>
+<span class="s">  &quot;installedAnalyses&quot;: [</span>
+<span class="s">    {</span>
+<span class="s">      &quot;analysis&quot;: {</span>
+<span class="s">        &quot;code&quot;: &quot;user_included&quot;,</span>
+<span class="s">        &quot;version&quot;: &quot;0&quot;</span>
+<span class="s">      }</span>
+<span class="s">    }</span>
+<span class="s">  ],</span>
+<span class="s">  &quot;runLowPriority&quot;: true</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>上記JSONに従ってJOBをCreateするためのスクリプトを作成します。</p>
+<div class="literal-block-wrapper container" id="id2">
+<div class="code-block-caption"><span class="caption-text">[command] ヒアドキュメントによるスクリプトの生成</span><a class="headerlink" href="#id2" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; EOF &gt; ${script}/rescale-createPersistentCluster</span>
+<span class="s">#!/bin/sh</span>
+
+<span class="s">clusterJsonFile=\$1</span>
+<span class="s">token=\${RESCALE_API_TOKEN}</span>
+
+<span class="s">_create_job()</span>
+<span class="s">{</span>
+<span class="s">rescaleJson=\$1</span>
+<span class="s">echo \$rescaleJson | jq . &gt; _jobanalyses.json 2&gt;/dev/null</span>
+<span class="s">curl -s -X POST \</span>
+<span class="s">-H &quot;Authorization: Token \${token}&quot; \</span>
+<span class="s">-H &quot;Content-Type: application/json&quot; \</span>
+<span class="s">https://platform.rescale.jp/api/v3/clusters/ \</span>
+<span class="s">-d &quot;\${rescaleJson}&quot;</span>
+<span class="s">}</span>
+
+<span class="s">_my_jobanalyses()</span>
+<span class="s">{</span>
+<span class="s">jsonFile=\$1</span>
+<span class="s">cat \${jsonFile}</span>
+<span class="s">}</span>
+
+<span class="s"># Rescaleに送るためのJSONを作る</span>
+<span class="s"># 普段ブラウザ上で行う作業をJSONで表現する</span>
+<span class="s">jobAnalysesJson=\$(_my_jobanalyses \${clusterJsonFile})</span>
+
+<span class="s"># バラバラにならないように、&quot; &quot; で囲むこと。</span>
+<span class="s"># スペースが入っているため、引数1で全てを送る必要がある</span>
+<span class="s">r=\$(_create_job &quot;\${jobAnalysesJson}&quot;)</span>
+<span class="s">echo \$r</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id3">
+<div class="code-block-caption"><span class="caption-text">[command]実行権限付与</span><a class="headerlink" href="#id3" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>chmod +x <span class="si">${</span><span class="nv">script</span><span class="si">}</span>/rescale-createPersistentCluster
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>コマンドの実行とその結果<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id5">
+<div class="code-block-caption"><span class="caption-text">[command]変数の確認</span><a class="headerlink" href="#id5" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; ETX</span>
+
+<span class="s">CLUSTER_JSON: ${CLUSTER_JSON}</span>
+<span class="s">RESCALE_API_TOKEN: ${RESCALE_API_TOKEN}</span>
+
+<span class="s">ETX</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="command-createcluster">
+<div class="code-block-caption"><span class="caption-text">[command] createCluster</span><a class="headerlink" href="#command-createcluster" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">createClusterJson</span><span class="o">=</span><span class="k">$(</span>rescale-createPersistentCluster <span class="si">${</span><span class="nv">CLUSTER_JSON</span><span class="si">}</span><span class="k">)</span>
+<span class="nv">clusterId</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="si">${</span><span class="nv">createClusterJson</span><span class="si">}</span> <span class="p">|</span> jq -r .id<span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="si">${</span><span class="nv">clusterId</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id6">
+<div class="code-block-caption"><span class="caption-text">返り値</span><a class="headerlink" href="#id6" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>kvHyW
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="start-the-persistent-cluster">
+<h2>1.3. Start the persistent cluster (永続クラスタの起動)<a class="headerlink" href="#start-the-persistent-cluster" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id7">
+<h3>Sample code の作成<a class="headerlink" href="#id7" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id8">
+<div class="code-block-caption"><span class="caption-text">[command] ヒアドキュメントによるスクリプトの生成</span><a class="headerlink" href="#id8" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; EOF &gt; ${script}/rescale-startPersistenCluster</span>
+<span class="s">#!/bin/sh</span>
+
+<span class="s">CLUSTER_ID=\$1</span>
+<span class="s">TOKEN=&quot;\${RESCALE_API_TOKEN}&quot;</span>
+
+<span class="s">curl -s -X POST -H &quot;Authorization: Token \${TOKEN}&quot; \</span>
+<span class="s">https://platform.rescale.jp/api/v3/clusters/\${CLUSTER_ID}/start/</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id9">
+<div class="code-block-caption"><span class="caption-text">[command] 実行権限付与</span><a class="headerlink" href="#id9" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>chmod +x <span class="si">${</span><span class="nv">script</span><span class="si">}</span>/rescale-startPersistenCluster
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>コマンドの実行とその結果<a class="headerlink" href="#id10" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id11">
+<div class="code-block-caption"><span class="caption-text">[command] 変数の確認</span><a class="headerlink" href="#id11" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; ETX</span>
+
+<span class="s">RESCALE_API_TOKEN: ${RESCALE_API_TOKEN}</span>
+<span class="s">clusterId: ${clusterId}</span>
+
+<span class="s">ETX</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id12">
+<div class="code-block-caption"><span class="caption-text">[command] コマンドの実行</span><a class="headerlink" href="#id12" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>rescale-startPersistenCluster <span class="si">${</span><span class="nv">clusterId</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id13">
+<div class="code-block-caption"><span class="caption-text">返り値</span><a class="headerlink" href="#id13" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="o">(</span>empty body: This returns a <span class="m">204</span> on success.<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="poll-the-cluster">
+<h2>1.4. Poll the cluster 永続クラスタの状態確認<a class="headerlink" href="#poll-the-cluster" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id14">
+<h3>Sample code の作成<a class="headerlink" href="#id14" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id15">
+<div class="code-block-caption"><span class="caption-text">[command]ヒアドキュメントによるスクリプトの生成</span><a class="headerlink" href="#id15" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; EOF &gt; ${script}/rescale-pollCluster</span>
+<span class="s">#!/bin/sh</span>
+
+<span class="s">CLUSTER_ID=\$1</span>
+<span class="s">TOKEN=&quot;\${RESCALE_API_TOKEN}&quot;</span>
+
+<span class="s">curl -s -X GET -H &quot;Authorization: Token \${TOKEN}&quot; \</span>
+<span class="s">https://platform.rescale.jp/api/v3/clusters/\${CLUSTER_ID}/statuses/</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id16">
+<div class="code-block-caption"><span class="caption-text">[command]実行権限付与</span><a class="headerlink" href="#id16" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>chmod +x <span class="si">${</span><span class="nv">script</span><span class="si">}</span>/rescale-pollCluster
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h3>コマンドの実行とその結果<a class="headerlink" href="#id17" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id18">
+<div class="code-block-caption"><span class="caption-text">[command]変数の確認</span><a class="headerlink" href="#id18" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; ETX</span>
+
+<span class="s">RESCALE_API_TOKEN: ${RESCALE_API_TOKEN}</span>
+<span class="s">clusterId: ${clusterId}</span>
+
+<span class="s">ETX</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id19">
+<div class="code-block-caption"><span class="caption-text">[command]コマンドの実行</span><a class="headerlink" href="#id19" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>rescale-pollCluster <span class="si">${</span><span class="nv">clusterId</span><span class="si">}</span> <span class="p">|</span> jq .
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="result">
+<div class="code-block-caption"><span class="caption-text">result</span><a class="headerlink" href="#result" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">&quot;count&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="nt">&quot;previous&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Started&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-02-26T15:48:08.253000Z&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clusterId&quot;</span><span class="p">:</span> <span class="s2">&quot;kvHyW&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;tuStgb&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusReason&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Starting&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-02-26T15:45:29.083000Z&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clusterId&quot;</span><span class="p">:</span> <span class="s2">&quot;kvHyW&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;eSYGV&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusReason&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Queued&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-02-26T15:45:25.190627Z&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clusterId&quot;</span><span class="p">:</span> <span class="s2">&quot;kvHyW&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;gjStgb&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusReason&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Pending&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-02-26T15:45:24.073813Z&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clusterId&quot;</span><span class="p">:</span> <span class="s2">&quot;kvHyW&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;SGYGV&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusReason&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;Not Started&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusDate&quot;</span><span class="p">:</span> <span class="s2">&quot;2017-02-26T15:17:44.251868Z&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;clusterId&quot;</span><span class="p">:</span> <span class="s2">&quot;kvHyW&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;BHkXdb&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;statusReason&quot;</span><span class="p">:</span> <span class="kc">null</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;next&quot;</span><span class="p">:</span> <span class="kc">null</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id20">
+<h2>1.5. ジョブの生成<a class="headerlink" href="#id20" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id21">
+<h3>Sample code の作成<a class="headerlink" href="#id21" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id22">
+<div class="code-block-caption"><span class="caption-text">[command]ジョブ定義用jsonファイル名の決定</span><a class="headerlink" href="#id22" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">JOB_JSON</span><span class="o">=</span><span class="s2">&quot;testJob.json&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id23">
+<div class="code-block-caption"><span class="caption-text">[command] JSONによるジョブの定義</span><a class="headerlink" href="#id23" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; EOF &gt; ${JOB_JSON}</span>
+<span class="s">{</span>
+<span class="s">  &quot;name&quot;: &quot;Test Job&quot;,</span>
+<span class="s">  &quot;jobanalyses&quot;: [</span>
+<span class="s">    {</span>
+<span class="s">      &quot;analysis&quot;: {</span>
+<span class="s">        &quot;code&quot;: &quot;user_included&quot;,</span>
+<span class="s">        &quot;version&quot;: &quot;0&quot;</span>
+<span class="s">      },</span>
+<span class="s">      &quot;command&quot;: &quot;echo hello&quot;,</span>
+<span class="s">      &quot;flags&quot;: {},</span>
+<span class="s">      &quot;hardware&quot;: {</span>
+<span class="s">        &quot;coresPerSlot&quot;: 1,</span>
+<span class="s">        &quot;slots&quot;: 1,</span>
+<span class="s">        &quot;coreType&quot;: {</span>
+<span class="s">          &quot;code&quot;: &quot;hpc-3&quot;</span>
+<span class="s">        },</span>
+<span class="s">        &quot;walltime&quot;: 10</span>
+<span class="s">      },</span>
+<span class="s">      &quot;inputFiles&quot;: []</span>
+<span class="s">    }</span>
+<span class="s">  ],</span>
+<span class="s">  &quot;isLowPriority&quot;: &quot;true&quot;</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id24">
+<div class="code-block-caption"><span class="caption-text">[command]ヒアドキュメントによるスクリプトの生成</span><a class="headerlink" href="#id24" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; EOF &gt; ${script}/rescale-createJob-v3</span>
+<span class="s">#!/bin/sh</span>
+
+<span class="s">jobJson=\$1</span>
+<span class="s">declare -a fileIds=(\${@:2})</span>
+<span class="s">token=\${RESCALE_API_TOKEN}</span>
+
+<span class="s">_create_job()</span>
+<span class="s">{</span>
+<span class="s">rescaleJson=\$1</span>
+<span class="s">echo \$rescaleJson | jq . &gt; _jobanalyses.json 2&gt;/dev/null</span>
+<span class="s">curl -s -X POST \</span>
+<span class="s">-H &quot;Authorization: Token \${token}&quot; \</span>
+<span class="s">-H &quot;Content-Type: application/json&quot; \</span>
+<span class="s">https://platform.rescale.jp/api/v3/jobs/ \</span>
+<span class="s">-d &quot;\${rescaleJson}&quot;</span>
+<span class="s">}</span>
+
+<span class="s">_my_jobanalyses()</span>
+<span class="s">{</span>
+<span class="s">json=\$1</span>
+<span class="s">cat \${json}</span>
+<span class="s">}</span>
+
+<span class="s">_create_rescaleJson()</span>
+<span class="s">{</span>
+<span class="s">json=\$1</span>
+<span class="s">declare -a ids=(\${@:2})</span>
+<span class="s">buff=\$(_my_jobanalyses \${json} | jq &#39;.jobanalyses[0] |= .+ {&quot;inputFiles&quot;: []}&#39;)</span>
+
+<span class="s">if [ \$# -gt 0 ];then</span>
+<span class="s">    for thisId in \${ids[*]}</span>
+<span class="s">do</span>
+<span class="s">    buff=\$(echo \${buff} | jq &quot;.jobanalyses[0].inputFiles |= .+[{&quot;id&quot;: \&quot;\${thisId}\&quot;}]&quot;)</span>
+<span class="s">        done</span>
+<span class="s">        echo \${buff}</span>
+<span class="s">elif [ \$# -eq 0 ];then</span>
+<span class="s">    _my_jobanalyses \${json}</span>
+<span class="s">else</span>
+<span class="s">    exit 1</span>
+<span class="s">fi</span>
+<span class="s">}</span>
+
+<span class="s">#</span>
+<span class="s"># Rescaleに送るためのJSONを作る</span>
+<span class="s"># 普段ブラウザ上で行う作業をJSONで表現される</span>
+<span class="s">#</span>
+<span class="s">jobAnalysesJson=\$(_create_rescaleJson \${jobJson} \${fileIds[*]})</span>
+
+
+<span class="s"># バラバラにならないように、&quot; &quot; で囲むこと。</span>
+<span class="s"># スペースが入っているため、引数1で全てを送る必要がある</span>
+
+<span class="s">r=\$(_create_job &quot;\${jobAnalysesJson}&quot;)</span>
+<span class="s">echo \$r</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id25">
+<div class="code-block-caption"><span class="caption-text">[command]実行権限付与</span><a class="headerlink" href="#id25" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>chmod +x <span class="si">${</span><span class="nv">script</span><span class="si">}</span>/rescale-createJob-v3
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id26">
+<h3>コマンドの実行とその結果<a class="headerlink" href="#id26" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id27">
+<div class="code-block-caption"><span class="caption-text">[command]変数の確認</span><a class="headerlink" href="#id27" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; ETX</span>
+
+<span class="s">RESCALE_API_TOKEN: ${RESCALE_API_TOKEN}</span>
+<span class="s">JOB_JSON: ${JOB_JSON}</span>
+<span class="s">fileId: ${fileId}</span>
+<span class="s">clusterId: ${clusterId}</span>
+
+<span class="s">ETX</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id28">
+<div class="code-block-caption"><span class="caption-text">[command]コマンドの実行</span><a class="headerlink" href="#id28" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">createJobJson</span><span class="o">=</span><span class="k">$(</span>rescale-createJob-v3 <span class="si">${</span><span class="nv">JOB_JSON</span><span class="si">}</span> <span class="si">${</span><span class="nv">fileId</span><span class="si">}</span><span class="k">)</span>
+<span class="nv">jobId</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="si">${</span><span class="nv">createJobJson</span><span class="si">}</span> <span class="p">|</span> jq -r .id<span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="si">${</span><span class="nv">jobId</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id29">
+<div class="code-block-caption"><span class="caption-text">返り値</span><a class="headerlink" href="#id29" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>QvQAo
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id30">
+<h2>1.6. 永続クラスタによるジョブの実行<a class="headerlink" href="#id30" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id31">
+<h3>Sample code の作成<a class="headerlink" href="#id31" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>以下をコピペし、スクリプトを生成します。</p>
+<div class="literal-block-wrapper container" id="id32">
+<div class="code-block-caption"><span class="caption-text">[command]ヒアドキュメントによるスクリプトの生成</span><a class="headerlink" href="#id32" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; EOF &gt; ${script}/rescale-submitJob2PersistetCluster</span>
+<span class="s">#!/bin/sh</span>
+
+<span class="s">JOB_ID=\$1</span>
+<span class="s">CLUSTER_ID=\$2</span>
+<span class="s">TOKEN=&quot;\${RESCALE_API_TOKEN}&quot;</span>
+
+<span class="s">_create_json()</span>
+<span class="s">{</span>
+<span class="s">jid=\$1</span>
+<span class="s">cat &lt;&lt; ETX</span>
+<span class="s">{</span>
+<span class="s">  &quot;id&quot;: &quot;\${jid}&quot;,</span>
+<span class="s">  &quot;submit&quot;: true</span>
+<span class="s">}</span>
+<span class="s">ETX</span>
+<span class="s">}</span>
+
+<span class="s">rescaleJson=\$(_create_json \${JOB_ID})</span>
+<span class="s">echo \$rescaleJson</span>
+
+<span class="s">curl -s -X POST \</span>
+<span class="s">-H &quot;Authorization: Token \${TOKEN}&quot; \</span>
+<span class="s">-H &quot;Content-Type: application/json&quot; \</span>
+<span class="s">https://platform.rescale.jp/api/clusters/\${CLUSTER_ID}/jobs/ \</span>
+<span class="s">-d &quot;\${rescaleJson}&quot;</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id33">
+<div class="code-block-caption"><span class="caption-text">[command]実行権限付与</span><a class="headerlink" href="#id33" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>chmod +x <span class="si">${</span><span class="nv">script</span><span class="si">}</span>/rescale-submitJob2PersistetCluster
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id34">
+<h3>コマンドの実行とその結果<a class="headerlink" href="#id34" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<div class="literal-block-wrapper container" id="id35">
+<div class="code-block-caption"><span class="caption-text">[command] 変数の確認</span><a class="headerlink" href="#id35" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>cat <span class="s">&lt;&lt; ETX</span>
+
+<span class="s">RESCALE_API_TOKEN: ${RESCALE_API_TOKEN}</span>
+<span class="s">clusterId: ${clusterId}</span>
+<span class="s">jobId: ${jobId}</span>
+
+<span class="s">ETX</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id36">
+<div class="code-block-caption"><span class="caption-text">[command] 永続クラスタへのジョブ投入</span><a class="headerlink" href="#id36" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre>rescale-submitJob2PersistetCluster <span class="si">${</span><span class="nv">jobId</span><span class="si">}</span> <span class="si">${</span><span class="nv">clusterId</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper container" id="id37">
+<div class="code-block-caption"><span class="caption-text">結果例</span><a class="headerlink" href="#id37" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;ReUKdb&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="../cli/hw-json.html" title="12. Hardware-code information" >前へ</a></li>
+        <li><a href="persistent-cluster-python.html" title="2. [Python] Persisstent Cluster Hands-on with Resacle API" >次へ</a></li>
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2017, Daisuke Nagao.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.6.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

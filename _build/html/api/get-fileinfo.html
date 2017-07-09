@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    
+    <title>3. API List one liner curlコマンド編 &mdash; Rescale Documentation 有志のページ 0.1.0 ドキュメント</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+<link rel="stylesheet" href="../_static/css/basicstrap-base.css" type="text/css" />
+<link rel="stylesheet" id="current-theme" href="../_static/css/bootstrap3/bootswatch-simplex.css" type="text/css" />
+<link rel="stylesheet" id="current-adjust-theme" href="../_static/css/adjust_theme/bootswatch-simplex.css" type="text/css" />
+
+<link rel="stylesheet" href="../_static/css/font-awesome.min.css">
+
+<style type="text/css">
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
+
+<link rel="stylesheet" href="../_static/css/basicstrap.css" type="text/css" />
+<link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+<link rel="stylesheet" href="../_static/bootstrap.min.css" type="text/css" />
+    
+<script type="text/javascript">
+  var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:    '../',
+            VERSION:     '0.1.0',
+            COLLAPSE_INDEX: false,
+            FILE_SUFFIX: '.html',
+            HAS_SOURCE:  true
+  };
+</script>
+    <script type="text/javascript" src="../_static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/js/bootstrap3.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery.cookie.min.js"></script>
+<script type="text/javascript" src="../_static/js/basicstrap.js"></script>
+<script type="text/javascript">
+</script>
+    <link rel="top" title="Rescale Documentation 有志のページ 0.1.0 ドキュメント" href="../index.html" />
+    <link rel="prev" title="2. [Python] Persisstent Cluster Hands-on with Resacle API" href="persistent-cluster-python.html" /> 
+  </head>
+  <body role="document">
+    <div id="navbar-top" class="navbar navbar-fixed-top navbar-default" role="navigation" aria-label="top navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown visible-xs">
+                <a role="button" id="localToc" data-toggle="dropdown" data-target="#" href="#">目次 <b class="caret"></b></a>
+                <ul class="dropdown-menu localtoc sp-localtoc" role="menu" aria-labelledby="localToc">
+                <ul>
+<li><a class="reference internal" href="#">3. API List one liner curlコマンド編</a><ul>
+<li><a class="reference internal" href="#id1">3.1. 事前準備</a><ul>
+<li><a class="reference internal" href="#jq">jqの準備</a></li>
+<li><a class="reference internal" href="#api-key">API Keyの準備</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#file-api">3.2. FIle API をつかいこなす</a></li>
+</ul>
+</li>
+</ul>
+
+                </ul>
+              </li>
+
+            
+              <li><a href="persistent-cluster-python.html" title="2. [Python] Persisstent Cluster Hands-on with Resacle API" accesskey="P">前へ </a></li>
+              <li><a href="../genindex.html" title="総合索引" accesskey="I">索引 </a></li>
+            
+            <li class="visible-xs"><a href="../_sources/api/get-fileinfo.txt" rel="nofollow">ソースコードを表示</a></li>
+
+            <li class="visible-xs">
+                <form class="search form-search form-inline navbar-form navbar-right sp-searchbox" action="../search.html" method="get">
+                  <div class="input-append input-group">
+                    <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+                    <span class="input-group-btn">
+                    <input type="submit" class="btn" value="検索" />
+                    </span>
+                  </div>
+                  <input type="hidden" name="check_keywords" value="yes" />
+                  <input type="hidden" name="area" value="default" />
+                </form>
+            </li>
+
+            
+
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- container -->
+    <div class="container-fluid">
+
+      <!-- row -->
+      <div class="row">
+         
+<div class="col-md-3 hidden-xs" id="sidebar-wrapper">
+  <div class="sidebar hidden-xs" role="navigation" aria-label="main navigation">
+  <h3><a href="../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. API List one liner curlコマンド編</a><ul>
+<li><a class="reference internal" href="#id1">3.1. 事前準備</a><ul>
+<li><a class="reference internal" href="#jq">jqの準備</a></li>
+<li><a class="reference internal" href="#api-key">API Keyの準備</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#file-api">3.2. FIle API をつかいこなす</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="persistent-cluster-python.html"
+                        title="前の章へ">2. [Python] Persisstent Cluster Hands-on with Resacle API</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/get-fileinfo.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" role="search">
+  <h3>クイック検索</h3>
+  <form class="search form-inline" action="../search.html" method="get">
+      <div class="input-append input-group">
+        <input type="text" class="search-query form-control" name="q" placeholder="Search...">
+        <span class="input-group-btn">
+        <input type="submit" class="btn" value="検索" />
+        </span>
+      </div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+  </div>
+</div> 
+        
+
+        <div class="col-md-9" id="content-wrapper">
+          <div class="document" role="main">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="api-list-one-liner-curl">
+<h1>3. API List one liner curlコマンド編<a class="headerlink" href="#api-list-one-liner-curl" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>3.1. 事前準備<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="jq">
+<h3>jqの準備<a class="headerlink" href="#jq" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>jqをインストールしてください</p>
+</div>
+<div class="section" id="api-key">
+<h3>API Keyの準備<a class="headerlink" href="#api-key" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>API Key の準備</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nb">export</span> <span class="nv">RESCALE_API_TOKEN</span><span class="o">=</span>&lt;<span class="s1">&#39;作成したAPI-Key&#39;</span>&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="file-api">
+<h2>3.2. FIle API をつかいこなす<a class="headerlink" href="#file-api" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ファイルリストを得る</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">json</span><span class="o">=</span><span class="k">$(</span>curl -s -X GET -H <span class="s2">&quot;Authorization: Token </span><span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://platform.rescale.jp/api/v2/files/&quot;</span><span class="k">)</span> <span class="se">\</span>
+<span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="si">${</span><span class="nv">json</span><span class="si">}</span> <span class="p">|</span> jq .
+</pre></div>
+</div>
+<p>2ページ目を見る。<code class="docutils literal"><span class="pre">?page=2</span></code> を付け加えれば良い</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">PAGE</span><span class="o">=</span>2
+<span class="nv">json</span><span class="o">=</span><span class="k">$(</span>curl -s -X GET -H <span class="s2">&quot;Authorization: Token </span><span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://platform.rescale.jp/api/v2/files/?page=</span><span class="si">${</span><span class="nv">PAGE</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span> <span class="se">\</span>
+<span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="si">${</span><span class="nv">json</span><span class="si">}</span> <span class="p">|</span> jq .
+</pre></div>
+</div>
+<p>ファイル名、更新日、ファイルIDのみをリストで得る。取得するリストのサイズは64とする</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">SIZE</span><span class="o">=</span>64
+<span class="nv">json</span><span class="o">=</span><span class="k">$(</span>curl -s -X GET -H <span class="s2">&quot;Authorization: Token </span><span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://platform.rescale.jp/api/v2/files/?page_size=</span><span class="si">${</span><span class="nv">SIZE</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span> <span class="se">\</span>
+<span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="si">${</span><span class="nv">json</span><span class="si">}</span> <span class="p">|</span> jq -c <span class="s1">&#39;.results[] | {dateUploaded: .dateUploaded, id: .id, name: .name}&#39;</span>
+</pre></div>
+</div>
+<p>入力ファイルだけを得る。かつ拡張子は .pc .mpl とする。サイズは64とする</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">SIZE</span><span class="o">=</span>64
+<span class="nv">json</span><span class="o">=</span><span class="k">$(</span>curl -s -X GET -H <span class="s2">&quot;Authorization: Token </span><span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://platform.rescale.jp/api/v3/files/?ext=.pc&amp;ext=.mpl&amp;owner=3&amp;type=1&amp;page_size=</span><span class="si">${</span><span class="nv">SIZE</span><span class="si">}</span><span class="s2">&quot;</span><span class="k">)</span> <span class="se">\</span>
+<span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="si">${</span><span class="nv">json</span><span class="si">}</span> <span class="se">\</span>
+<span class="p">|</span> jq -c <span class="s1">&#39;.results[] | {dateUploaded: .dateUploaded, id: .id, name: .name, owner: .owner}&#39;</span>
+</pre></div>
+</div>
+<p>?ext=.pc&amp;ext=.mpl&amp;fileTypeFilter=1&amp;ownerFilter=3</p>
+<p>対象とするFileのメタデータを参照する</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">FILE_ID</span><span class="o">=</span>&lt;<span class="s1">&#39;対象とするFileId&#39;</span>&gt;
+curl -s -X GET -H <span class="s2">&quot;Authorization: Token </span><span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://platform.rescale.jp/api/v2/files/</span><span class="si">${</span><span class="nv">FILE_ID</span><span class="si">}</span><span class="s2">/&quot;</span> <span class="p">|</span> jq .
+</pre></div>
+</div>
+<p>メタデータを更新する</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="nv">FILE_ID</span><span class="o">=</span><span class="s2">&quot;SfwFc&quot;</span>
+<span class="nv">json</span><span class="o">=</span><span class="k">$(</span>cat <span class="si">${</span><span class="nv">FILE_ID</span><span class="si">}</span>.json<span class="k">)</span> <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="si">${</span><span class="nv">json</span><span class="si">}</span> <span class="p">|</span> jq .
+curl -s -X PATCH <span class="se">\</span>
+-H <span class="s1">&#39;Content-Type: application/json&#39;</span> -H <span class="s2">&quot;Authorization: Token </span><span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span> --data <span class="s2">&quot;</span><span class="si">${</span><span class="nv">json</span><span class="si">}</span><span class="s2">&quot;</span> https://platform.rescale.com/api/v2/files/<span class="si">${</span><span class="nv">FILE_ID</span><span class="si">}</span>/
+
+curl -s -X GET -H <span class="s2">&quot;Authorization: Token </span><span class="si">${</span><span class="nv">RESCALE_API_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span> <span class="se">\</span>
+<span class="s2">&quot;https://platform.rescale.jp/api/v2/files/</span><span class="si">${</span><span class="nv">FILE_ID</span><span class="si">}</span><span class="s2">/&quot;</span> <span class="p">|</span> jq .
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div><!-- /row -->
+
+      <!-- row -->
+      <div class="row footer-relbar">
+<div id="navbar-related" class=" related navbar navbar-default" role="navigation" aria-label="related navigation">
+  <div class="navbar-inner">
+    <ul class="nav navbar-nav ">
+        <li><a href="../index.html">Rescale Documentation 有志のページ 0.1.0 ドキュメント</a></li>
+    </ul>
+<ul class="nav navbar-nav pull-right hidden-xs hidden-sm">
+      
+        <li><a href="persistent-cluster-python.html" title="2. [Python] Persisstent Cluster Hands-on with Resacle API" >前へ</a></li>
+        <li><a href="../genindex.html" title="総合索引" >索引</a></li>
+        <li><a href="#">top</a></li> 
+      
+    </ul>
+  </div>
+</div>
+      </div><!-- /row -->
+
+      <!-- footer -->
+      <footer role="contentinfo">
+          &copy; Copyright 2017, Daisuke Nagao.
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.6.
+      </footer>
+      <!-- /footer -->
+
+    </div>
+    <!-- /container -->
+
+  </body>
+</html>

@@ -6,3 +6,8 @@ Rescale CLI on Windows (Abaqusの例)
 ======================================
 
 :doc:`abaqus`
+
+Rescale CLI on Lamps (Makeから)
+======================================
+
+:doc:`lammps`

@@ -105,6 +105,23 @@ PoD Licenseの指定方法がポイント
 
 |
 
+Deep Learning の学習に適用(GPUコアタイプ)
+------------------------------------------------------------------------------
+
+Deep Learning (OSS)の例
+
+.. code-block:: bash
+
+    #!/bin/sh -f
+    #RESCALE_NAME=chainer-1.22.0-mnist-with-RescaleCli
+    #RESCALE_CORES=2
+    #RESCALE_CORE_TYPE=obsidian
+    #RESCALE_LOW_PRIORITY=true
+    #RESCALE_ANALYSIS=chainer
+    #RESCALE_ANALYSIS_VERSION=1.22.0-cuda8-gpu-centos
+
+    <'アプリケーションをキックするためのコマンドを記述'>
+
 
 フラグで設定する内部コード名がわからないとき
 ====================================================

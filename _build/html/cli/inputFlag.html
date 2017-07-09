@@ -76,6 +76,7 @@
 <li><a class="reference internal" href="#id3">5.2. 具体例</a><ul>
 <li><a class="reference internal" href="#rescale-e-g-cradle">Rescale ライセンス (e.g. cradle製品などの従量アプリ)を利用するとき</a></li>
 <li><a class="reference internal" href="#pod-rescale-cli">PoDライセンスを Rescale CLI から利用する場合</a></li>
+<li><a class="reference internal" href="#deep-learning-gpu">Deep Learning の学習に適用(GPUコアタイプ)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id4">5.3. フラグで設定する内部コード名がわからないとき</a><ul>
@@ -134,6 +135,7 @@
 <li><a class="reference internal" href="#id3">5.2. 具体例</a><ul>
 <li><a class="reference internal" href="#rescale-e-g-cradle">Rescale ライセンス (e.g. cradle製品などの従量アプリ)を利用するとき</a></li>
 <li><a class="reference internal" href="#pod-rescale-cli">PoDライセンスを Rescale CLI から利用する場合</a></li>
+<li><a class="reference internal" href="#deep-learning-gpu">Deep Learning の学習に適用(GPUコアタイプ)</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id4">5.3. フラグで設定する内部コード名がわからないとき</a><ul>
@@ -337,6 +339,21 @@
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="deep-learning-gpu">
+<h3>Deep Learning の学習に適用(GPUコアタイプ)<a class="headerlink" href="#deep-learning-gpu" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>Deep Learning (OSS)の例</p>
+<div class="highlight-bash"><div class="highlight"><pre><span class="ch">#!/bin/sh -f</span>
+<span class="c1">#RESCALE_NAME=chainer-1.22.0-mnist-with-RescaleCli</span>
+<span class="c1">#RESCALE_CORES=2</span>
+<span class="c1">#RESCALE_CORE_TYPE=obsidian</span>
+<span class="c1">#RESCALE_LOW_PRIORITY=true</span>
+<span class="c1">#RESCALE_ANALYSIS=chainer</span>
+<span class="c1">#RESCALE_ANALYSIS_VERSION=1.22.0-cuda8-gpu-centos</span>
+
+&lt;<span class="s1">&#39;アプリケーションをキックするためのコマンドを記述&#39;</span>&gt;
+</pre></div>
 </div>
 </div>
 </div>
