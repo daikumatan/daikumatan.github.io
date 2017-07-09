@@ -1,0 +1,19 @@
+{
+    "name": "Test-Cluster",
+    "hardware": {
+        "coresPerSlot": 1,
+        "slots": 1,
+        "coreType": {
+            "code": "hpc-3"
+        },
+        "walltime": 1
+    },
+    "installedAnalyses": [
+    {
+        "analysis": {
+            "code": "user_included",
+            "version": "0"
+            }
+    }],
+    "runLowPriority": "true"
+}

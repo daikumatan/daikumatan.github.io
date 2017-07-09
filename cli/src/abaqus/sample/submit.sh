@@ -8,3 +8,5 @@
 #USE_RESCALE_LICENSE
 
 abaqus scratch=${PWD}/tmp job=s4b cpus=8 interactive
+
+

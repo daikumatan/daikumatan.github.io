@@ -1,0 +1,22 @@
+{
+  "name": "Test Job",
+  "jobanalyses": [
+    {
+      "analysis": {
+        "code": "user_included",
+        "version": "0"
+      },
+      "command": "echo hello",
+      "flags": {},
+      "hardware": {
+        "coresPerSlot": 1,
+        "slots": 1,
+        "coreType": {
+          "code": "hpc-3"
+        },
+        "walltime": 1
+      }
+    }
+  ],
+  "isLowPriority": "true"
+}
